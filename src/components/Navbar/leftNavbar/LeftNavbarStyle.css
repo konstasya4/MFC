@@ -1,0 +1,89 @@
+.nav-left{
+
+display: flex;
+flex-direction: column;
+border: 0.2vw  solid #B1B1B1;
+border-radius: 1.7vw;
+width: max-content;
+margin-left: 1vw;
+}
+.ul-left{
+  display: flex;
+flex-direction: column; 
+margin: 1vw;
+}
+.li-left a{
+  color: #000000;
+  text-decoration: none;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-weight: 500;
+  font-size: 0.75em;
+}
+.li-left{
+  margin: 0.5vw 0 0 0;
+  display: flex; 
+  align-items: center;
+  /* justify-content: center; */
+  
+}
+.btn-div-left{
+  /* display: flex; */
+  /* align-items: center; */
+  /* justify-content: center; */
+}
+.btn-left{
+  display: flex;
+  justify-content: center;
+  background-color: #FFD2D2;
+  color: #FF2C2C;
+  width: 90%;
+  border: 0.2vw;
+border-radius: 1.2vw;
+align-items: center;
+padding: 0.6vw;
+font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+font-weight: 600;
+cursor: pointer;
+}
+.btn-left img{
+  margin-right: 5px;
+  max-width: 0.9vw;
+  max-height: 0.8vw;
+}
+.img-nav{
+  margin-right: 5px;
+  max-width: 0.8vw;
+  max-height: 0.8vw;
+}
+.div-left{
+  display: flex;
+  
+}
+.img-div{
+  max-width: 2vw;
+}
+/* .btn-left {
+  display: flex; /* Включаем flexbox */
+  /* align-items: center; Выравниваем элементы по вертикали */
+  /* justify-content: space-between; Распределяем элементы по ширине кнопки
+  background-color: #FFD2D2;
+  color: #FF2C2C;
+  width: 90%;
+  border: 0.2vw solid;
+  border-radius: 1.2vw; */
+  /* padding: 0.5vw; Добавляем немного отступов для красоты */
+/* } */
+
+/* .btn-left img { */
+  /* width: 1.5em; Устанавливаем ширину изображения по вашему желанию */
+  /* height: auto; Сохраняем пропорции */
+  /* margin-right: 0.5vw; Добавляем немного отступа между изображением и текстом */
+/* } */ 
+
+/* li a{
+  color: #000000;
+  text-decoration: none;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-weight:500;
+  font-size: ;
+} */

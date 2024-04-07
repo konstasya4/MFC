@@ -1,0 +1,15 @@
+.input{
+    border: 0.2vw  solid #408CFF;
+border-radius: 0.7vw;
+width: 50vw;
+height: 2vw;
+/* padding-left: 2.5vw;  */
+background-image: url('../images/Search.png'); 
+background-size: 1.5vw; 
+background-repeat: no-repeat; 
+background-position:right center; 
+/* padding-right: 2vw; */
+}
+.input::placeholder{
+    padding-left: 1vw;
+}

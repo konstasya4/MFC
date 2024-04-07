@@ -1,0 +1,10 @@
+.main-navbar{
+    display: flex;
+    flex-direction: row;
+    margin-top: 1.51vw;
+}
+.main-services{
+    margin-left: 2vw;
+}
+button{
+}

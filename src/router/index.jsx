@@ -15,23 +15,23 @@ export const publicRoutes=[
     {path:"/login", element: <Login/>, exact: true},
     {path:"/question", element: <Quest/>, exact: true},
     {path:"/services", element: <Service/>, exact: true},
-    {path:"*", element: <Main/>, exact: true},
+    // {path:"*", element: <Main/>, exact: true},
 ]
 
 export const privateRoutesUser=[
-    {path:"/main", element: <Main/>, exact: true},
+    {path:"/mainUser", element: <Main/>, exact: true},
     {path:"/account", element: <Account/>, exact: true},
-    {path:"/question", element: <Quest/>, exact: true},
-    {path:"/services", element: <Service/>, exact: true},
+    {path:"/questionUser", element: <Quest/>, exact: true},
+    {path:"/servicesUser", element: <Service/>, exact: true},
     {path:"/status", element: <ExecutionStatus/>, exact: true},
-    {path:"*", element: <Main/>, exact: true},
+    // {path:"*", element: <Main/>, exact: true},
 ]
 export const privateRoutesAdmin=[
     {path:"/admin", element: <Admin/>, exact: true},
     {path:"/listOfStudents", element: <ListOfStudents/>, exact: true},
     {path:"/listOfTeachers", element: <ListOfTeachers/>, exact: true},
     {path:"/statements", element: <Statements/>, exact: true},
-    {path:"*", element: <Admin/>, exact: true},
+    // {path:"*", element: <Admin/>, exact: true},
 ]
 
 

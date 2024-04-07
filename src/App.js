@@ -1,6 +1,6 @@
 import { BrowserRouter } from 'react-router-dom';
 import './App.css';
-import Navbar from './components/Navbar/Navbar'
+import Navbar from './components/Navbar/header/Navbar'
 import AppRouter from './router/router'
 import { AuthContext, RoleContext } from './context';
 import { useEffect, useState } from 'react';
@@ -32,14 +32,15 @@ const [posts, setPosts]=useState([
   [])
   return (
     <div className="App">
-      <AuthContext.Provider value={{isAuth, setIsAuth, isLoading}}>
-        <RoleContext.Provider value={{isRole, setIsRole}}>
-        <BrowserRouter>
-      <Navbar/>
-      <AppRouter/>
-      </BrowserRouter>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet"/>
+      <AuthContext.Provider value={{ isAuth, setIsAuth, isLoading }}>
+        <RoleContext.Provider value={{ isRole, setIsRole }}>
+          <BrowserRouter>
+            <Navbar />
+            <AppRouter />
+          </BrowserRouter>
         </RoleContext.Provider>
-      </AuthContext.Provider>  
+      </AuthContext.Provider>
     </div>
   );
 }

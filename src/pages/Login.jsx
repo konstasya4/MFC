@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import { AuthContext, RoleContext } from "../context";
+import { Link } from "react-router-dom";
 const Login=()=>{
     const {isAuth, setIsAuth} = useContext(AuthContext);
     const{isRole, setIsRole}=useContext(RoleContext);
@@ -11,14 +12,14 @@ const Login=()=>{
         
     // }
     const admin = event =>{
-        event.preventDefault();
+        // event.preventDefault();
         setIsAuth(true);
         localStorage.setItem('auth', 'true')
         setIsRole('admin');
         localStorage.setItem('role', 'admin')
     }
     const user = event =>{
-        event.preventDefault();
+        // event.preventDefault();
         setIsAuth(true);
         localStorage.setItem('auth', 'true')
         setIsRole('user');
@@ -29,12 +30,12 @@ const Login=()=>{
             <form>
                 <input id="userName" type="text"/>
                 <input id="password" type="password"/>
-                <button className="admin-button" onClick={admin}>
+                <Link to="/admin"><button className="admin-button" onClick={admin}>
                     Администратор
-                </button>
-                <button className="user-button"  onClick={user}>
+                </button></Link>
+               <Link to="/mainUser"><button className="user-button"  onClick={user}>
                 Пользователь
-                </button>
+                </button></Link> 
             </form>
         </div>
     );
