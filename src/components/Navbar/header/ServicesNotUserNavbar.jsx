@@ -31,10 +31,10 @@ function ServicesNotUserNavbar() {
   return (
     <div className="page_header">
       <nav className="nav">
-        <ul>
+        <ul className="header-ul">
           <div className="left-text">
             <li className="text">
-              <a href="#this">МФЦ РУТ(МИИТ)</a>
+              <a href="">МФЦ РУТ(МИИТ)</a>
             </li>
           </div>
           <div className="center-text">

@@ -31,7 +31,7 @@ const logout= ()=>{
 return (
   <div className="page_header">
     <nav className="nav">
-      <ul>
+      <ul className="header-ul">
         <div className="left-text">
           <li className="text">
             <Link to="/mainUser">МФЦ РУТ(МИИТ)</Link>

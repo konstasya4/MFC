@@ -14,7 +14,7 @@ const logout= ()=>{
 return (
   <div className="page_header">
   <nav className="nav">
-    <ul>
+    <ul className="header-ul">
       <div className="left-text">
         <li className="text">
           <Link to="/admin">МФЦ РУТ(МИИТ)</Link>
@@ -22,7 +22,7 @@ return (
       </div>
       <div className="right-text">
         <li className="text">
-          <Link to="/listOfStudents">Услуги</Link>
+          <Link to="/statements">Услуги</Link>
         </li>
         <li className="text">
           <Link to="/listOfTeachers">Q&A</Link>
