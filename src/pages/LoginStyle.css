@@ -1,0 +1,71 @@
+.login-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 90vh;
+    overflow: hidden;
+  }
+  
+  .login-box {
+    /* width: 300px; */
+    padding: 1vw 2vw;
+    background-color: #fff;
+    border-radius: 30px;
+    border: 0.4vw solid #A5C9FF;
+  }
+  
+  .text-form{
+    font-size: 1.4em;
+    font-weight: 600;
+    color: #85B6FF;
+  }
+  .textbox {
+    position: relative;
+    padding: 1vw 2vw;
+  }
+  .textbox input::placeholder{
+    color: #A2AFDD;
+
+  }
+  
+  .textbox input {
+    width: 100%;
+    border: 0.2vw solid #89B1E0;
+    border-radius: 1.7vw;
+    outline: none;
+    padding: 10px;
+    font-size: 1em;
+  }
+  
+  .external-buttons {
+    margin-top: 10px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .external-buttons a {
+    margin-right: 10px;
+    margin-top: 10px;
+  }
+  
+  .btn_login {
+    padding: 10px 20px;
+    font-size: 22px;
+    font-weight: 600;
+    background-color: #408CFF;
+    color: #fff;
+    border: none;
+    border-radius: 1vw;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .btn:hover {
+    background-color: #007bff;
+  }
+  .forgotPassword {
+    color: #A2BADD;
+  }
+  
