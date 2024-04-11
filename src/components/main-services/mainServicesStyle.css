@@ -1,0 +1,21 @@
+/* .certificateItem{
+    margin: 0;
+    padding: 0;
+    color: #408CFF !important;
+} */
+.certificateItem {
+    margin: 0;
+    padding: 0;
+    color: #408CFF; 
+     white-space: nowrap;
+    overflow: hidden; 
+    /* width: 100%; */
+  }
+  
+  /* Если вы хотите добавить точки, чтобы заполнить оставшееся пространство */
+  /* .certificateItem::after {
+    content: '........................................................'; 
+    display: inline-block;
+    width: 100%; 
+    text-align: right; 
+  } */
