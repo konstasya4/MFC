@@ -5,6 +5,7 @@ import { RoleContext } from "../../../context";
 import OutButton from '../../../images/OutButton.png'
 import './LeftNavbarStyle.css'
 import { Link } from "react-router-dom";
+import Certificate from '../../../images/Certificate.png';
 const UserServicesNavbar=()=>{
     const {isAuth, setIsAuth} = useContext(AuthContext);
 const {isRole, setIsRole} = useContext(RoleContext);
@@ -18,16 +19,20 @@ const {isRole, setIsRole} = useContext(RoleContext);
           <div className="nav-left">
             <ul className="ul-left">
               <li className="li-left">
-                <a href="">Выдача справок и копий документов</a>
+              <img className="img-nav" src={Certificate} />
+                <a href="#issuanceOfCertificates">Справки и копии документов</a>
               </li>
               <li className="li-left">
-                <a href="">Бланки документов для работников</a>
+              <img className="img-nav" src={Certificate} />
+                <a href="#formsForEmployees">Бланки документов для работников</a>
               </li>
               <li className="li-left">
-                <a href="">Бланки документов для обучающихся</a>
+              <img className="img-nav" src={Certificate} />
+                <a href="#formsForStudents">Бланки документов для обучающихся</a>
               </li>
               <li className="li-left">
-                <a href="">Перевод и восстановление</a>
+              <img className="img-nav" src={Certificate} />
+                <a href="#translationAndRestoration">Перевод и восстановление</a>
               </li>
               <li className="li-left">
               <Link to="/main"><button onClick={logout} className="btn-left"><img src={OutButton}/>Выйти из аккаунта</button></Link>
