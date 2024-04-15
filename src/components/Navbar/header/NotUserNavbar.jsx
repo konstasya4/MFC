@@ -17,12 +17,12 @@ return (
       <ul className="header-ul">
         <div className="left-text">
           <li className="text">
-            <Link to="/main">МФЦ РУТ(МИИТ)</Link>
+            МФЦ РУТ(МИИТ)
           </li>
         </div>
         <div className="right-text">
           <li className="text">
-            <Link to="/services">Услуги</Link>
+            <Link to="/main">Услуги</Link>
           </li>
           <li className="text">
             <Link to="/question">Q&A</Link>

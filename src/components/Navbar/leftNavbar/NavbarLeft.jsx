@@ -3,12 +3,11 @@ import { useLocation } from "react-router-dom";
 import './NavbarStyle.css';
 import { AuthContext, RoleContext } from "../../../context";
 import AdminLeftNavbar from "./AdminLeftNavbar";
-import UserNavbar from "./UserNavbar";
-import NotUserNavbar from "./NotUserNavbar";
-import ServicesUserNavbar from "./ServicesUserNavbar";
-import ServicesNavbar from "./ServicesNotUserNavbar";
+import UserServicesNavbar from "./UserServicesNavbar";
+import UserLetfNavbar from "./UserLetfNavbar";
+import ServicesNavbar from "./ServicesNavbar";
 
-function Navbar() {
+function NavbarLeft() {
 const {isAuth} = useContext(AuthContext);
 const {isRole} = useContext(RoleContext);
 const location = useLocation();
@@ -17,16 +16,20 @@ const location = useLocation();
 
 return isAuth ? (
   isRole === "admin" ? (
+    location.pathname ==='/mainAdmin'?(
+      <UserServicesNavbar />
+    ) :
     <AdminLeftNavbar />
-  ) : location.pathname === "/mainUser" ? (
-    <ServicesUserNavbar />
+  ) :
+  ( location.pathname === "/mainUser" ? (
+    <UserServicesNavbar />
   ) : (
-    <UserNavbar />
-  )
-) : location.pathname === "/main" ? (
+    <UserLetfNavbar />
+  )))
+ : location.pathname === "/main" ? (
   <ServicesNavbar />
 ) : (
-  <NotUserNavbar />
-);
+  <ServicesNavbar/>
+)
 }
-export default  Navbar;
+export default  NavbarLeft;

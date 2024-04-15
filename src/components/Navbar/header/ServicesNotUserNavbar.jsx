@@ -34,7 +34,7 @@ function ServicesNotUserNavbar() {
         <ul className="header-ul">
           <div className="left-text">
             <li className="text">
-              <a href="">МФЦ РУТ(МИИТ)</a>
+              МФЦ РУТ(МИИТ)
             </li>
           </div>
           <div className="center-text">
@@ -57,7 +57,7 @@ function ServicesNotUserNavbar() {
           </div>
           <div className="right-text">
             <li className="text">
-              <Link to="/services">Услуги</Link>
+              <Link to="/main">Услуги</Link>
             </li>
             <li className="text">
               <Link to="/question">Q&A</Link>

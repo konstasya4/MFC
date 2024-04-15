@@ -4,7 +4,7 @@
 }
 
 .btn{
-  margin-top: 1vw;
+  /* margin-top: 1vh; */
   margin-right: 1vw;
   padding: 0 5px;
   background-color: #408CFF;
@@ -16,6 +16,7 @@
   border-radius: 10px;
     border: 3px solid #408CFF;
     cursor: pointer;
+    align-items: center;
 }
 
 
@@ -40,13 +41,14 @@
 .page_header {
   width: 100%;
   max-height: 50vw;
+  margin-top: 1vh;
 }
 .text a{
   color: black;
   text-decoration: none;
 }
 .text {
-  margin:1vw 1vw 0 1vw;
+  margin:0 1vw 0 1vw;
   font-weight: 500;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   font-size: 1.3rem;
@@ -101,4 +103,18 @@
 }
 .quest a{
 color: #408CFF;
+}
+.avatar {
+  width: 2vw; /* Размер круглого аватара */
+  height: 2vw; /* Размер круглого аватара */
+  border-radius: 50%; /* Делаем его круглым */
+  overflow: hidden; /* Обрезаем изображение, чтобы оно вписывалось в круг */
+  /* align-items: center; */
+  border: 1px solid #408CFF;
+  margin-top: 0.2vh;
+}
+
+.avatar img {
+  width: 100%; /* Заполняем весь круг изображением */
+  height: auto; /* Автоматическая высота */
 }

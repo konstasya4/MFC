@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import './NavbarStyle.css';
 import { AuthContext, RoleContext } from "../../../context";
+import PersonalDataActive from "../../../images/PersonalDataActive.png";
 function UserNavbar() {
 const {isAuth, setIsAuth} = useContext(AuthContext);
 const {isRole, setIsRole} = useContext(RoleContext);
@@ -17,17 +18,21 @@ return (
       <ul className="header-ul">
         <div className="left-text">
           <li className="text">
-            <Link to="/mainUser">МФЦ РУТ(МИИТ)</Link>
+            МФЦ РУТ(МИИТ)
           </li>
         </div>
         <div className="right-text">
           <li className="text">
-            <Link to="/servicesUser">Услуги</Link>
+            <Link to="/mainUser">Услуги</Link>
           </li>
           <li className="text">
             <Link to="/questionUser">Q&A</Link>
           </li>
-          <li><Link to="/main"> <button onClick={logout} className="btn">Выйти</button></Link></li>
+          <li><Link to="/account">
+                <div class="avatar">
+                  <img src={PersonalDataActive} alt="Your Name" />
+                </div>
+              </Link></li>
         </div>
       </ul>
     </nav>
