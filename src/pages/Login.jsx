@@ -43,8 +43,20 @@
 // export default Login
 import React from 'react';
 import './LoginStyle.css';
+import { Link } from 'react-router-dom';
+import { AuthContext, RoleContext } from '../context';
+import { useContext } from 'react';
 
 function Login ()  {
+      const {isAuth, setIsAuth} = useContext(AuthContext);
+    const{isRole, setIsRole}=useContext(RoleContext);
+  const userLogin = event =>{
+            // event.preventDefault();
+            setIsAuth(true);
+            localStorage.setItem('auth', 'true')
+            setIsRole('user');
+            localStorage.setItem('role', 'user')
+        }
     return (
       <div className="login-container">
         <div className="login-box">
@@ -60,8 +72,8 @@ function Login ()  {
           </form>
         </div>
         <div className="external-buttons">
-            <button className="btn_login">Войти</button>
-          <a href="#" className='forgotPassword'>Забыли пароль?</a>
+            <Link to="/mainUser"><button className="btn_login" onClick={userLogin}>Войти</button></Link>
+          <Link to="/forgetPass" className='forgotPassword'>Забыли пароль?</Link>
         </div>
       </div>
     );

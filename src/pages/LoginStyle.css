@@ -52,7 +52,7 @@
   
   .btn_login {
     padding: 10px 20px;
-    font-size: 22px;
+    font-size: 1.4em;
     font-weight: 600;
     background-color: #408CFF;
     color: #fff;
@@ -67,5 +67,16 @@
   }
   .forgotPassword {
     color: #A2BADD;
+  }
+  .mail-text{
+    text-align: center;
+    margin-bottom: 1vw;
+  }
+  .forget-box{
+    padding: 1vw 2vw;
+    background-color: #fff;
+    border-radius: 30px;
+    border: 0.4vw solid #A5C9FF;
+    max-width: 30vw;
   }
   
