@@ -11,28 +11,21 @@
 //     );
 // };
 // export default CertificateItem;
-import React, { useEffect, useRef } from "react";
-import './mainServicesStyle.css'
+import React, { useEffect } from "react";
+import '../../styles/mainServicesStyle.css'
+import { useNavigate } from "react-router-dom";
 
 const CertificateItem = (props) => {
-    const certificateRef = useRef(null);
-
-    // useEffect(() => {
-    //     const certificateItem = certificateRef.current;
-    //     const textWidth = certificateItem.scrollWidth;
-    //     const containerWidth = certificateItem.clientWidth;
-        
-    //     if (textWidth > containerWidth) {
-    //         const remainingSpace = containerWidth - textWidth;
-    //         const dotsCount = Math.abs(remainingSpace) / 6; // Вы можете изменить этот коэффициент в зависимости от размера точек
-    //         certificateItem.innerHTML += '.'.repeat(dotsCount);
-    //     }
-    // }, [props.post.title]);
-
+    // const certificateRef = useRef(null);
+    const navigate = useNavigate()
+    const handleClick = () => {
+        // Перенаправляем пользователя на маршрут с ID услуги
+        navigate(`/services/${props.post.id}`);
+    };
     return (
         <div className="post">
             <div className="post__content">
-                <div className="certificateItem" ref={certificateRef}>{props.post.title}</div>
+            <button onClick={handleClick} className="certificateItem" >{props.post.title}</button>
             </div>
         </div>
     );

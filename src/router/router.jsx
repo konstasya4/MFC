@@ -2,6 +2,7 @@ import { Route, Routes } from 'react-router-dom';
 import { privateRoutesAdmin, privateRoutesUser, publicRoutes } from '.';
 import { useContext } from 'react';
 import { AuthContext, RoleContext } from '../context';
+import Services from '../pages/Services';
 
 
 export const useRoutes = () => {
@@ -21,6 +22,7 @@ const {isRole, setIsRole} = useContext(RoleContext);
        </Routes>
       :
       <Routes>
+      <Route path="/services/:id" element={<Services />} />
       {privateRoutesUser.map(route =>
         <Route exact={route.exact}
           path={route.path}
@@ -30,6 +32,7 @@ const {isRole, setIsRole} = useContext(RoleContext);
     </Routes>
     :
     <Routes>
+    <Route path="/services/:id" element={<Services />} />
     {publicRoutes.map(route =>
       <Route exact={route.exact}
         path={route.path}

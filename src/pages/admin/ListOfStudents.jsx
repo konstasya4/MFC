@@ -1,6 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import StudentList from "../../API/StudentList";
+import NavbarLeft from "../../components/Navbar/leftNavbar/NavbarLeft";
 const ListOfStudents=()=>{
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
@@ -29,6 +30,7 @@ const ListOfStudents=()=>{
   
     return (
       <div>
+        <NavbarLeft/>
         {loading ? 'Загрузка...' : error || 'PDF файл загружен'}
       </div>
     );

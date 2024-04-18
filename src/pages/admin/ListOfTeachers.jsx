@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import TeacherList from '../../API/TeacherList';
+import NavbarLeft from '../../components/Navbar/leftNavbar/NavbarLeft';
 const ListOfTeachers=()=>{
     // Путь к вашему классу для работы с PDF
       const [file, setFile] = useState(null);
@@ -33,6 +34,7 @@ const ListOfTeachers=()=>{
     
       return (
         <div>
+          <NavbarLeft/>
           <input type="file" accept=".pdf" onChange={handleFileChange} />
           <button onClick={handleUpload} disabled={uploading}>
             {uploading ? 'Загрузка...' : 'Загрузить документ'}

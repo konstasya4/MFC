@@ -1,6 +1,6 @@
 import React from "react";
 // import './InputCompanentStyle.css'
-import './InputComponentStyle.css' 
+import '../styles/componentsStyles/InputComponentStyle.css'
 const InputComponent =({ placeholder, ...restProps })=>{
 return(
     <div>

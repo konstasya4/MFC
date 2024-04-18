@@ -3,9 +3,9 @@ import { useContext } from "react";
 import { AuthContext } from "../../../context";
 import { RoleContext } from "../../../context";
 import OutButton from '../../../images/OutButton.png'
-import './LeftNavbarStyle.css'
+import "../../../styles/LeftNavbarStyle.css";
 import { Link } from "react-router-dom";
-import StudentOrderedServices from '../../../images/StudentOrderedServices.png';
+import StudentOrderedServices from '../../../images/Student/StudentOrderedServices.png';
 import PersonalData from '../../../images/PersonalData.png';
 import Done from '../../../images/Done.png';
 

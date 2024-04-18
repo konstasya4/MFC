@@ -1,18 +1,12 @@
-import { BrowserRouter } from 'react-router-dom';
 import './App.css';
 import Navbar from './components/Navbar/header/Navbar'
 import AppRouter from './router/router'
-import { AuthContext, RoleContext } from './context';
+import { AuthContext, RoleContext} from './context';
 import { useEffect, useState } from 'react';
-import StateItem from './components/StateItem';
+import {BrowserRouter} from 'react-router-dom'
+
 
 function App() {
-const [posts, setPosts]=useState([
-  {id:1, title:'JavaScript' ,body:'hdajcahghsgaj'},
-  {id:1, title:'JavaScript' ,body:'hdajcahghsgaj'},
-  {id:1, title:'JavaScript' ,body:'hdajcahghsgaj'},
-  {id:1, title:'JavaScript' ,body:'hdajcahghsgaj'},
-])
 
   const [isAuth, setIsAuth]= useState(false)
   const [isRole, setIsRole]= useState('')
@@ -30,6 +24,14 @@ const [posts, setPosts]=useState([
     setLoading(false);
   },
   [])
+  // const location=useLocation()
+  // const navigate= useNavigate()
+  // useEffect(() => {
+  //   if (!isAuth) {
+  //     navigate('/');
+  //   }
+  // }, [isAuth, location, navigate]);
+
   return (
     <div className="App">
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet"/>

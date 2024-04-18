@@ -5,12 +5,20 @@
 } */
 .certificateItem {
     margin: 0;
+    font-size: 1vw;
     padding: 0;
     color: #408CFF; 
      white-space: nowrap;
     overflow: hidden; 
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+ 
     /* width: 100%; */
   }
+  
+  
   
   /* Если вы хотите добавить точки, чтобы заполнить оставшееся пространство */
   /* .certificateItem::after {

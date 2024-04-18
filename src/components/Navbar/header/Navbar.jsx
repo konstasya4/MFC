@@ -1,6 +1,6 @@
 import React, { useContext} from "react";
 import { useLocation } from "react-router-dom";
-import './NavbarStyle.css';
+import '../../../styles/NavbarStyle.css';
 import { AuthContext, RoleContext } from "../../../context";
 import AdminNavbar from "./AdminNavbar";
 import UserNavbar from "./UserNavbar";

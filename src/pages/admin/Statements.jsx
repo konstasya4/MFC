@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import StatementList from "../../API/StatementList";
 import StateList from "../../components/StateList";
+import NavbarLeft from '../../components/Navbar/leftNavbar/NavbarLeft';
 
 function Statements() {
     const [posts, setPosts] = useState([]);
@@ -27,7 +28,7 @@ function Statements() {
 
     return (
         <div className="App">
-
+            <NavbarLeft/>
             {/* Передаем posts в StateList */}
             <StateList remove={removePost} posts={posts} />
         </div>

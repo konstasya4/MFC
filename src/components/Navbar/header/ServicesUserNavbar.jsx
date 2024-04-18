@@ -1,6 +1,6 @@
 import React, { useContext, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import "./NavbarStyle.css";
+import '../../../styles/NavbarStyle.css';
 import PersonalDataActive from "../../../images/PersonalDataActive.png";
 import { AuthContext, RoleContext } from "../../../context";
 function ServicesUserNavbar() {

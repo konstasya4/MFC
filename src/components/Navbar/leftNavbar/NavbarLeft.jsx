@@ -1,10 +1,10 @@
 import React, { useContext} from "react";
 import { useLocation } from "react-router-dom";
-import './NavbarStyle.css';
+import "../../../styles/LeftNavbarStyle.css";
 import { AuthContext, RoleContext } from "../../../context";
 import AdminLeftNavbar from "./AdminLeftNavbar";
 import UserServicesNavbar from "./UserServicesNavbar";
-import UserLetfNavbar from "./UserLetfNavbar";
+import UserLetfNavbar from "./UserLeftNavbar";
 import ServicesNavbar from "./ServicesNavbar";
 
 function NavbarLeft() {
@@ -29,7 +29,7 @@ return isAuth ? (
  : location.pathname === "/main" ? (
   <ServicesNavbar />
 ) : (
-  <ServicesNavbar/>
+  null
 )
 }
 export default  NavbarLeft;

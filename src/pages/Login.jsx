@@ -42,7 +42,7 @@
 // }
 // export default Login
 import React from 'react';
-import './LoginStyle.css';
+import '../styles/LoginStyle.css'
 import { Link } from 'react-router-dom';
 import { AuthContext, RoleContext } from '../context';
 import { useContext } from 'react';

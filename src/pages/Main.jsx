@@ -1,4 +1,4 @@
-import './MainStyle.css';
+import '../styles/MainStyle.css';
 import { useContext } from "react";
 import { AuthContext } from "../context";
 import { RoleContext } from "../context";
@@ -17,6 +17,7 @@ import StatementList from "../API/StatementList";
 import CertificateList from "../components/main-services/CertificateList";
 import OurWebsite from "../images/Services/OurWebsite.png"
 import { Link } from 'react-router-dom';
+import NavbarLeft from '../components/Navbar/leftNavbar/NavbarLeft'
 
 
 
@@ -37,11 +38,12 @@ const [posts, setPosts] = useState([]);
             console.error('Error fetching posts:', error);
         }
     };
+    console.log(posts)
   console.log(window.location.pathname);
   return (
     <div className="main-navbar">
       <div>
-        <UserServicesNavbar />
+      <NavbarLeft/>
       </div>
       <div className="main-services">
         <div className="input-main">

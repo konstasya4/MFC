@@ -1,9 +1,11 @@
 import React from "react";
-const Account=()=>{
+import NavbarLeft from "../../components/Navbar/leftNavbar/NavbarLeft";
+const PersonalAccount=()=>{
     return(
         <div>
+            <NavbarLeft/>
             <h1>Ваш личный аккаунт</h1>
         </div>
     );
 }
-export default Account
+export default PersonalAccount
