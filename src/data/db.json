@@ -1,0 +1,23 @@
+{
+  "users":[
+  {
+    "id": 1,
+    "surname": "Константинова",
+    "name": "Анастасия",
+    "middleName": "Витальевна",
+    "passportData": "1232 838334",
+    "dateOfIssue": "12.03.2024",
+    "unitCode": "123-121",
+    "gender": "Женский",
+    "dateOfBirth": "04.09.2002",
+    "placeOfBirth": "г. Новокуйбышевск Самарская обл.",
+    "citizenship": "Российская Федерация",
+    "serviceNumber": "34567927",
+    "inn": "2345678908",
+    "snils": "345678909",
+    "group": "УВП-411",
+    "directionOfStudy": "Информатика и вычислительная техника",
+    "mail": "konstantinova-2002@mail.ru",
+    "password": "qwerty1234"
+  }
+]}
