@@ -16,20 +16,27 @@ import Services from "../pages/Services"
 import { AuthContext, RoleContext } from "../context"
 
 
-// const MainComponent = () => {
-//     const navigate = useNavigate();
-//     const {isAuth, setIsAuth} = useContext(AuthContext);
+const MainComponent = () => {
+    const navigate = useNavigate();
+    const {isAuth, setIsAuth} = useContext(AuthContext);
+    const {isRole, setIsRole} = useContext(RoleContext)
     
-//     // Перенаправляем пользователя на '/main' при монтировании компонента
-//     useEffect(() => {
-//         navigate('/mainUser');
-      
-//     }, [navigate]);
+    // Перенаправляем пользователя на '/main' при монтировании компонента
+    useEffect(() => {
+
+        if (isAuth){
+            if (isRole==="admin"){
+                navigate('/mainAdmin');
+            }
+            navigate('/mainUser');
+        }
+        else navigate('/main');
+    }, [navigate]);
 
   
-//     // Возвращаем компонент <Main/>
-//     return <Main />;
-//   };
+    // Возвращаем компонент <Main/>
+    return <Main />;
+  };
 
 export const publicRoutes=[
     {path:"/main", element: <Main/>, exact: true},
@@ -38,16 +45,16 @@ export const publicRoutes=[
     {path:"/forgetPass", element: <ForgetPassword/>, exact: true},
     {path:"/code", element:<ConfirmationCode/>, exact: true},
     {path:"/services/:id", element:<Services/>, exact: true},
-    // {path:"*", element: <MainComponent/>, exact: true},
+    {path:"*", element: <MainComponent/>, exact: true},
 ]
 
 export const privateRoutesUser=[
     {path:"/mainUser", element: <Main/>, exact: true},
     {path:"/account", element: <PersonalAccount/>, exact: true},
     {path:"/questionUser", element: <Quest/>, exact: true},
-    // {path:"/servicesUser", element: <Service/>, exact: true},
+    {path:"/services/:id", element: <Services/>, exact: true},
     {path:"/status", element: <ExecutionStatus/>, exact: true},
-    // {path:"*", element: <MainComponent/>, exact: true},
+    {path:"*", element: <MainComponent/>, exact: true},
 ]
 export const privateRoutesAdmin=[
     {path:"/mainAdmin", element: <Main/>, exact: true},
@@ -55,7 +62,7 @@ export const privateRoutesAdmin=[
     {path:"/listOfStudents", element: <ListOfStudents/>, exact: true},
     {path:"/listOfTeachers", element: <ListOfTeachers/>, exact: true},
     {path:"/statements", element: <Statements/>, exact: true},
-    // {path:"*", element: <Admin/>, exact: true},
+    {path:"*", element: <MainComponent/>, exact: true},
 ]
 
 

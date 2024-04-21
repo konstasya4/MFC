@@ -22,7 +22,7 @@ const {isRole, setIsRole} = useContext(RoleContext);
        </Routes>
       :
       <Routes>
-      <Route path="/services/:id" element={<Services />} />
+      {/* <Route path="/services/:id" element={<Services />} /> */}
       {privateRoutesUser.map(route =>
         <Route exact={route.exact}
           path={route.path}
