@@ -6,12 +6,15 @@ import "../../styles/PersonalAccountStyle.css";
 import Show from "../../images/Show.png";
 import Hide from "../../images/Hide.png";
 import IconCopy from "../../images/IconCopy.png";
-
+import InputComponent from "../../components/InputComponent"
+import ButtonComponent from "../../components/ButtonComponent";
 const PersonalAccount = () => {
   const [data, setData] = useState({});
   const [visibleField, setVisibleField] = useState(null);
+  const [showPassword, setShowPassword] = useState(false);
   const [editMail, setEditMail] = useState(null);
   const [editPassword, setEditPassword] = useState(null);
+  const [editing, setEditing]=useState(true)
 
   useEffect(() => {
     const fetchPersonalData = async () => {
@@ -44,16 +47,27 @@ const PersonalAccount = () => {
   const copyToClipboard = (text) => {
     navigator.clipboard.writeText(text);
   };
-  const handleEditMail = async () => {
-    try {
-      const updatedData = { ...data, mail: editMail };
-      const response = await PersonalData.update(updatedData);
-      setData(response);
-      console.log("Mail updated successfully:", response.mail);
-    } catch (error) {
-      console.error("Error updating mail:", error);
-    }
+  // const handleEditMail = async () => {
+  //   try {
+  //     const updatedData = { ...data, mail: editMail };
+  //     const response = await PersonalData.update(updatedData);
+  //     setData(response);
+  //     console.log("Mail updated successfully:", response.mail);
+  //   } catch (error) {
+  //     console.error("Error updating mail:", error);
+  //   }
+  // };
+  const handleInputChange = (event) => {
+    setEditMail(event.target.value);
+    setEditMail(data.mail);
   };
+  const changingEditing = ()=>{
+setEditing(!editing)
+  }
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
+  };
+
   return (
     <div>
       <div className="head-personal-data">Личные данные</div>
@@ -187,23 +201,33 @@ const PersonalAccount = () => {
                 </div>
                 <div className="citizenship column-account">
                   <div className="title-account">Пароль</div>
-                  <div className="btn-show">
-                    <div className="text-account">
-                      {visibleField === "password"
-                        ? data.password
-                        : hidePassword(data.password)}
+                  {editing ? (
+                    <div className="btn-show">
+                      <div className="text-account">
+                        {visibleField === "password"
+                          ? data.password
+                          : hidePassword(data.password)}
+                      </div>
+                      <button
+                        img={Show}
+                        onClick={() => toggleVisibility("password")}
+                      >
+                        {visibleField === "password" ? (
+                          <img src={Show}></img>
+                        ) : (
+                          <img src={Hide}></img>
+                        )}
+                      </button>
                     </div>
-                    <button
-                      img={Show}
-                      onClick={() => toggleVisibility("password")}
-                    >
-                      {visibleField === "password" ? (
-                        <img src={Show}></img>
-                      ) : (
-                        <img src={Hide}></img>
-                      )}
-                    </button>
-                  </div>
+                  ) : (
+                    <div>
+                      <InputComponent
+                        className=" pass-eding"
+                        type="password"
+                        onChange={togglePasswordVisibility}
+                      />
+                    </div>
+                  )}
                 </div>
               </div>
               <div className="column-line">
@@ -256,15 +280,37 @@ const PersonalAccount = () => {
                 </div>
                 <div className="citizenship column-account">
                   <div className="title-account">Электронная почта</div>
-                  <div className="text-account">{data.mail}</div>
+                  {editing ? (
+                    <div className="text-account">{data.mail}</div>
+                  ) : (
+                    <div>
+                      <InputComponent
+                        className="eding-input"
+                        type="text"
+                        value={editMail}
+                        onChange={handleInputChange}
+                      />
+                    </div>
+                  )}
                 </div>
               </div>
             </div>
           </div>
-          <input type="text"
+          {/* <input type="text"
               value={editMail}
-              onChange={(e) => setEditMail(e.target.value)}></input>
-          <button onClick={handleEditMail}>Редактировать</button>
+              onChange={(e) => setEditMail(e.target.value)}></input> */}
+          {editing ? (
+            <ButtonComponent
+              className="btn-account"
+              onClick={changingEditing}
+              name="Редактировать"
+            />
+          ) : (
+            <div>
+              <ButtonComponent className="btn-account" name="Сохранить" />
+              <ButtonComponent className="btn-account cancel-btn"  onClick={changingEditing} name="Отмена" />
+            </div>
+          )}
         </div>
       </div>
     </div>
