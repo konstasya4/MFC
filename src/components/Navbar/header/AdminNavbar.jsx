@@ -27,7 +27,7 @@ return (
         <li className="text">
           <Link to="/listOfTeachers">Q&A</Link>
         </li>
-        <li><Link to="/main"> <button onClick={logout} className="btn">Выйти</button></Link></li>
+        <li><Link to="/main"> <button onClick={logout} className="btn-navbar">Выйти</button></Link></li>
       </div>
     </ul>
   </nav>

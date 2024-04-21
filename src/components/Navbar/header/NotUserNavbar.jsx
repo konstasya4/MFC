@@ -28,7 +28,7 @@ return (
             <Link to="/question">Q&A</Link>
           </li>
           <li >
-            <Link to="/login"><button className=" btn">Войти</button></Link>
+            <Link to="/login"><button className="btn-navbar">Войти</button></Link>
           </li>
         </div>
       </ul>

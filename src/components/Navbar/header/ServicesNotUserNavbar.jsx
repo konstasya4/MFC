@@ -64,7 +64,7 @@ function ServicesNotUserNavbar() {
             </li>
             <li>
               <Link to="/login">
-                <button className=" btn">Войти</button>
+                <button className="btn-navbar">Войти</button>
               </Link>
             </li>
           </div>
