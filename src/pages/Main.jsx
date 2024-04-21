@@ -47,7 +47,7 @@ const [posts, setPosts] = useState([]);
       </div>
       <div className="main-services">
         <div className="input-main">
-          <InputComponent placeholder="Поиск услуг" />
+          <InputComponent className="input" placeholder="Поиск услуг" />
         </div>
         <div className="popular-services">Популярные услуги</div>
         <ul className="services">
