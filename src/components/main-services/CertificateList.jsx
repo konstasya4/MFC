@@ -12,7 +12,7 @@ const CertificateList = ({posts}) => {
     }
 
     return (
-        <div>
+        <div className='certificate-list-container'>
             {slicedPosts.map((post) =>
                 <CertificateItem post={post} key={post.id}/>
             )}
