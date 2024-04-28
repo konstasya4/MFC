@@ -1,0 +1,42 @@
+.filter-button{
+    margin-left: auto;
+    margin-right: 5.2vw;
+}
+.ordered-cervices-container{
+    display: flex;
+    align-items: flex-start;
+    width: 100%;
+}
+.done-btn-active{
+    background-color: #4AC341;
+    border: 3px solid #4AC341;
+    color: #FFFFFF;
+}
+.in-progress-btn-active{
+    background-color: #408CFF;
+    border: 3px solid #408CFF;
+    color: #FFFFFF;
+}
+.rejected-btn-active{
+    background-color: #FF8F8F;
+    border: 3px solid #FF8F8F;
+    color: #FFFFFF;
+}
+
+.status-btn-pass{
+    border: 3px solid #B1B1B1;
+    background-color: white;
+    color: #B1B1B1;
+}
+.status-btn{
+    border-radius: 8px;
+    font: 700 1em "Inter Tight";
+    padding: 0.3vw 1.4vw;
+    margin-left: 0.3vw;
+}
+.services-status-container{
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    margin: 0 5.2vw 0 2.6vw;
+}
