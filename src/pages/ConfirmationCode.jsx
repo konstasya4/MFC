@@ -18,6 +18,13 @@ const ConfirmationCode = () => {
     setIsRole("user");
     localStorage.setItem("role", "user");
   };
+  const admin = (event) => {
+    // event.preventDefault();
+    setIsAuth(true);
+    localStorage.setItem("auth", "true");
+    setIsRole("admin");
+    localStorage.setItem("role", "admin");
+  };
   return newPassword ? (
     <div className="login-container">
       <div className="forget-box">
@@ -65,7 +72,7 @@ const ConfirmationCode = () => {
       </div>
       <div className="external-buttons">
         <Link to="/mainUser">
-          <button className="btn_login" onClick={user}>Войти</button>
+          <button className="btn_login" onClick={admin}>Войти</button>
         </Link>
       </div>
     </div>

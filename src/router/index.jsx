@@ -13,6 +13,7 @@ import ConfirmationCode from "../pages/ConfirmationCode"
 import { useNavigate } from "react-router-dom"
 import { useContext, useEffect } from "react"
 import Services from "../pages/Services"
+import DoneServices from "../pages/user/DoneServices"
 import { AuthContext, RoleContext } from "../context"
 
 
@@ -28,14 +29,14 @@ const MainComponent = () => {
             if (isRole==="admin"){
                 navigate('/mainAdmin');
             }
-            navigate('/mainUser');
+            else navigate('/mainUser');
         }
         else navigate('/main');
     }, [navigate]);
 
   
     // Возвращаем компонент <Main/>
-    return <Main />;
+    return <Main/>;
   };
 
 export const publicRoutes=[
@@ -54,6 +55,7 @@ export const privateRoutesUser=[
     {path:"/questionUser", element: <Quest/>, exact: true},
     {path:"/services/:id", element: <Services/>, exact: true},
     {path:"/status", element: <ExecutionStatus/>, exact: true},
+    {path:"/doneServices", element: <DoneServices/>, exact: true},
     {path:"*", element: <MainComponent/>, exact: true},
 ]
 export const privateRoutesAdmin=[
