@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import '../styles/componentsStyles/InputComponentStyle.css'
 import Show from "../images/Show.png";
 import Hide from "../images/Hide.png";
+import Search from "../images/Search.png"
 const InputComponent =({ className, placeholder, type, onChange, required, ...restProps  })=>{
     const [showPassword, setShowPassword] = useState(false);
 
@@ -29,14 +30,17 @@ const InputComponent =({ className, placeholder, type, onChange, required, ...re
         : null
       }
     </div>:
-    <div className={className}>
+    <div className={`search-input ${className}`}>
     <input
       type={showPassword ? "text" : type}
       placeholder={placeholder}
       onChange={onChange}
       required={required}
       {...restProps}
-    /></div>
+    />
+    <button className="search-btn" onClick={togglePasswordVisibility}>
+          <img src={Search} />
+        </button></div>
   );
 };
 

@@ -1,4 +1,5 @@
 import '../styles/MainStyle.css';
+import '../styles/componentsStyles/InputComponentStyle.css';
 import { useContext } from "react";
 import { AuthContext } from "../context";
 import { RoleContext } from "../context";
@@ -16,7 +17,7 @@ import  { useState, useEffect } from 'react';
 import StatementList from "../API/StatementList";
 import CertificateList from "../components/main-services/CertificateList";
 import OurWebsite from "../images/Services/OurWebsite.png"
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import NavbarLeft from '../components/Navbar/leftNavbar/NavbarLeft'
 
 
@@ -46,9 +47,9 @@ const [posts, setPosts] = useState([]);
       <NavbarLeft/>
       </div>
       <div className="main-services">
-        <div className="input-main">
+        {/* <div className="input-main"> */}
           <InputComponent className="input" placeholder="Поиск услуг" />
-        </div>
+        {/* </div> */}
         <div className="popular-services">Популярные услуги</div>
         <ul className="services">
           <div className="first-line">
