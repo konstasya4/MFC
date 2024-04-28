@@ -29,21 +29,23 @@ const Services = () => {
     }
 
     return (
-        <div className="service-page">
-            <NavbarLeft/>
-            <div className="service-text">
-            <div className="title-service">{service.title}</div>
-            <div className="about-service">Об услуге</div>
-            <div className="description-service">{service.body}</div>
-            </div>
-            <div className="serv-down"><div className='btn-serv'><MainButton className="btn-style" name="Получить услугу"/></div>
-            <div className="download-text">
+      <div className="service-page">
+        <NavbarLeft />
+        <div className="service-text">
+          <div className="title-service">{service.title}</div>
+          <div className="about-service">Об услуге</div>
+          <div className="description-service">{service.body}</div>
+        </div>
+        <div className="serv-down">
+          <div className="btn-serv">
+            <MainButton className="btn-style" name="Получить услугу" />
+          </div>
+          <button className="download-text">
             <div>Скачать ПДФ</div>
             <img src={Download} alt=""></img>
-            </div>
-            </div>
-            
+          </button>
         </div>
+      </div>
     );
 };
 

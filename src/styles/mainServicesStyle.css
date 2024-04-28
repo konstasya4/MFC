@@ -5,7 +5,9 @@
 } */
 .certificateItem {
     margin: 0;
-    font-size: 1vw;
+    font: 400 0.9em "Roboto";
+    text-decoration: solid;
+    /* font-size: 1vw; */
     padding: 0;
     color: #408CFF; 
      white-space: nowrap;
@@ -14,10 +16,12 @@
     border: none;
     padding: 0;
     cursor: pointer;
- 
+    margin-bottom: 0.3vw;
     /* width: 100%; */
   }
-  
+  .certificate-list-container{
+    margin: 0.6vw 0;
+  }
   
   
   /* Если вы хотите добавить точки, чтобы заполнить оставшееся пространство */
