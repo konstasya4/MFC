@@ -70,7 +70,9 @@ setEditing(!editing)
 
   return (
     <div>
-      <div className="head-personal-data">Личные данные</div>
+      <div className="head-container">
+        <div className="head-personal-data">Личные данные</div>
+      </div>
       <div className="account-personal-conteiner horiz-line">
         <NavbarLeft />
         <div className="person-data-conteiner">
@@ -308,7 +310,11 @@ setEditing(!editing)
           ) : (
             <div>
               <ButtonComponent className="btn-account" name="Сохранить" />
-              <ButtonComponent className="btn-account cancel-btn"  onClick={changingEditing} name="Отмена" />
+              <ButtonComponent
+                className="btn-account cancel-btn"
+                onClick={changingEditing}
+                name="Отмена"
+              />
             </div>
           )}
         </div>
