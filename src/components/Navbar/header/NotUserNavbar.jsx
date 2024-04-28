@@ -12,7 +12,7 @@ const logout= ()=>{
     localStorage.removeItem('role')
 } 
 return (
-  <div className="page_header">
+  <div className="page_header page-header-no-auth">
     <nav className="nav">
       <ul className="header-ul">
         <div className="left-text">
@@ -20,7 +20,7 @@ return (
             МФЦ РУТ(МИИТ)
           </li>
         </div>
-        <div className="right-text">
+        <div className="right-text right-text-no-auth">
           <li className="text">
             <Link to="/main">Услуги</Link>
           </li>

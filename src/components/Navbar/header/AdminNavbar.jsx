@@ -15,12 +15,12 @@ return (
   <div className="page_header">
   <nav className="nav">
     <ul className="header-ul">
-      <div className="left-text">
+      <div className="left-text left-text-auth">
         <li className="text">
           <Link to="/admin">МФЦ РУТ(МИИТ)</Link>
         </li>
       </div>
-      <div className="right-text">
+      <div className="right-text right-text-auth">
         <li className="text">
           <Link to="/statements">Услуги</Link>
         </li>

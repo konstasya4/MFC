@@ -38,7 +38,7 @@ function ServicesUserNavbar() {
     <div className="page_header">
       <nav className="nav">
         <ul className="header-ul">
-          <div className="left-text">
+          <div className="left-text left-text-auth">
             <li className="text">МФЦ РУТ(МИИТ)</li>
           </div>
           <div className="center-text">
@@ -61,7 +61,7 @@ function ServicesUserNavbar() {
               <Link to="/questionUser">Где получить услуги</Link>
             </li>
           </div>
-          <div className="right-text">
+          <div className="right-text right-text-auth">
             <li className="text">
               <Link to="/mainUser">Услуги</Link>
             </li>

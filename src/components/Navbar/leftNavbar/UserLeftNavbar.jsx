@@ -23,17 +23,17 @@ const {isRole, setIsRole} = useContext(RoleContext);
             <ul className="ul-left">
               <li className="li-left">
               <img className="img-nav" src={StudentOrderedServices} />
-                <a href="#issuanceOfCertificates">Заказанные услуги</a>
+                <Link to="/status">Заказанные услуги</Link>
               </li>
               <li className="li-left">
               <img className="img-nav" src={PersonalData} />
-                <a href="#formsForEmployees">Личные данные</a>
+              <Link to="/account">Личные данные</Link>
               </li>
               <li className="li-left">
               <img className="img-nav" src={Done} />
-                <a href="#formsForStudents">Готовые услуги</a>
+                <Link to="/doneServices">Готовые услуги</Link>
               </li>
-              <li className="li-left">
+              <li className="li-btn-left">
               <Link to="/main"><button onClick={logout} className="btn-left"><img src={OutButton}/>Выйти из аккаунта</button></Link>
               </li>
             </ul>

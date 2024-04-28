@@ -34,7 +34,7 @@ const {isRole, setIsRole} = useContext(RoleContext);
               <img className="img-nav" src={Certificate} />
                 <a href="#translationAndRestoration">Перевод и восстановление</a>
               </li>
-              <li className="li-left">
+              <li className="li-btn-left">
               <Link to="/main"><button onClick={logout} className="btn-left"><img src={OutButton}/>Выйти из аккаунта</button></Link>
               </li>
             </ul>

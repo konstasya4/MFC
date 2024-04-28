@@ -32,7 +32,7 @@ function ServicesNotUserNavbar() {
     <div className="page_header">
       <nav className="nav">
         <ul className="header-ul">
-          <div className="left-text">
+          <div className="left-text left-text-no-auth">
             <li className="text">
               МФЦ РУТ(МИИТ)
             </li>
@@ -55,7 +55,7 @@ function ServicesNotUserNavbar() {
               <Link to="/question">Где получить услуги</Link>
             </li>
           </div>
-          <div className="right-text">
+          <div className="right-text right-text-no-auth">
             <li className="text">
               <Link to="/main">Услуги</Link>
             </li>

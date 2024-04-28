@@ -6,7 +6,7 @@
 .btn-navbar{
   /* margin-top: 1vh; */
   margin-right: 1vw;
-  padding: 3px 8px;
+  padding: 0.3vw 1.4vw;
   background-color: #408CFF;
   color: white ;
 
@@ -43,6 +43,18 @@
   width: 100%;
   max-height: 50vw;
   margin-top: 1vh;
+}
+.right-text-auth{
+margin-right: 5.2vw;
+}
+.right-text-no-auth{
+margin-right: 1vw;
+}
+.left-text-auth{
+margin-left: 1vw;
+}
+.left-text-no-auth{
+margin-left: 1vw;
 }
 .text a{
   color: black;
