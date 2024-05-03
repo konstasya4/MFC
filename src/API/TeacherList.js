@@ -18,4 +18,14 @@ export default class TeacherList {
             throw error;
         }
     }
+    static async getTeacherAdmin (){
+        try{
+          const response=await axios.get('http://localhost:8000/teacherAdmin')
+          return response.data;
+        }
+        catch (error) {
+          console.error('Error fetching data:', error);
+          throw error; // Перехватываем исключение и выбрасываем его дальше
+        }
+        }
 }

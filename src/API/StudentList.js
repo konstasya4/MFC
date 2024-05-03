@@ -1,23 +1,53 @@
 import axios from "axios";
 
 export default class StudentList {
-    static async getPDF() {
-        try {
-            const response = await axios.get('http://localhost:8080/api/statements', {
-                responseType:'blob' // указываем тип ответа как blob
-            });
-            console.log(response);
-            return response.data; // возвращаем данные в формате blob
-        } catch (error) {
-            console.error('Ошибка при загрузке PDF файла:', error);
-            throw error; // Перехватываем исключение и выбрасываем его дальше
-        }
+  static async getAll() {
+    try {
+      const response = await axios.get("http://localhost:8000/students");
+      console.log(response.data);
+      return response.data; // Возвращаем только свойство data из ответа
+    } catch (error) {
+      console.error("Error fetching data:", error);
+      throw error; // Перехватываем исключение и выбрасываем его дальше
     }
+  }
+  static async getById() {
+    try {
+        const response = await axios.get('http://localhost:8000/students/1');
+        console.log(response.data)
+        return response.data; // Возвращаем только свойство data из ответа
+    } catch (error) {
+        console.error('Error fetching data:', error);
+        throw error; // Перехватываем исключение и выбрасываем его дальше
+    }
+}
+static async getStudentAdmin (){
+try{
+  const response=await axios.get('http://localhost:8000/studentAdmin')
+  return response.data;
+}
+catch (error) {
+  console.error('Error fetching data:', error);
+  throw error; // Перехватываем исключение и выбрасываем его дальше
+}
+}
+  // static async getPDF() {
+  //     try {
+  //         const response = await axios.get('http://localhost:8080/api/statements', {
+  //             responseType:'blob' // указываем тип ответа как blob
+  //         });
+  //         console.log(response);
+  //         return response.data; // возвращаем данные в формате blob
+  //     } catch (error) {
+  //         console.error('Ошибка при загрузке PDF файла:', error);
+  //         throw error; // Перехватываем исключение и выбрасываем его дальше
+  //     }
+  // }
 }
 // const PDFDownloader = () => {
 //     const [loading, setLoading] = React.useState(false);
 //     const [error, setError] = React.useState(null);
-  
+
 //     const downloadPDF = () => {
 //       setLoading(true);
 //       axios({
@@ -35,7 +65,7 @@ export default class StudentList {
 //         setLoading(false);
 //       });
 //     };
-  
+
 //     const handleDownload = (pdfData) => {
 //       const url = window.URL.createObjectURL(new Blob([pdfData]));
 //       const link = document.createElement('a');
@@ -44,7 +74,7 @@ export default class StudentList {
 //       document.body.appendChild(link);
 //       link.click();
 //     };
-  
+
 //     return (
 //       <div>
 //         <PDFDownloaderButton onDownload={downloadPDF} />
@@ -53,4 +83,3 @@ export default class StudentList {
 //       </div>
 //     );
 //   };
-  
