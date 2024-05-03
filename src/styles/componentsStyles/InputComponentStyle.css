@@ -22,6 +22,7 @@ background-position:right center;  */
 }
 .status-input{
     width: 65vw;
+    margin-bottom: 1vw;
 }
 .input{
     width: 60vw;
@@ -56,6 +57,7 @@ background-position:right center;  */
   .eding-input{
     border: 0.2vw  solid #AAAAAA;
 border-radius: 0.4vw;
+padding: 0.2w;
 }
 .eding-input input{
     border: none;
