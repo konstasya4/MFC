@@ -46,8 +46,19 @@ import '../styles/LoginStyle.css'
 import { Link } from 'react-router-dom';
 import { AuthContext, RoleContext } from '../context';
 import { useContext } from 'react';
+import axios from 'axios';
 
-function Login ()  {
+ function Login ()  {
+  async function userLog(){
+    const responseLogin = await axios.post('http://localhost:8080/api/account/login?userName=admin&password=admin123')
+    console.log(responseLogin)
+  }
+
+  async function userLogout(){
+    const responseLogout= await axios.post('http://localhost:8080/api/account/logout')
+    console.log(responseLogout)
+  }
+
       const {isAuth, setIsAuth} = useContext(AuthContext);
     const{isRole, setIsRole}=useContext(RoleContext);
   const userLogin = event =>{
@@ -75,6 +86,8 @@ function Login ()  {
             <Link to="/mainUser"><button className="btn_login" onClick={userLogin}>Войти</button></Link>
           <Link to="/forgetPass" className='forgotPassword'>Забыли пароль?</Link>
         </div>
+        <button onClick={userLog}> зайти</button>
+        <button onClick={userLogout}>выйти</button>
       </div>
     );
 }

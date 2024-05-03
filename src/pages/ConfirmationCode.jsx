@@ -71,7 +71,7 @@ const ConfirmationCode = () => {
         </form>
       </div>
       <div className="external-buttons">
-        <Link to="/mainUser">
+        <Link to="/mainAdmin">
           <button className="btn_login" onClick={admin}>Войти</button>
         </Link>
       </div>
