@@ -7,6 +7,22 @@
   /* align-items: center; */
   flex: 1;
 }
+.account-container{
+  margin-right: 5.2vw;
+}
+.passportData .column-account {
+  max-width: 20vw;
+}
+.column-account{
+  margin-top: 1vw;
+}
+.input-container-account{
+  display: flex;
+  flex-direction: row;
+}
+.input-container-account button{
+  margin-left: 1vw;
+}
 .head-container{
   border-bottom: 1px solid #ed8e79;
   margin: 2vw 0 2vw 0;

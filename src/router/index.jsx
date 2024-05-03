@@ -14,30 +14,32 @@ import { useNavigate } from "react-router-dom"
 import { useContext, useEffect } from "react"
 import Services from "../pages/Services"
 import DoneServices from "../pages/user/DoneServices"
+import StudentsAccount from "../pages/admin/StudentsAccount"
 import { AuthContext, RoleContext } from "../context"
+import TeacherAccount from '../pages/admin/TeacherAccount'
 
 
-const MainComponent = () => {
-    const navigate = useNavigate();
-    const {isAuth, setIsAuth} = useContext(AuthContext);
-    const {isRole, setIsRole} = useContext(RoleContext)
+// const MainComponent = () => {
+//     const navigate = useNavigate();
+//     const {isAuth, setIsAuth} = useContext(AuthContext);
+//     const {isRole, setIsRole} = useContext(RoleContext)
     
-    // Перенаправляем пользователя на '/main' при монтировании компонента
-    useEffect(() => {
+//     // Перенаправляем пользователя на '/main' при монтировании компонента
+//     useEffect(() => {
 
-        if (isAuth){
-            if (isRole==="admin"){
-                navigate('/mainAdmin');
-            }
-            else navigate('/mainUser');
-        }
-        else navigate('/main');
-    }, [navigate]);
+//         if (isAuth){
+//             if (isRole==="admin"){
+//                 navigate('/mainAdmin');
+//             }
+//             else navigate('/mainUser');
+//         }
+//         else navigate('/main');
+//     }, [navigate]);
 
   
-    // Возвращаем компонент <Main/>
-    return <Main/>;
-  };
+//     // Возвращаем компонент <Main/>
+//     return <Main/>;
+//   };
 
 export const publicRoutes=[
     {path:"/main", element: <Main/>, exact: true},
@@ -46,7 +48,7 @@ export const publicRoutes=[
     {path:"/forgetPass", element: <ForgetPassword/>, exact: true},
     {path:"/code", element:<ConfirmationCode/>, exact: true},
     {path:"/services/:id", element:<Services/>, exact: true},
-    {path:"*", element: <MainComponent/>, exact: true},
+    // {path:"*", element: <MainComponent/>, exact: true},
 ]
 
 export const privateRoutesUser=[
@@ -56,15 +58,19 @@ export const privateRoutesUser=[
     {path:"/services/:id", element: <Services/>, exact: true},
     {path:"/status", element: <ExecutionStatus/>, exact: true},
     {path:"/doneServices", element: <DoneServices/>, exact: true},
-    {path:"*", element: <MainComponent/>, exact: true},
+    // {path:"*", element: <MainComponent/>, exact: true},
 ]
 export const privateRoutesAdmin=[
     {path:"/mainAdmin", element: <Main/>, exact: true},
     {path:"/admin", element: <Admin/>, exact: true},
+    {path:"/services/:id", element: <Services/>, exact: true},
+    {path:"/accountAdmin", element: <PersonalAccount/>, exact: true},
     {path:"/listOfStudents", element: <ListOfStudents/>, exact: true},
     {path:"/listOfTeachers", element: <ListOfTeachers/>, exact: true},
     {path:"/statements", element: <Statements/>, exact: true},
-    {path:"*", element: <MainComponent/>, exact: true},
+    {path:"/students", element: <StudentsAccount/>, exact: true},
+    {path:"/teacher", element: <TeacherAccount/>, exact: true},
+    // {path:"*", element: <MainComponent/>, exact: true},
 ]
 
 
