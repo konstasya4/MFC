@@ -35,19 +35,19 @@ const AdminLeftNavbar = () => {
         <li className="li-left">
           <div>
             <img className="img-nav" src={CreateHelpTemplate} />
-            <Link to="">Создать шаблон справки</Link>{" "}
+            <Link to="">Создать шаблон справки</Link>
           </div>
         </li>
         <li className="li-left">
           <div>
             <img className="img-nav" src={Employees} />
-            <Link to="">Работники</Link>
+            <Link to="/listOfTeachers">Работники</Link>
           </div>
         </li>
         <li className="li-left">
           <div>
             <img className="img-nav" src={Students} />
-            <Link to="">Студенты</Link>
+            <Link to="/listOfStudents">Студенты</Link>
           </div>
         </li>
         <li className="li-left">
@@ -56,7 +56,7 @@ const AdminLeftNavbar = () => {
             <Link to="">Готово</Link>
           </div>
         </li>
-        <li className="li-left">
+        {/* <li className="li-left">
           <div className="div-left">
             <div className="img-div">
               <img className="img-nav" src={PersonalData} />
@@ -65,7 +65,7 @@ const AdminLeftNavbar = () => {
               <Link to="">Личные данные</Link>
             </div>
           </div>
-        </li>
+        </li> */}
         <li className="li-left">
         <div className="div-left">
             <div className="img-div">

@@ -16,9 +16,9 @@ const location = useLocation();
 
 return isAuth ? (
   isRole === "admin" ? (
-    location.pathname ==='/mainAdmin'?(
-      <UserServicesNavbar />
-    ) :
+    // location.pathname ==='/mainAdmin'?(
+    //   <UserServicesNavbar />
+    // ) :
     <AdminLeftNavbar />
   ) :
   ( location.pathname === "/mainUser" ? (
