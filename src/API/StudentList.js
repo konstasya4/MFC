@@ -3,7 +3,7 @@ import axios from "axios";
 export default class StudentList {
   static async getAll() {
     try {
-      const response = await axios.get("http://localhost:8000/students");
+      const response = await axios.get("http://localhost:8080/api/admin/getstudents");
       console.log(response.data);
       return response.data; // Возвращаем только свойство data из ответа
     } catch (error) {
@@ -13,7 +13,7 @@ export default class StudentList {
   }
   static async getById() {
     try {
-        const response = await axios.get('http://localhost:8000/students/1');
+        const response = await axios.get('http://localhost:8000/students/serviceNumber');
         console.log(response.data)
         return response.data; // Возвращаем только свойство data из ответа
     } catch (error) {
