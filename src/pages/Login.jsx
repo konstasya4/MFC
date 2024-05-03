@@ -49,10 +49,10 @@ import { useContext } from 'react';
 import axios from 'axios';
 
  function Login ()  {
-  async function userLog(){
-    const responseLogin = await axios.post('http://localhost:8080/api/account/login?userName=admin&password=admin123')
-    console.log(responseLogin)
-  }
+  // async function userLog(){
+  //   const responseLogin = await axios.post('http://localhost:8080/api/account/login?userName=admin&password=admin123')
+  //   console.log(responseLogin)
+  // }
 
   async function userLogout(){
     const responseLogout= await axios.post('http://localhost:8080/api/account/logout')
