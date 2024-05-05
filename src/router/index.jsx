@@ -17,6 +17,7 @@ import DoneServices from "../pages/user/DoneServices"
 import StudentsAccount from "../pages/admin/StudentsAccount"
 import { AuthContext, RoleContext } from "../context"
 import TeacherAccount from '../pages/admin/TeacherAccount'
+import NotDoneService from "../pages/admin/NotDoneService"
 
 
 // const MainComponent = () => {
@@ -70,6 +71,7 @@ export const privateRoutesAdmin=[
     {path:"/statements", element: <Statements/>, exact: true},
     {path:"/students", element: <StudentsAccount/>, exact: true},
     {path:"/teacher", element: <TeacherAccount/>, exact: true},
+    {path:"/notDoneService", element: <NotDoneService/>, exact: true},
     // {path:"*", element: <MainComponent/>, exact: true},
 ]
 
