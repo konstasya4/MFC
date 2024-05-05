@@ -72,7 +72,7 @@ const AdminLeftNavbar = () => {
             <img className="img-nav" src={NotCompleted} />
             </div>
             <div className="link-div">
-            <Link to="">Не готово</Link>
+            <Link to="/notDoneService">Не готово</Link>
           </div>
           </div>
         </li>
