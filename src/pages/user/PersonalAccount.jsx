@@ -8,40 +8,42 @@ import Hide from "../../images/Hide.png";
 import IconCopy from "../../images/IconCopy.png";
 import InputComponent from "../../components/InputComponent"
 import ButtonComponent from "../../components/ButtonComponent";
+import UserService from "../../services/UserService";
 const PersonalAccount = () => {
-  const [data, setData] = useState({});
+  // const [data, setData] = useState({});
   const [visibleField, setVisibleField] = useState(null);
   const [showPassword, setShowPassword] = useState(false);
   const [editMail, setEditMail] = useState(null);
   const [editPassword, setEditPassword] = useState(null);
   const [editing, setEditing]=useState(true)
+  const [userData, setUserData] = useState(null);
 
   useEffect(() => {
-    const fetchPersonalData = async () => {
+    const fetchUserData = async () => {
       try {
-        const response = await PersonalData.getId();
-        setData(response[0]);
+        const response = await UserService.fetchCurrentUser(); // Получаем информацию о текущем пользователе
+        setUserData(response.data); // Обновляем состояние с данными пользователя
       } catch (error) {
-        console.error("Error fetching service:", error);
+        console.error("Error fetching user data:", error);
       }
     };
-    fetchPersonalData();
+    fetchUserData();
   }, []);
   const toggleVisibility = (field) => {
     setVisibleField(visibleField === field ? null : field);
   };
-  console.log(data);
-  console.log(data.dateOfBirth);
-  const hideData = (data) => {
-    if (!data) return "";
-    const firstChar = data.substring(0, 1);
-    const lastChar = data.substring(data.length - 1);
-    const hiddenPart = "*".repeat(data.length - 2);
+  console.log(userData);
+  console.log(userData.Passport.dateOfBirth);
+  const hideData = (userData) => {
+    if (!userData) return "";
+    const firstChar = userData.substring(0, 1);
+    const lastChar = userData.substring(userData.length - 1);
+    const hiddenPart = "*".repeat(userData.length - 2);
     return firstChar + hiddenPart + lastChar;
   };
-  const hidePassword = (data) => {
-    if (!data) return "";
-    const hiddenPart = "*".repeat(data.length);
+  const hidePassword = (userData) => {
+    if (!userData) return "";
+    const hiddenPart = "*".repeat(userData.length);
     return hiddenPart;
   };
   const copyToClipboard = (text) => {
@@ -60,7 +62,7 @@ const PersonalAccount = () => {
   // };
   const handleInputChange = (event) => {
     setEditMail(event.target.value);
-    setEditMail(data.mail);
+    setEditMail(userData.Email);
   };
   const changingEditing = ()=>{
 setEditing(!editing)
@@ -68,6 +70,9 @@ setEditing(!editing)
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
   };
+  const passportData=()=>{
+    
+  }
 
   return (
     <div>
@@ -82,10 +87,10 @@ setEditing(!editing)
               <img src={PersonalDataActive} />
             </div>
             <div className="name-line">
-              <div className="fio">{data.surname}</div>
+              <div className="fio">{userData.surname}</div>
               <div className="name-second-line horiz-line">
-                <div className="fio">{data.name}</div>
-                <div className="fio midleName">{data.middleName}</div>
+                <div className="fio">{userData.name}</div>
+                <div className="fio midleName">{userData.middleName}</div>
               </div>
             </div>
           </div>
@@ -98,8 +103,8 @@ setEditing(!editing)
                   <div className="btn-show">
                     <div className="text-account">
                       {visibleField === "passportData"
-                        ? data.passportData
-                        : hideData(data.passportData)}
+                        ? userData.passportData
+                        : hideData(userData.passportData)}
                     </div>
                     <button
                       img={Show}
@@ -111,18 +116,18 @@ setEditing(!editing)
                         <img src={Hide}></img>
                       )}
                     </button>
-                    <button onClick={() => copyToClipboard(data.passportData)}>
+                    <button onClick={() => copyToClipboard(userData.passportData)}>
                       <img src={IconCopy} alt="Copy" />
                     </button>
                   </div>
                 </div>
                 <div className="gender column-account">
                   <div className="title-account">Пол</div>
-                  <div className="text-account">{data.gender}</div>
+                  <div className="text-account">{userData.Gender}</div>
                 </div>
                 <div className="citizenship column-account">
                   <div className="title-account">Гражданство</div>
-                  <div className="text-account">{data.citizenship}</div>
+                  <div className="text-account">{userData.Passport.citizenship}</div>
                 </div>
               </div>
               <div className="column-line">
@@ -131,8 +136,8 @@ setEditing(!editing)
                   <div className="btn-show">
                     <div className="text-account">
                       {visibleField === "dateOfIssue"
-                        ? data.dateOfIssue
-                        : hideData(data.dateOfIssue)}
+                        ? userData.Passport.dateOfIssue
+                        : hideData(userData.Passport.dateOfIssue)}
                     </div>
                     <button
                       img={Show}
@@ -144,14 +149,14 @@ setEditing(!editing)
                         <img src={Hide}></img>
                       )}
                     </button>
-                    <button onClick={() => copyToClipboard(data.dateOfIssue)}>
+                    <button onClick={() => copyToClipboard(userData.Passport.dateOfIssue)}>
                       <img src={IconCopy} alt="Copy" />
                     </button>
                   </div>
                 </div>
                 <div className="dateOfBirth column-account">
                   <div className="title-account">Дата рождения</div>
-                  <div className="text-account">{data.dateOfBirth}</div>
+                  <div className="text-account">{userData.Passport.dateOfBrith}</div>
                 </div>
               </div>
               <div className="column-line">
@@ -160,8 +165,8 @@ setEditing(!editing)
                   <div className="btn-show">
                     <div className="text-account">
                       {visibleField === "unitCode"
-                        ? data.unitCode
-                        : hideData(data.unitCode)}
+                        ? userData.Passport.unitCode
+                        : hideData(userData.Passport.unitCode)}
                     </div>
                     <button
                       img={Show}
@@ -173,14 +178,14 @@ setEditing(!editing)
                         <img src={Hide}></img>
                       )}
                     </button>
-                    <button onClick={() => copyToClipboard(data.unitCode)}>
+                    <button onClick={() => copyToClipboard(userData.Passport.unitCode)}>
                       <img src={IconCopy} alt="Copy" />
                     </button>
                   </div>
                 </div>
                 <div className="placeOfBirth column-account">
                   <div className="title-account">Место рождения</div>
-                  <div className="text-account">{data.placeOfBirth}</div>
+                  <div className="text-account">{userData.Passport.placeOfBrith}</div>
                 </div>
               </div>
             </div>
@@ -192,24 +197,24 @@ setEditing(!editing)
                 <div className="passportData column-account">
                   <div className="title-account">Табельный номер</div>
                   <div className="btn-show">
-                    <div className="text-account">{data.serviceNumber}</div>
-                    <button onClick={() => copyToClipboard(data.serviceNumber)}>
+                    <div className="text-account">{userData.ServiceNumber}</div>
+                    <button onClick={() => copyToClipboard(userData.ServiceNumber)}>
                       <img src={IconCopy} alt="Copy" />
                     </button>
                   </div>
                 </div>
                 <div className="gender column-account">
                   <div className="title-account">Группа</div>
-                  <div className="text-account">{data.group}</div>
+                  <div className="text-account">{userData.Group}</div>
                 </div>
                 <div className="citizenship column-account">
                   <div className="title-account">Пароль</div>
-                  {editing ? (
+                  {/* {editing ? (
                     <div className="btn-show">
                       <div className="text-account">
                         {visibleField === "password"
-                          ? data.password
-                          : hidePassword(data.password)}
+                          ? userData.password
+                          : hidePassword(userData.password)}
                       </div>
                       <button
                         img={Show}
@@ -230,7 +235,7 @@ setEditing(!editing)
                         onChange={togglePasswordVisibility}
                       />
                     </div>
-                  )}
+                  )} */}
                 </div>
               </div>
               <div className="column-line">
@@ -238,7 +243,7 @@ setEditing(!editing)
                   <div className="title-account">ИНН</div>
                   <div className="btn-show">
                     <div className="text-account">
-                      {visibleField === "inn" ? data.inn : hideData(data.inn)}
+                      {visibleField === "inn" ? userData.INN : hideData(userData.INN)}
                     </div>
                     <button img={Show} onClick={() => toggleVisibility("inn")}>
                       {visibleField === "inn" ? (
@@ -247,14 +252,14 @@ setEditing(!editing)
                         <img src={Hide}></img>
                       )}
                     </button>
-                    <button onClick={() => copyToClipboard(data.inn)}>
+                    <button onClick={() => copyToClipboard(userData.INN)}>
                       <img src={IconCopy} alt="Copy" />
                     </button>
                   </div>
                 </div>
                 <div className="dateOfBirth column-account">
                   <div className="title-account">Направление обучения</div>
-                  <div className="text-account">{data.directionOfStudy}</div>
+                  {/* <div className="text-account">{userData.directionOfStudy}</div> */}
                 </div>
               </div>
               <div className="column-line">
@@ -263,8 +268,8 @@ setEditing(!editing)
                   <div className="btn-show">
                     <div className="text-account">
                       {visibleField === "snils"
-                        ? data.snils
-                        : hideData(data.snils)}
+                        ? userData.SNILS
+                        : hideData(userData.SNILS)}
                     </div>
                     <button
                       img={Show}
@@ -276,7 +281,7 @@ setEditing(!editing)
                         <img src={Hide}></img>
                       )}
                     </button>
-                    <button onClick={() => copyToClipboard(data.snils)}>
+                    <button onClick={() => copyToClipboard(userData.SNILS)}>
                       <img src={IconCopy} alt="Copy" />
                     </button>
                   </div>
@@ -284,7 +289,7 @@ setEditing(!editing)
                 <div className="citizenship column-account">
                   <div className="title-account">Электронная почта</div>
                   {editing ? (
-                    <div className="text-account">{data.mail}</div>
+                    <div className="text-account">{userData.Email}</div>
                   ) : (
                     <div>
                       <InputComponent
