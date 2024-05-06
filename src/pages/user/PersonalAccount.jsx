@@ -46,6 +46,7 @@ const PersonalAccount = () => {
   };
   const copyToClipboard = (text) => {
     navigator.clipboard.writeText(text);
+    //dsaas
   };
   // const handleEditMail = async () => {
   //   try {
