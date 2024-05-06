@@ -1,20 +1,20 @@
 import React from "react";
-import { useContext } from "react";
-import { AuthContext } from "../../../context";
-import { RoleContext } from "../../../context";
+import { useDispatch, useSelector  } from 'react-redux';
+import AuthService from '../../../services/AuthService';
+import { loginUser, logoutUser } from '../../../actions/actions';
 import OutButton from '../../../images/OutButton.png'
 import "../../../styles/LeftNavbarStyle.css";
 import { Link } from "react-router-dom";
 import Certificate from '../../../images/Certificate.png';
 const UserServicesNavbar=()=>{
-    const {isAuth, setIsAuth} = useContext(AuthContext);
-const {isRole, setIsRole} = useContext(RoleContext);
-    const logout= ()=>{
-        setIsAuth(false)
-        setIsRole('')
-        localStorage.removeItem('auth')
-        localStorage.removeItem('role')
-    }
+  const dispatch = useDispatch();
+  const { isAuth, isRole } = useSelector(state => state.auth);
+const logout = async () => {
+  await AuthService.logout();
+  dispatch(logoutUser());
+  localStorage.removeItem('token');
+  console.log("Выход", isAuth, isRole)
+};
         return (
           <div className="nav-left">
             <ul className="ul-left">

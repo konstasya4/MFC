@@ -1,5 +1,5 @@
 const initialState = {
-    user: {},
+    isRole: "",
     isAuth: false,
     isLoading: false,
   };
@@ -9,16 +9,21 @@ const initialState = {
       case 'LOGIN_USER':
         return {
           ...state,
-          user: action.payload.user,
-          isAuth: true,
+          isRole: action.payload.Role,
+          isAuth: action.payload.Result,
         };
       case 'LOGOUT_USER':
         return {
           ...state,
-          user: {},
+          isRole: " ",
           isAuth: false,
         };
-      case 'SET_LOADING':
+      case 'CURRENT_USER':
+        return {
+          ...state,
+          isLoading: action.payload,
+        };
+        case 'SET_LOADING':
         return {
           ...state,
           isLoading: action.payload,

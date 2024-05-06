@@ -1,7 +1,7 @@
 import React, { useContext} from "react";
 import { useLocation } from "react-router-dom";
 import '../../../styles/NavbarStyle.css';
-import { AuthContext, RoleContext } from "../../../context";
+import { useSelector } from 'react-redux';
 import AdminNavbar from "./AdminNavbar";
 import UserNavbar from "./UserNavbar";
 import NotUserNavbar from "./NotUserNavbar";
@@ -9,10 +9,9 @@ import ServicesUserNavbar from "./ServicesUserNavbar";
 import ServicesNavbar from "./ServicesNotUserNavbar";
 
 function Navbar() {
-const {isAuth} = useContext(AuthContext);
-const {isRole} = useContext(RoleContext);
+const { isAuth, isRole } = useSelector(state => state.auth);
 const location = useLocation();
-
+console.log(isAuth, isRole)
 
 
 return isAuth ? (

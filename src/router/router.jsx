@@ -3,10 +3,11 @@ import { privateRoutesAdmin, privateRoutesUser, publicRoutes } from ".";
 import { useContext } from "react";
 import { AuthContext, RoleContext } from "../context";
 import Services from "../pages/Services";
+import { useDispatch, useSelector  } from 'react-redux';
 
 export const useRoutes = () => {
-  const { isAuth, setIsAuth } = useContext(AuthContext);
-  const { isRole, setIsRole } = useContext(RoleContext);
+  const { isAuth } = useSelector(state => state.auth); // Access isAuth state from Redux store
+  const { isRole } = useSelector(state => state.auth);
 
   return isAuth ? (
     isRole === "admin" ? (

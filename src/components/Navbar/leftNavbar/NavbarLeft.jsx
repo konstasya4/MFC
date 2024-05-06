@@ -1,24 +1,20 @@
 import React, { useContext} from "react";
 import { useLocation } from "react-router-dom";
 import "../../../styles/LeftNavbarStyle.css";
-import { AuthContext, RoleContext } from "../../../context";
+import { useSelector } from 'react-redux';
 import AdminLeftNavbar from "./AdminLeftNavbar";
 import UserServicesNavbar from "./UserServicesNavbar";
 import UserLetfNavbar from "./UserLeftNavbar";
 import ServicesNavbar from "./ServicesNavbar";
 
 function NavbarLeft() {
-const {isAuth} = useContext(AuthContext);
-const {isRole} = useContext(RoleContext);
+const { isAuth, isRole } = useSelector(state => state.auth);
 const location = useLocation();
-
+console.log("left navbar", isAuth, isRole)
 
 
 return isAuth ? (
   isRole === "admin" ? (
-    // location.pathname ==='/mainAdmin'?(
-    //   <UserServicesNavbar />
-    // ) :
     <AdminLeftNavbar />
   ) :
   ( location.pathname === "/mainUser" ? (

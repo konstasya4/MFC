@@ -13,15 +13,18 @@ import Done from "../../../images/Done.png";
 import PersonalData from "../../../images/PersonalData.png";
 import NotCompleted from "../../../images/Administrator/NotСompleted.png";
 import Arhive from "../../../images/Administrator/TheArchive.png";
+import { useDispatch, useSelector  } from 'react-redux';
+import AuthService from '../../../services/AuthService';
+import { loginUser, logoutUser } from '../../../actions/actions';
 
 const AdminLeftNavbar = () => {
-  const { isAuth, setIsAuth } = useContext(AuthContext);
-  const { isRole, setIsRole } = useContext(RoleContext);
-  const logout = () => {
-    setIsAuth(false);
-    setIsRole("");
-    localStorage.removeItem("auth");
-    localStorage.removeItem("role");
+  const dispatch = useDispatch();
+  const { isAuth, isRole } = useSelector(state => state.auth); // Access isAuth state from Redux store
+  const logout = async () => {
+    await AuthService.logout();
+    dispatch(logoutUser());
+    localStorage.removeItem('token');
+    console.log("Выход", isAuth, isRole)
   };
   return (
     <div className="nav-left">
