@@ -7,4 +7,6 @@ export default class UserService {
     static fetchStudents(){
       return $api.get('/students')
   }
+  static fetchCurrentUser(){
+    return $api.get('/account/currentuser')}
 }
