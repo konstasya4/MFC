@@ -1,7 +1,7 @@
 import StudentItem from './StudentItem'
 const StudentsList =({listStudent})=>{
     console.log("кек", listStudent)
-    if(!listStudent|| !listStudent.length){
+    if(!listStudent || !listStudent.length){
         return (
             <h1 style={{textAlign: 'center'}}>
                 Посты не найдены!

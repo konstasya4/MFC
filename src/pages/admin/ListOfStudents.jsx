@@ -10,23 +10,38 @@ import StatusList from "../../components/service-status/StatusList";
 import InputComponent from "../../components/InputComponent";
 import StudentsList from "../../components/students-components/StudentsList";
 import '../../styles/StudentListStyle.css';
+import UserService from "../../services/UserService";
 
 const ListOfStudents=()=>{
   const [listStudent, setListStudent] = useState([]);
   // const [filter, setFilter] = useState(""); // Состояние для отслеживания текущего выбранного статуса
 
+  // useEffect(() => {
+  //   const fetchStatusData = async () => {
+  //     try {
+  //       const response = await StudentList.getAll();
+  //       if (Array.isArray(response) && response.length > 0) {
+  //         setListStudent(response); // Set status array directly
+  //       }
+  //     } catch (error) {
+  //       console.error("Error fetching service:", error);
+  //     }
+  //   };
+  //   fetchStatusData();
+  // }, []);
   useEffect(() => {
-    const fetchStatusData = async () => {
+    const fetchStudentsList = async () => {
       try {
-        const response = await StudentList.getAll();
-        if (Array.isArray(response) && response.length > 0) {
-          setListStudent(response); // Set status array directly
-        }
+        const response = await UserService.fetchStudents();
+        console.log(response) // Получаем информацию о текущем пользователе
+        // if (Array.isArray(response.data) && response.length > 0) {
+          setListStudent(response.data); // Set status array directly
+        // Обновляем состояние с данными пользователя
       } catch (error) {
-        console.error("Error fetching service:", error);
+        console.error("Error fetching user data:", error);
       }
     };
-    fetchStatusData();
+    fetchStudentsList();
   }, []);
 
 console.log(listStudent)

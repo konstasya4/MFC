@@ -11,8 +11,9 @@ import IconCopy from "../../images/IconCopy.png";
 import InputComponent from "../../components/InputComponent"
 import ButtonComponent from "../../components/ButtonComponent";
 import { Link } from "react-router-dom";
+import UserService from "../../services/UserService";
 const StudentsAccount = ()=>{
-    const { id } = useParams();
+    const { serviceNumber } = useParams();
     const [student, setStudent] = useState({}); // Устанавливаем начальное значение в пустой объект
     const [loading, setLoading] = useState(true); // Состояние для отслеживания загрузки данных
     const [visibleField, setVisibleField] = useState(null);
@@ -23,19 +24,18 @@ const StudentsAccount = ()=>{
   
     
     useEffect(() => {
-      const fetchPersonalData = async () => {
-        try {
-          const response = await StudentList.getStudentAdmin();
-          console.log(response)
-          setStudent(response[0]);
-          console.log("shajhd",student)
-        } catch (error) {
-          console.error("Error fetching service:", error);
-        }
+      const fetchService = async (serviceNumber) => {
+          try {
+              const response = await UserService.fetchStudent(serviceNumber);
+              setStudent(response.data);
+              setLoading(false); // Устанавливаем состояние загрузки в false после получения данных
+          } catch (error) {
+              console.error('Error fetching service:', error);
+          }
       };
-      fetchPersonalData();
-    }, []);
-    
+      fetchService(serviceNumber);
+  }, [serviceNumber]);
+  // console.log("день рождения", student.passport.dateOfBirth);
     // if (loading) {
     //     return <div>Loading...</div>;
     // }
@@ -43,7 +43,7 @@ const StudentsAccount = ()=>{
         setVisibleField(visibleField === field ? null : field);
       };
       console.log(student);
-      console.log(student.dateOfBirth);
+      // console.log(student.passport.dateOfBirth);
       const hideData = (data) => {
         if (!data) return "";
         const firstChar = data.substring(0, 1);
@@ -71,7 +71,7 @@ const StudentsAccount = ()=>{
       // };
       const handleInputChange = (event) => {
         setEditMail(event.target.value);
-        setEditMail(student.mail);
+        setEditMail(student.email);
       };
       const changingEditing = ()=>{
     setEditing(!editing)
@@ -79,6 +79,11 @@ const StudentsAccount = ()=>{
       const togglePasswordVisibility = () => {
         setShowPassword(!showPassword);
       };
+      const passportData=()=>{
+        return student
+        ? `${student.passport?.series} ${student.passport?.number}`
+        : null;
+    }
     return(<div className="account-container">
         <div className="head-container">
           <div className="head-personal-data">Личные данные</div>
@@ -96,10 +101,10 @@ const StudentsAccount = ()=>{
                 <img src={PersonalDataActive} />
               </div>
               <div className="name-line">
-                <div className="fio">{student.surname}</div>
+                <div className="fio">{student.name?.second}</div>
                 <div className="name-second-line horiz-line">
-                  <div className="fio">{student.name}</div>
-                  <div className="fio midleName">{student.middleName}</div>
+                  <div className="fio">{student.name?.first}</div>
+                  <div className="fio midleName">{student.name?.middle}</div>
                 </div>
               </div>
             </div>
@@ -113,8 +118,8 @@ const StudentsAccount = ()=>{
                       <div className="btn-show">
                       <div className="text-account">
                         {visibleField === "passportData"
-                          ? student.passportData
-                          : hideData(student.passportData)}
+                          ? passportData()
+                          : hideData(passportData())}
                       </div>
                       <button
                         img={Show}
@@ -126,7 +131,7 @@ const StudentsAccount = ()=>{
                           <img src={Hide}></img>
                         )}
                       </button>
-                      <button onClick={() => copyToClipboard(student.passportData)}>
+                      <button onClick={() => copyToClipboard(passportData())}>
                         <img src={IconCopy} alt="Copy" />
                       </button>
                     </div>
@@ -146,7 +151,7 @@ const StudentsAccount = ()=>{
                   </div>
                   <div className="citizenship column-account">
                     <div className="title-account">Гражданство</div>
-                    <div className="text-account">{student.citizenship}</div>
+                    <div className="text-account">{student.passport?.citizenship}</div>
                   </div>
                 </div>
                 <div className="column-line">
@@ -156,8 +161,8 @@ const StudentsAccount = ()=>{
                       <div className="btn-show">
                       <div className="text-account">
                         {visibleField === "dateOfIssue"
-                          ? student.dateOfIssue
-                          : hideData(student.dateOfIssue)}
+                          ? student.passport?.dateOfIssue
+                          : hideData(student.passport?.dateOfIssue)}
                       </div>
                       <button
                         img={Show}
@@ -169,7 +174,7 @@ const StudentsAccount = ()=>{
                           <img src={Hide}></img>
                         )}
                       </button>
-                      <button onClick={() => copyToClipboard(student.dateOfIssue)}>
+                      <button onClick={() => copyToClipboard(student.passport?.dateOfIssue)}>
                         <img src={IconCopy} alt="Copy" />
                       </button>
                     </div>
@@ -185,7 +190,7 @@ const StudentsAccount = ()=>{
                   </div>
                   <div className="dateOfBirth column-account">
                     <div className="title-account">Дата рождения</div>
-                    <div className="text-account">{student.dateOfBirth}</div>
+                    <div className="text-account">{student.passport?.dateOfBrith}</div>
                   </div>
                 </div>
                 <div className="column-line">
@@ -195,8 +200,8 @@ const StudentsAccount = ()=>{
                        <div className="btn-show">
                        <div className="text-account">
                          {visibleField === "unitCode"
-                           ? student.unitCode
-                           : hideData(student.unitCode)}
+                           ? student.passport?.unitCode
+                           : hideData(student.passport?.unitCode)}
                        </div>
                        <button
                          img={Show}
@@ -208,7 +213,7 @@ const StudentsAccount = ()=>{
                            <img src={Hide}></img>
                          )}
                        </button>
-                       <button onClick={() => copyToClipboard(student.unitCode)}>
+                       <button onClick={() => copyToClipboard(student.passport?.unitCode)}>
                          <img src={IconCopy} alt="Copy" />
                        </button>
                      </div>
@@ -224,7 +229,7 @@ const StudentsAccount = ()=>{
                   </div>
                   <div className="placeOfBirth column-account">
                     <div className="title-account">Место рождения</div>
-                    <div className="text-account">{student.placeOfBirth}</div>
+                    <div className="text-account">{student.passport?.placeOfBrith}</div>
                   </div>
                 </div>
               </div>
@@ -347,7 +352,7 @@ const StudentsAccount = ()=>{
                   </div>
                   <div className="citizenship column-account">
                     <div className="title-account">Электронная почта</div>
-                      <div className="text-account">{student.mail}</div>
+                      <div className="text-account">{student.email}</div>
                   </div>
                 </div>
               </div>
