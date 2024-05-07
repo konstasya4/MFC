@@ -41,7 +41,7 @@
 //     );
 // }
 // export default Login
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import '../styles/LoginStyle.css'
 import { Link } from 'react-router-dom';
 import { AuthContext, RoleContext } from '../context';
@@ -70,18 +70,25 @@ const [error, setError] = useState("");
         const hanldeInputChangePassword = (event)=>{
           setPassword(event.target.value)
         }
+        useEffect(() => {
+          const auth = localStorage.getItem('auth');
+          const role = localStorage.getItem('role');
+          if (auth && role) {
+            dispatch(loginUser({ Result: JSON.parse(auth), Role: role }));
+          }
+        }, []);
+        
         const handleLogin = async () => {
-          console.log(login, password)
           try {
             const response = await AuthService.login(login, password);
-            // localStorage.setItem('token', response.data.accessToken);
+            localStorage.setItem("auth", response.data.Result.toString()); // Преобразуем в строку
+            localStorage.setItem("role", response.data.Role);
             dispatch(loginUser(response.data));
-            if (response.data.Role === 'admin'&& response.data.Result) {
+            if (response.data.Role === 'admin' && response.data.Result) {
               navigate('/mainAdmin');
             } else if (response.data.Result){
               navigate('/mainUser');
             }
-
           } catch (error) {
             console.log(error);
           }
