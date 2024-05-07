@@ -25,6 +25,8 @@ const AdminLeftNavbar = () => {
     dispatch(logoutUser());
     localStorage.removeItem('token');
     console.log("Выход", isAuth, isRole)
+    localStorage.setItem("auth", false); // Преобразуем в строку
+  localStorage.setItem("role", "");
   };
   return (
     <div className="nav-left">
@@ -32,7 +34,7 @@ const AdminLeftNavbar = () => {
         <li className="li-left">
           <div>
             <img className="img-nav" src={CreateService} />
-            <Link to="">Создать услугу</Link>
+            <Link to="/createService">Создать услугу</Link>
           </div>
         </li>
         <li className="li-left">

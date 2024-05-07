@@ -17,6 +17,8 @@ const logout = async () => {
   dispatch(logoutUser());
   localStorage.removeItem('token');
   console.log("Выход", isAuth, isRole)
+  localStorage.setItem("auth", false); // Преобразуем в строку
+  localStorage.setItem("role", "");
 };
         return (
           <div className="nav-left">

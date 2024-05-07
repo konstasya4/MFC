@@ -10,10 +10,12 @@ const UserServicesNavbar=()=>{
   const dispatch = useDispatch();
   const { isAuth, isRole } = useSelector(state => state.auth);
 const logout = async () => {
-  await AuthService.logout();
+  // await AuthService.logout();
   dispatch(logoutUser());
   localStorage.removeItem('token');
   console.log("Выход", isAuth, isRole)
+  localStorage.setItem("auth", "false"); // Преобразуем в строку
+  localStorage.setItem("role", " ");
 };
         return (
           <div className="nav-left">

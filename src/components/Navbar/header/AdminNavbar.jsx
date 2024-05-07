@@ -14,6 +14,8 @@ const logout = async () => {
   dispatch(logoutUser());
   localStorage.removeItem('token');
   console.log("Выход", isAuth, isRole)
+  localStorage.setItem("auth", false); // Преобразуем в строку
+  localStorage.setItem("role", "");
 };
 return (
   <div className="page_header">
@@ -63,51 +65,3 @@ return (
 );}
 export default  AdminNavbar;
 
-
-import React, { useState, useEffect } from "react";
-import NavbarLeft from "../../components/Navbar/leftNavbar/NavbarLeft";
-import UserService from "../../services/UserService";
-import "../../styles/PersonalAccountStyle.css";
-
-const PersonalAccount = () => {
-  const [userData, setUserData] = useState(null);
-
-  useEffect(() => {
-    const fetchUserData = async () => {
-      try {
-        const response = await UserService.fetchCurrentUser();
-        setUserData(response.data);
-      } catch (error) {
-        console.error("Error fetching user data:", error);
-      }
-    };
-    fetchUserData();
-  }, []);
-
-  return (
-    <div>
-      {userData && (
-        <div className="user-info">
-          <h2>Личные данные пользователя</h2>
-          <p>Имя: {userData.Name.first}</p>
-          <p>Фамилия: {userData.Name.second}</p>
-          <p>Отчество: {userData.Name.middle}</p>
-          <p>Email: {userData.Email}</p>
-          <p>Телефон: {userData.PhoneNumber || "Нет данных"}</p>
-          <p>Пол: {userData.Gender}</p>
-          <p>ИНН: {userData.INN}</p>
-          <p>СНИЛС: {userData.SNILS}</p>
-          <p>Серия и номер паспорта: {userData.Passport.series} {userData.Passport.number}</p>
-          <p>Код подразделения: {userData.Passport.unitCode}</p>
-          <p>Место рождения: {userData.Passport.placeOfBrith}</p>
-          <p>Дата рождения: {userData.Passport.dateOfBrith}</p>
-          <p>Дата выдачи паспорта: {userData.Passport.dateOfIssue}</p>
-          <p>Гражданство: {userData.Passport.citizenship}</p>
-          <p>Роль: {userData.Role}</p>
-        </div>
-      )}
-    </div>
-  );
-};
-
-export default PersonalAccount;
