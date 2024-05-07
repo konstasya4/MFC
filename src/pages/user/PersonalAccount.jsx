@@ -11,12 +11,12 @@ import ButtonComponent from "../../components/ButtonComponent";
 import UserService from "../../services/UserService";
 const PersonalAccount = () => {
   // const [data, setData] = useState({});
-  const [visibleField, setVisibleField] = useState(null);
+  const [visibleField, setVisibleField] = useState();
   const [showPassword, setShowPassword] = useState(false);
-  const [editMail, setEditMail] = useState(null);
-  const [editPassword, setEditPassword] = useState(null);
+  const [editMail, setEditMail] = useState();
+  const [editPassword, setEditPassword] = useState()
   const [editing, setEditing]=useState(true)
-  const [userData, setUserData] = useState(null);
+  const [userData, setUserData] = useState();
 
   useEffect(() => {
     const fetchUserData = async () => {
@@ -29,11 +29,12 @@ const PersonalAccount = () => {
     };
     fetchUserData();
   }, []);
+
   const toggleVisibility = (field) => {
     setVisibleField(visibleField === field ? null : field);
   };
   console.log(userData);
-  console.log(userData.Passport.dateOfBirth);
+  // console.log(userData.Passport.dateOfBirth);
   const hideData = (userData) => {
     if (!userData) return "";
     const firstChar = userData.substring(0, 1);
@@ -71,11 +72,15 @@ setEditing(!editing)
     setShowPassword(!showPassword);
   };
   const passportData=()=>{
-    
+      return userData
+      ? `${userData.Passport.series} ${userData.Passport.number}`
+      : null;
   }
 
   return (
     <div>
+      {userData &&(
+        <div>
       <div className="head-container">
         <div className="head-personal-data">Личные данные</div>
       </div>
@@ -87,10 +92,10 @@ setEditing(!editing)
               <img src={PersonalDataActive} />
             </div>
             <div className="name-line">
-              <div className="fio">{userData.surname}</div>
+              <div className="fio">{userData.Name.second}</div>
               <div className="name-second-line horiz-line">
-                <div className="fio">{userData.name}</div>
-                <div className="fio midleName">{userData.middleName}</div>
+                <div className="fio">{userData.Name.first}</div>
+                <div className="fio midleName">{userData.Name.middle}</div>
               </div>
             </div>
           </div>
@@ -103,8 +108,8 @@ setEditing(!editing)
                   <div className="btn-show">
                     <div className="text-account">
                       {visibleField === "passportData"
-                        ? userData.passportData
-                        : hideData(userData.passportData)}
+                        ? passportData()
+                        : hideData(passportData())}
                     </div>
                     <button
                       img={Show}
@@ -116,7 +121,7 @@ setEditing(!editing)
                         <img src={Hide}></img>
                       )}
                     </button>
-                    <button onClick={() => copyToClipboard(userData.passportData)}>
+                    <button onClick={() => copyToClipboard(passportData)}>
                       <img src={IconCopy} alt="Copy" />
                     </button>
                   </div>
@@ -259,7 +264,7 @@ setEditing(!editing)
                 </div>
                 <div className="dateOfBirth column-account">
                   <div className="title-account">Направление обучения</div>
-                  {/* <div className="text-account">{userData.directionOfStudy}</div> */}
+                  <div className="text-account">{userData.DirectionOfStudy}</div>
                 </div>
               </div>
               <div className="column-line">
@@ -325,8 +330,79 @@ setEditing(!editing)
           )}
         </div>
       </div>
+   </div>)}
     </div>
+    // <div>
+    //  {userData && (
+    //     <div className="user-info">
+    //       <h2>Личные данные пользователя</h2>
+    //       <p>Имя: {userData.Name.first}</p>
+    //       <p>Фамилия: {userData.Name.second}</p>
+    //       <p>Отчество: {userData.Name.middle}</p>
+    //       <p>Email: {userData.Email}</p>
+    //       <p>Телефон: {userData.PhoneNumber || "Нет данных"}</p>
+    //       <p>Пол: {userData.Gender}</p>
+    //       <p>ИНН: {userData.INN}</p>
+    //       <p>СНИЛС: {userData.SNILS}</p>
+    //       <p>Серия и номер паспорта: {userData.Passport.series} {userData.Passport.number}</p>
+    //       <p>Код подразделения: {userData.Passport.unitCode}</p>
+    //       <p>Место рождения: {userData.Passport.placeOfBrith}</p>
+    //       <p>Дата рождения: {userData.Passport.dateOfBrith}</p>
+    //       <p>Дата выдачи паспорта: {userData.Passport.dateOfIssue}</p>
+    //       <p>Гражданство: {userData.Passport.citizenship}</p>
+    //       <p>Роль: {userData.Role}</p>
+    //     </div>
+    //   )}
+    // </div>
   );
 };
 
 export default PersonalAccount;
+
+// import React, { useState, useEffect } from "react";
+// import NavbarLeft from "../../components/Navbar/leftNavbar/NavbarLeft";
+// import UserService from "../../services/UserService";
+// import "../../styles/PersonalAccountStyle.css";
+
+// const PersonalAccount = () => {
+//   const [userData, setUserData] = useState(null);
+
+//   useEffect(() => {
+//     const fetchUserData = async () => {
+//       try {
+//         const response = await UserService.fetchCurrentUser();
+//         setUserData(response.data);
+//       } catch (error) {
+//         console.error("Error fetching user data:", error);
+//       }
+//     };
+//     fetchUserData();
+//   }, []);
+
+//   return (
+//     <div>
+//       {userData && (
+//         <div className="user-info">
+//           <h2>Личные данные пользователя</h2>
+//           <p>Имя: {userData.Name.first}</p>
+//           <p>Фамилия: {userData.Name.second}</p>
+//           <p>Отчество: {userData.Name.middle}</p>
+//           <p>Email: {userData.Email}</p>
+//           <p>Телефон: {userData.PhoneNumber || "Нет данных"}</p>
+//           <p>Пол: {userData.Gender}</p>
+//           <p>ИНН: {userData.INN}</p>
+//           <p>СНИЛС: {userData.SNILS}</p>
+//           <p>Серия и номер паспорта: {userData.Passport.series} {userData.Passport.number}</p>
+//           <p>Код подразделения: {userData.Passport.unitCode}</p>
+//           <p>Место рождения: {userData.Passport.placeOfBrith}</p>
+//           <p>Дата рождения: {userData.Passport.dateOfBrith}</p>
+//           <p>Дата выдачи паспорта: {userData.Passport.dateOfIssue}</p>
+//           <p>Гражданство: {userData.Passport.citizenship}</p>
+//           <p>Роль: {userData.Role}</p>
+//         </div>
+//       )}
+//     </div>
+//   );
+// };
+
+// export default PersonalAccount;
