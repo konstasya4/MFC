@@ -1,0 +1,47 @@
+.container-created-service{
+    display: flex;
+    flex-direction: row;
+}
+.service-created-list{
+    display: flex;
+    flex-direction: column; 
+    margin-left: 3.75vw;
+}
+.service-created-list input{
+    border:2px solid #B1B1B1;
+    border-radius: 1vw;
+    width: 60vw;
+    padding-left: 2vw;
+    color: #A9A9A9;
+    outline: none;
+    font: 500 1.4em "Roboto";
+}
+.first-input{
+height: 4vw;
+}
+.second-input{
+    margin-top: 2vw;
+     height: 10vw;
+     border:2px solid #B1B1B1;
+     border-radius: 1vw;
+     width: 60vw;
+     padding-left: 2vw;
+     color: #A9A9A9;
+     outline: none;
+     font: 500 1.4em "Roboto";
+}
+
+.dropdown-create-service{
+    width: 10vw;
+    border: 2px solid #B1B1B1;
+}
+.select-create-service{
+    margin-top: 2vw;
+    width: 15vw;
+    border: 2px solid #B1B1B1;
+}
+.btn-component-dropdown{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}

@@ -1,25 +1,17 @@
-import React, { useState } from 'react';
+import React from 'react';
+import '../styles/CreateAServiceStyle.css';
 
 const Dropdown = ({ options, onSelect }) => {
-  const [selectedOption, setSelectedOption] = useState(null);
-
-  const handleSelect = (option) => {
-    setSelectedOption(option);
-    onSelect(option);
-  };
-
-  return (
-    <div>
-      <select value={selectedOption} onChange={(e) => handleSelect(e.target.value)}>
-        <option value="">Select an option</option>
-        {options.map((option, index) => (
-          <option key={index} value={option}>
-            {option}
-          </option>
-        ))}
-      </select>
-    </div>
-  );
+    return (
+        <select className='select-create-service' onChange={(e) => onSelect(e.target.value)}>
+            <option value="" disabled selected>Тип услуги</option>
+            {options.map((option) => (
+                <option key={option.key} value={option.option}>
+                    {option.option}
+                </option>
+            ))}
+        </select>
+    );
 };
 
 export default Dropdown;
