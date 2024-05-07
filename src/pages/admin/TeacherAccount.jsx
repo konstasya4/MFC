@@ -10,10 +10,11 @@ import Hide from "../../images/Hide.png";
 import IconCopy from "../../images/IconCopy.png";
 import InputComponent from "../../components/InputComponent"
 import ButtonComponent from "../../components/ButtonComponent";
+import UserService from "../../services/UserService";
 
-const StudentsAccount = ()=>{
-    const { id } = useParams();
-    const [teacher, setTeacher] = useState({}); // Устанавливаем начальное значение в пустой объект
+const TeacherAccount = ()=>{
+    const { post } = useParams();
+    const [employee, setEmployee] = useState({}); // Устанавливаем начальное значение в пустой объект
     const [loading, setLoading] = useState(true); // Состояние для отслеживания загрузки данных
     const [visibleField, setVisibleField] = useState(null);
     const [showPassword, setShowPassword] = useState(false);
@@ -23,18 +24,18 @@ const StudentsAccount = ()=>{
   
     
     useEffect(() => {
-      const fetchPersonalData = async () => {
+      const fetchPersonalData = async (post) => {
         try {
-          const response = await TeacherList.getTeacherAdmin();
+          const response = await UserService.fetchEmployee(post);
           console.log(response)
-          setTeacher(response[0]);
-          console.log("shajhd",teacher)
+           setEmployee(response.data);
+          console.log("shajhd",employee)
         } catch (error) {
           console.error("Error fetching service:", error);
         }
       };
-      fetchPersonalData();
-    }, []);
+      fetchPersonalData(post);
+    }, [post]);
     
     // if (loading) {
     //     return <div>Loading...</div>;
@@ -42,8 +43,8 @@ const StudentsAccount = ()=>{
     const toggleVisibility = (field) => {
         setVisibleField(visibleField === field ? null : field);
       };
-      console.log(teacher);
-      console.log(teacher.dateOfBirth);
+      console.log(employee);
+      console.log(employee.passport?.dateOfBirth);
       const hideData = (data) => {
         if (!data) return "";
         const firstChar = data.substring(0, 1);
@@ -71,7 +72,7 @@ const StudentsAccount = ()=>{
       // };
       const handleInputChange = (event) => {
         setEditMail(event.target.value);
-        setEditMail(teacher.mail);
+        setEditMail(employee.mail);
       };
       const changingEditing = ()=>{
     setEditing(!editing)
@@ -79,6 +80,11 @@ const StudentsAccount = ()=>{
       const togglePasswordVisibility = () => {
         setShowPassword(!showPassword);
       };
+      const passportData=()=>{
+        return employee
+        ? `${employee.passport?.series} ${employee.passport?.number}`
+        : null;
+    }
     return(
     <div>
         <div className="head-container">
@@ -98,10 +104,10 @@ const StudentsAccount = ()=>{
                 <img src={PersonalDataActive} />
               </div>
               <div className="name-line">
-                <div className="fio">{teacher.surname}</div>
+                <div className="fio">{employee.name?.second}</div>
                 <div className="name-second-line horiz-line">
-                  <div className="fio">{teacher.name}</div>
-                  <div className="fio midleName">{teacher.middleName}</div>
+                  <div className="fio">{employee.name?.first}</div>
+                  <div className="fio midleName">{employee.name?.middle}</div>
                 </div>
               </div>
             </div>
@@ -115,8 +121,8 @@ const StudentsAccount = ()=>{
                       <div className="btn-show">
                       <div className="text-account">
                         {visibleField === "passportData"
-                          ? teacher.passportData
-                          : hideData(teacher.passportData)}
+                          ? passportData()
+                          : hideData(passportData())}
                       </div>
                       <button
                         img={Show}
@@ -128,7 +134,7 @@ const StudentsAccount = ()=>{
                           <img src={Hide}></img>
                         )}
                       </button>
-                      <button onClick={() => copyToClipboard(teacher.passportData)}>
+                      <button onClick={() => copyToClipboard(passportData())}>
                         <img src={IconCopy} alt="Copy" />
                       </button>
                     </div>
@@ -144,11 +150,11 @@ const StudentsAccount = ()=>{
                   </div>
                   <div className="gender column-account">
                     <div className="title-account">Пол</div>
-                    <div className="text-account">{teacher.gender}</div>
+                    <div className="text-account">{employee.gender}</div>
                   </div>
                   <div className="citizenship column-account">
                     <div className="title-account">Гражданство</div>
-                    <div className="text-account">{teacher.citizenship}</div>
+                    <div className="text-account">{employee.passport?.citizenship}</div>
                   </div>
                 </div>
                 <div className="column-line">
@@ -158,8 +164,8 @@ const StudentsAccount = ()=>{
                       <div className="btn-show">
                       <div className="text-account">
                         {visibleField === "dateOfIssue"
-                          ? teacher.dateOfIssue
-                          : hideData(teacher.dateOfIssue)}
+                          ? employee.dateOfIssue
+                          : hideData(employee.passport?.dateOfIssue)}
                       </div>
                       <button
                         img={Show}
@@ -171,7 +177,7 @@ const StudentsAccount = ()=>{
                           <img src={Hide}></img>
                         )}
                       </button>
-                      <button onClick={() => copyToClipboard(teacher.dateOfIssue)}>
+                      <button onClick={() => copyToClipboard(employee.passport?.dateOfIssue)}>
                         <img src={IconCopy} alt="Copy" />
                       </button>
                     </div>
@@ -187,7 +193,7 @@ const StudentsAccount = ()=>{
                   </div>
                   <div className="dateOfBirth column-account">
                     <div className="title-account">Дата рождения</div>
-                    <div className="text-account">{teacher.dateOfBirth}</div>
+                    <div className="text-account">{employee.passport?.dateOfBrith}</div>
                   </div>
                 </div>
                 <div className="column-line">
@@ -197,8 +203,8 @@ const StudentsAccount = ()=>{
                        <div className="btn-show">
                        <div className="text-account">
                          {visibleField === "unitCode"
-                           ? teacher.unitCode
-                           : hideData(teacher.unitCode)}
+                           ? employee.unitCode
+                           : hideData(employee.passport?.unitCode)}
                        </div>
                        <button
                          img={Show}
@@ -210,7 +216,7 @@ const StudentsAccount = ()=>{
                            <img src={Hide}></img>
                          )}
                        </button>
-                       <button onClick={() => copyToClipboard(teacher.unitCode)}>
+                       <button onClick={() => copyToClipboard(employee.passport?.unitCode)}>
                          <img src={IconCopy} alt="Copy" />
                        </button>
                      </div>
@@ -226,7 +232,7 @@ const StudentsAccount = ()=>{
                   </div>
                   <div className="placeOfBirth column-account">
                     <div className="title-account">Место рождения</div>
-                    <div className="text-account">{teacher.placeOfBirth}</div>
+                    <div className="text-account">{employee.passport?.placeOfBrith}</div>
                   </div>
                 </div>
               </div>
@@ -239,7 +245,7 @@ const StudentsAccount = ()=>{
                     <div className="title-account">ИНН</div>
                     <div className="btn-show">
                       <div className="text-account">
-                        {visibleField === "inn" ? teacher.inn : hideData(teacher.inn)}
+                        {visibleField === "inn" ? employee.inn : hideData(employee.inn)}
                       </div>
                       <button img={Show} onClick={() => toggleVisibility("inn")}>
                         {visibleField === "inn" ? (
@@ -248,16 +254,16 @@ const StudentsAccount = ()=>{
                           <img src={Hide}></img>
                         )}
                       </button>
-                      <button onClick={() => copyToClipboard(teacher.inn)}>
+                      <button onClick={() => copyToClipboard(employee.inn)}>
                         <img src={IconCopy} alt="Copy" />
                       </button>
                     </div>
                   </div>
                   <div className="passportData column-account">
                     <div className="title-account">Институт</div>
-                    <div className="btn-show">
-                      <div className="text-account">{teacher.institute}</div>
-                    </div>
+                    {/* <div className="btn-show">
+                      <div className="text-account">{employee.institute}</div>
+                    </div> */}
                   </div>
                 
                   {/* <div className="citizenship column-account">
@@ -297,8 +303,8 @@ const StudentsAccount = ()=>{
                     <div className="btn-show">
                       <div className="text-account">
                         {visibleField === "snils"
-                          ? teacher.snils
-                          : hideData(teacher.snils)}
+                          ? employee.snils
+                          : hideData(employee.snils)}
                       </div>
                       <button
                         img={Show}
@@ -310,14 +316,14 @@ const StudentsAccount = ()=>{
                           <img src={Hide}></img>
                         )}
                       </button>
-                      <button onClick={() => copyToClipboard(teacher.snils)}>
+                      <button onClick={() => copyToClipboard(employee.snils)}>
                         <img src={IconCopy} alt="Copy" />
                       </button>
                     </div>
                   </div>
                   <div className="citizenship column-account">
                     <div className="title-account">Электронная почта</div>
-                      <div className="text-account">{teacher.mail}</div>
+                      <div className="text-account">{employee.email}</div>
                   </div>
                  
                 </div>
@@ -325,7 +331,7 @@ const StudentsAccount = ()=>{
                 <div className="unitCode column-account">
                     
                     <div className="title-account">Должность</div>
-                    <div className="text-account">{teacher.post}</div>
+                    <div className="text-account">{employee.post}</div>
                   </div>
                   
                 </div>
@@ -354,4 +360,4 @@ const StudentsAccount = ()=>{
         </div>
       </div>);
 }
-export default StudentsAccount;
+export default TeacherAccount;

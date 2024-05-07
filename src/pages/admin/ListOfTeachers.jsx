@@ -6,6 +6,7 @@ import StatusList from "../../components/service-status/StatusList";
 import InputComponent from "../../components/InputComponent";
 import TeacherList from "../../components/teacher-components/TeacherList";
 import '../../styles/StudentListStyle.css';
+import UserService from "../../services/UserService";
 
 const ListOfTeachers=()=>{
   const [listTeacher, setListTeacher] = useState([]);
@@ -14,10 +15,8 @@ const ListOfTeachers=()=>{
   useEffect(() => {
     const fetchStatusData = async () => {
       try {
-        const response = await StudentList.getAll();
-        if (Array.isArray(response) && response.length > 0) {
-          setListTeacher(response); // Set status array directly
-        }
+        const response = await UserService.fetchEmployees();
+          setListTeacher(response.data); // Set status array directly
       } catch (error) {
         console.error("Error fetching service:", error);
       }
