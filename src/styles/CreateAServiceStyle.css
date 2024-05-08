@@ -40,8 +40,18 @@ height: 4vw;
     width: 15vw;
     border: 2px solid #B1B1B1;
 }
-.btn-component-dropdown{
+.btn-component-dropdown {
     display: flex;
-    flex-direction: row;
     align-items: center;
+}
+
+.dropdown-container {
+    display: flex;
+    align-items: center;
+    margin-right: 10px; /* Добавьте отступ между Dropdown и текстом, если нужно */
+}
+
+.selected-option {
+    font-size: 1.4em;
+    color: #333;
 }

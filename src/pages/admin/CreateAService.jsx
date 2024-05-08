@@ -34,8 +34,11 @@ const CreateAService = () => {
                 <div className="service-created-list">
                     <input className="first-input" placeholder="Введите название" />
                     <textarea className="second-input" placeholder="Введите описание услуги" />
-                    <div className='btn-component-dropdown'><Dropdown className="dropdown-create-service" options={options} onSelect={handleSelect} />
-                        {selectedOption && <p>Тип услуги: {selectedOption}</p>}
+                    <div className='btn-component-dropdown'>
+                    <div className="dropdown-container"><Dropdown className="dropdown-create-service" options={options} onSelect={handleSelect} />
+                    </div>
+                        {selectedOption && <p className="selected-option">Тип услуги: {selectedOption}</p>}
+
                         <div>
                             <ButtonComponent className="btn-account" name="Сохранить" />
                             <ButtonComponent className="btn-account cancel-btn" onClick={changingEditing} name="Отмена" />
