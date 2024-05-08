@@ -14,6 +14,6 @@ export default class UserService {
         return $api.get(`students/${serviceNumber}`)
     }
     static fetchEmployee(post) {
-        return $api.get(`employees/${post}`)
+        return $api.get(`employees/frompost?post=${post}`)
     }
 }

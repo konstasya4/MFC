@@ -9,8 +9,8 @@ export const authReducer = (state = initialState, action) => {
     case 'LOGIN_USER':
       return {
         ...state,
-        isRole: action.payload.Role,
-        isAuth: action.payload.Result,
+        isRole: action.payload.role,
+        isAuth: action.payload.succeeded,
       };
     case 'LOGOUT_USER':
       return {

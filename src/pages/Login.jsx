@@ -74,19 +74,19 @@ const [error, setError] = useState("");
           const auth = localStorage.getItem('auth');
           const role = localStorage.getItem('role');
           if (auth && role) {
-            dispatch(loginUser({ Result: JSON.parse(auth), Role: role }));
+            dispatch(loginUser({ succeeded: JSON.parse(auth), role: role }));
           }
         }, []);
         
         const handleLogin = async () => {
           try {
             const response = await AuthService.login(login, password);
-            localStorage.setItem("auth", response.data.Result.toString()); // Преобразуем в строку
-            localStorage.setItem("role", response.data.Role);
+            localStorage.setItem("auth", response.data.succeeded); // Преобразуем в строку
+            localStorage.setItem("role", response.data.role);
             dispatch(loginUser(response.data));
-            if (response.data.Role === 'admin' && response.data.Result) {
+            if (response.data.role === 'admin' && response.data.succeeded) {
               navigate('/mainAdmin');
-            } else if (response.data.Result){
+            } else if (response.data.succeeded){
               navigate('/mainUser');
             }
           } catch (error) {
