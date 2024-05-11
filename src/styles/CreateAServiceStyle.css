@@ -7,7 +7,7 @@
     flex-direction: column; 
     margin-left: 3.75vw;
 }
-.service-created-list input{
+.service-created-list .input{
     border:2px solid #B1B1B1;
     border-radius: 1vw;
     width: 60vw;

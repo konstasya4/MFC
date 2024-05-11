@@ -73,7 +73,7 @@ setEditing(!editing)
   };
   const passportData=()=>{
       return userData
-      ? `${userData.Passport.series} ${userData.Passport.number}`
+      ? `${userData.passport.series} ${userData.passport.number}`
       : null;
   }
 
@@ -92,10 +92,10 @@ setEditing(!editing)
               <img src={PersonalDataActive} />
             </div>
             <div className="name-line">
-              <div className="fio">{userData.Name.second}</div>
+              <div className="fio">{userData.name.second}</div>
               <div className="name-second-line horiz-line">
-                <div className="fio">{userData.Name.first}</div>
-                <div className="fio midleName">{userData.Name.middle}</div>
+                <div className="fio">{userData.name.first}</div>
+                <div className="fio midleName">{userData.name.middle}</div>
               </div>
             </div>
           </div>
@@ -132,7 +132,7 @@ setEditing(!editing)
                 </div>
                 <div className="citizenship column-account">
                   <div className="title-account">Гражданство</div>
-                  <div className="text-account">{userData.Passport.citizenship}</div>
+                  <div className="text-account">{userData.passport.citizenship}</div>
                 </div>
               </div>
               <div className="column-line">
@@ -141,8 +141,8 @@ setEditing(!editing)
                   <div className="btn-show">
                     <div className="text-account">
                       {visibleField === "dateOfIssue"
-                        ? userData.Passport.dateOfIssue
-                        : hideData(userData.Passport.dateOfIssue)}
+                        ? userData.passport.dateOfIssue
+                        : hideData(userData.passport.dateOfIssue)}
                     </div>
                     <button
                       img={Show}
@@ -154,14 +154,14 @@ setEditing(!editing)
                         <img src={Hide}></img>
                       )}
                     </button>
-                    <button onClick={() => copyToClipboard(userData.Passport.dateOfIssue)}>
+                    <button onClick={() => copyToClipboard(userData.passport.dateOfIssue)}>
                       <img src={IconCopy} alt="Copy" />
                     </button>
                   </div>
                 </div>
                 <div className="dateOfBirth column-account">
                   <div className="title-account">Дата рождения</div>
-                  <div className="text-account">{userData.Passport.dateOfBrith}</div>
+                  <div className="text-account">{userData.passport.dateOfBrith}</div>
                 </div>
               </div>
               <div className="column-line">
@@ -170,8 +170,8 @@ setEditing(!editing)
                   <div className="btn-show">
                     <div className="text-account">
                       {visibleField === "unitCode"
-                        ? userData.Passport.unitCode
-                        : hideData(userData.Passport.unitCode)}
+                        ? userData.passport.unitCode
+                        : hideData(userData.passport.unitCode)}
                     </div>
                     <button
                       img={Show}
@@ -183,14 +183,14 @@ setEditing(!editing)
                         <img src={Hide}></img>
                       )}
                     </button>
-                    <button onClick={() => copyToClipboard(userData.Passport.unitCode)}>
+                    <button onClick={() => copyToClipboard(userData.passport.unitCode)}>
                       <img src={IconCopy} alt="Copy" />
                     </button>
                   </div>
                 </div>
                 <div className="placeOfBirth column-account">
                   <div className="title-account">Место рождения</div>
-                  <div className="text-account">{userData.Passport.placeOfBrith}</div>
+                  <div className="text-account">{userData.passport.placeOfBrith}</div>
                 </div>
               </div>
             </div>
