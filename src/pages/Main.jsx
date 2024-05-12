@@ -19,27 +19,33 @@ import CertificateList from "../components/main-services/CertificateList";
 import OurWebsite from "../images/Services/OurWebsite.png"
 // import { Link } from 'react-router-dom';
 import NavbarLeft from '../components/Navbar/leftNavbar/NavbarLeft'
+import ServiceService from "../services/ServiceService"
 
 
 
 const Main = () => {
 const {isAuth} = useContext(AuthContext);
 const {isRole} = useContext(RoleContext);
-const [posts, setPosts] = useState([]);
+const [services, setServices] = useState([]);
 
     useEffect(() => {
         fetchPosts();
     }, []);
 
     const fetchPosts = async () => {
-        try {
-            const responce = await StatementList.getAll();
-            setPosts([...responce])
-        } catch (error) {
-            console.error('Error fetching posts:', error);
-        }
-    };
-    console.log(posts)
+      try {
+          const response = await ServiceService.fetchServiceList();
+          console.log(response); // Log the response to see its structure
+          if (Array.isArray(response.data)) {
+              setServices([...response.data]);
+          } else {
+              console.error('Response is not an array:', response);
+          }
+      } catch (error) {
+          console.error('Error fetching posts:', error);
+      }
+  };
+    console.log(services)
   console.log(window.location.pathname);
   return (
     <div className="main-navbar">
@@ -100,7 +106,7 @@ const [posts, setPosts] = useState([]);
           Выдача справок и копий документов
         </div>
         <div className="services-start">
-          <div className='cert-main'><CertificateList className="ps" posts={posts} /></div>
+          <div className='cert-main'><CertificateList className="ps" services={services.filter(service => service.type === 0)}/></div>
           <div className='btnOurWebsite'>
             <a href="https://rut-miit.ru/depts/26467?ysclid=luv1syvxkm277788766" target="_blank" rel="noopener noreferrer"><button className="btn-service-third">
               <img src={OurWebsite} alt="" />
@@ -111,15 +117,15 @@ const [posts, setPosts] = useState([]);
         <div id='formsForEmployees' className="issuanceOfCertificates">
         Бланки документов для работников
         </div>
-        <div className='cert-main'><CertificateList className="ps" posts={posts} /></div>
+        <div className='cert-main'><CertificateList className="ps" services={services.filter(service => service.type === 1)}/></div>
         <div id='formsForStudents' className="issuanceOfCertificates">
         Бланки документов для обучающихся
         </div>
-        <div className='cert-main'><CertificateList className="ps" posts={posts} /></div>
+        <div className='cert-main'><CertificateList className="ps" services={services.filter(service => service.type === 2)}/></div>
         <div id='translationAndRestoration' className="issuanceOfCertificates">
         Перевод и восстановление
         </div>
-        <div className='cert-main'><CertificateList className="ps" posts={posts} /></div>
+        <div className='cert-main'><CertificateList className="ps" services={services.filter(service => service.type === 3)} /></div>
       </div>
     </div>
   );
