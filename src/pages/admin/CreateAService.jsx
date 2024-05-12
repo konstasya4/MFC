@@ -14,20 +14,26 @@ const CreateAService = () => {
   const [file, setFile] = useState(null);
   const [serviceName, setServiceName] = useState("");
   const [serviceDescription, setServiceDescription] = useState("");
-
+  const [error, setError] = useState(false);
   const options = [
     { key: 0, option: "Справка" },
     { key: 1, option: "Заявление для студентов" },
     { key: 2, option: "Заявление для работников" },
     { key: 3, option: "Перевод и восстановление" },
   ];
-  // const renamedFile = new File([file], `${serviceName}`, { type: file.type });
-  const handleSelect = (option_item) => {
-    setSelectedOption(
-      options.find((optionT) => optionT.option === option_item).key
-    );
-    console.log(selectedOption);
-  };
+  const renamedFile = file
+    ? new File([file], `${serviceName}`, { type: file.type })
+    : null;
+
+    const handleSelect = (option_item) => {
+      
+        setSelectedOption(option_item ? options.find((optionT) => optionT.option === option_item): null);
+    
+    };
+    
+    // Inside handleSave or any other function where you need to use selectedOption
+    console.log("Selected option:", selectedOption);
+    
 
   const handleFileChange = (event) => {
     setFile(event.target.files[0]);
@@ -36,45 +42,61 @@ const CreateAService = () => {
   const changingEditing = () => {
     setEditing(!editing);
   };
-
-  const handleSave = () => {
-    // Создание объекта FormData для передачи файлов и данных
-    const formData = new FormData();
-    formData.append("file", file); // Добавление файла в FormData
-    // formData.append("serviceName", serviceName); // Добавление названия услуги в FormData
-    // formData.append('serviceType', selectedOption); // Добавление типа услуги в FormData
-    console.log(selectedOption);
-    DocumentService.fetchFile(formData, selectedOption)
-      .then((response) => {
-        // Обработка успешного ответа
-        console.log(response);
-      })
-      .catch((error) => {
-        // Обработка ошибок
-        console.error("Error:", error);
-      });
-    // const formDataService = new FormData();
-    // formDataService.append("name", serviceName);
-    // formDataService.append("description", serviceDescription);
-    // formDataService.append("fileName", serviceName);
-    // formDataService.append("type", selectedOption);
-    
-
-    // DocumentService.fetchService(formDataService)
-    //   .then((response) => {
-    //     // Обработка успешного ответа
-    //   })
-    //   .catch((error) => {
-    //     // Обработка ошибки
-    //   });
-
-    // Отправка POST-запроса с использованием Axios
-    // axios.post('your_api_endpoint', formData, {
-    //     headers: {
-    //         'Content-Type': 'multipart/form-data', // Установка заголовка Content-Type для отправки файла
-    //     },
-    // })
+  const dataReset = () => {
+    console.log("Resetting data...");
+    setServiceName("");
+    setServiceDescription("");
+    setSelectedOption(null); // Reset selectedOption to null here
+    setFile(null);
   };
+  
+  
+  const addFile = () => {
+    const formData = new FormData();
+    formData.append("file", renamedFile);
+    DocumentService.fetchFile(formData, selectedOption.key-1);
+  };
+
+  const handleSave = async () => {
+    console.log("Selected option:", selectedOption);
+    // Add a null check for selectedOption
+    if (selectedOption===0 || selectedOption.key ===1  || selectedOption.key === 2) {
+      console.log("Option 1 or 2 selected");
+      if (renamedFile && serviceName && serviceDescription) {
+        console.log("All required fields are filled");
+        await addFile();
+        await DocumentService.fetchService(
+          serviceName,
+          serviceDescription,
+          selectedOption.key
+        );
+        console.log("Service saved successfully");
+        setTimeout(() => {
+          dataReset();
+        }, 1000); // 1000 миллисекунд = 1 секунда
+      } else {
+        console.log("Error: Missing required fields");
+        setError(true);
+      }
+    } else if (selectedOption ) {
+      console.log("Option 3 or 4 selected");
+      if (serviceName && serviceDescription) {
+        console.log("All required fields are filled");
+        await DocumentService.fetchService(
+          serviceName,
+          serviceDescription,
+          selectedOption.key
+        );
+        console.log("Service saved successfully");
+        dataReset();
+      } else {
+        console.log("Error: Missing required fields");
+        setError(true);
+      }
+    }
+  };
+  
+  
 
   return (
     <div>
@@ -102,18 +124,20 @@ const CreateAService = () => {
                 className="dropdown-create-service"
                 options={options}
                 onSelect={handleSelect}
+                selectedOption={selectedOption}
               />
             </div>
-            {(selectedOption === 0 || selectedOption === 1)  && (
               <div className="upload-container">
+              {selectedOption && (selectedOption.key === 0 ||selectedOption.key === 1 || selectedOption.key === 2) && (
                 <input
                   id="file-upload"
                   className="file-input"
                   type="file"
                   onChange={handleFileChange}
                 />
-              </div>
-            )}
+              )}
+            </div>
+
 
             <div>
               <ButtonComponent

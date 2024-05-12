@@ -1,19 +1,20 @@
 import $api from "../http/index";
 
 export default class UserService {
-    static fetchFile(formData, type) {
-        return $api.post(`/file?type=${type}`, formData, {
-            headers: {
-                'Content-Type': 'multipart/form-data', 
-            },
+    static fetchFile(renamedFile, type) {
+        return $api.post(`/file?type=${type}`, renamedFile
+            // headers: {
+            //     'Content-Type': 'multipart/form-data'
+            // }
+        )
+    }
+    static fetchService(serviceName, serviceDescription, selectedOption) {
+        console.log( "dddd", serviceName, serviceDescription, selectedOption)
+        return $api.post('/services', {
+            "name":serviceName,
+            "description":serviceDescription,
+            "type":selectedOption
         })
     }
-    // static fetchService(formData) {
-    //     return $api.post('/services', formData
-    //         // headers: {
-    //         //     'Content-Type': 'multipart/form-data', 
-    //         // },
-    //     )
-    // }
     
 }
