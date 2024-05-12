@@ -2,11 +2,10 @@ import React from 'react';
 import StatusItem from "./StatusItem";
 
 const StatusList = ({ status }) => {
-    console.log("хуй",status)
     if (!status || !status.length) {
         return (
             <h1 style={{textAlign: 'center'}}>
-                Посты не найдены!
+                Пока еще нет заказанных услуг
             </h1>
         )
     }

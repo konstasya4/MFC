@@ -1,9 +1,9 @@
 import React from 'react';
 import CertificateItem from "./CertificateItem";
 
-const CertificateList = ({posts}) => {
-    const slicedPosts = posts.slice(0, 10);
-    if (!posts || !posts.length) {
+const CertificateList = ({services}) => {
+    const publicServices = services.filter(service => service.onPublic);
+    if (!publicServices || !publicServices.length) {
         return (
             <h1 style={{textAlign: 'center'}}>
                 Посты не найдены!
@@ -13,8 +13,8 @@ const CertificateList = ({posts}) => {
 
     return (
         <div className='certificate-list-container'>
-            {slicedPosts.map((post) =>
-                <CertificateItem post={post} key={post.id}/>
+            {publicServices.map((service) =>
+                <CertificateItem service={service} key={service.id}/>
             )}
         </div>
     );

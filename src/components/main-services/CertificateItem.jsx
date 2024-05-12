@@ -20,12 +20,12 @@ const CertificateItem = (props) => {
     const navigate = useNavigate()
     const handleClick = () => {
         // Перенаправляем пользователя на маршрут с ID услуги
-        navigate(`/services/${props.post.id}`);
+        navigate(`/services/${props.service.name}`);
     };
     return (
         <div className="post">
             <div className="post__content">
-            <button onClick={handleClick} className="certificateItem" >{props.post.title}</button>
+            <button onClick={handleClick} className="certificateItem" >{props.service.name}</button>
             </div>
         </div>
     );
