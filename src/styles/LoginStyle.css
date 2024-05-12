@@ -79,4 +79,13 @@
     border: 0.4vw solid #A5C9FF;
     max-width: 30vw;
   }
-  
+  .error-input input{
+    border: 1px solid red;
+  }
+
+  /* Additional CSS for error message styling */
+.error-message{
+  color: red;
+  font-size: 14px;
+  margin-top: 5px;
+}
