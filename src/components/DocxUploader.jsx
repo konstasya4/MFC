@@ -23,7 +23,7 @@ const DocxUploader = () => {
   };
 
   return (
-    <div>
+    <div className='upload-conteiner'>
       {/* <label className="file-input-label" for="file-upload">Загрузить файл</label> */}
   <input id="file-upload" className="file-input" type="file"/>
     </div>

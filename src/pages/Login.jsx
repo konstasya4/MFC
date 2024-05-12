@@ -54,7 +54,7 @@ import { loginUser, logoutUser } from '../actions/actions';
 import AuthService from '../services/AuthService';
 
 
- function Login ()  {
+function Login () {
 
   const dispatch = useDispatch();
   const { isAuth } = useSelector(state => state.auth); // Access isAuth state from Redux store
@@ -62,75 +62,76 @@ import AuthService from '../services/AuthService';
   const navigate = useNavigate()
   const [login, setLogin]=useState("");
   const [password, setPassword]=useState("");
+  const [error, setError] = useState(""); // State for error message
 
-const [error, setError] = useState("");
-        const hanldeInputChangeLogin = (event)=>{
-          setLogin(event.target.value)
-        }
-        const hanldeInputChangePassword = (event)=>{
-          setPassword(event.target.value)
-        }
-        useEffect(() => {
-          const auth = localStorage.getItem('auth');
-          const role = localStorage.getItem('role');
-          if (auth && role) {
-            dispatch(loginUser({ succeeded: JSON.parse(auth), role: role }));
-          }
-        }, []);
-        
-        const handleLogin = async () => {
-          try {
-            const response = await AuthService.login(login, password);
-            localStorage.setItem("auth", response.data.succeeded); // Преобразуем в строку
-            localStorage.setItem("role", response.data.role);
-            dispatch(loginUser(response.data));
-            if (response.data.role === 'admin' && response.data.succeeded) {
-              navigate('/mainAdmin');
-            } else if (response.data.succeeded){
-              navigate('/mainUser');
-            }
-          } catch (error) {
-            console.log(error);
-          }
-        };
-        const logOutAuth = async () => {
-          try {
-            await AuthService.logout();
-            dispatch(logoutUser());
-            localStorage.removeItem('token');
-          } catch (error) {
-            if (error.response && error.response.status) {
-              console.error('Error logging out:', error.response.status);
-            } else {
-              console.error('Error logging out:', error);
-            }
-          }
-        };
-        
- 
-    return (
-      <div className="login-container">
-        <div className="login-box">
-          <form>
-            <div className="textbox">
+  const hanldeInputChangeLogin = (event)=>{
+    setLogin(event.target.value)
+  }
+  
+  const hanldeInputChangePassword = (event)=>{
+    setPassword(event.target.value)
+  }
+  
+  useEffect(() => {
+    const auth = localStorage.getItem('auth');
+    const role = localStorage.getItem('role');
+    if (auth && role) {
+      dispatch(loginUser({ succeeded: JSON.parse(auth), role: role }));
+    }
+  }, []);
+  
+  const handleLogin = async () => {
+      const response = await AuthService.login(login, password);
+      localStorage.setItem("auth", response.data.succeeded); // Convert to string
+      localStorage.setItem("role", response.data.role);
+      dispatch(loginUser(response.data));
+      if (response.data.role === 'admin' && response.data.succeeded) {
+        navigate('/mainAdmin');
+      } else if (response.data.succeeded){
+        navigate('/mainUser');
+      }
+      else setError("Неверно введен пароль");
+
+  };
+  
+  const logOutAuth = async () => {
+    try {
+      await AuthService.logout();
+      dispatch(logoutUser());
+      localStorage.removeItem('token');
+    } catch (error) {
+      if (error.response && error.response.status) {
+        console.error('Error logging out:', error.response.status);
+      } else {
+        console.error('Error logging out:', error);
+      }
+    }
+  };
+  
+  return (
+    <div className="login-container">
+      <div className="login-box">
+        <form>
+          <div className="textbox">
             <label className='text-form' htmlFor="username">Логин</label>
-              <input className='input_form' type="text" placeholder="Введите ваш логин" name="username"  onChange={hanldeInputChangeLogin} required />
-            </div>
-            <div className="textbox">
+            <input className={`${error ? 'error-input': 'input_form'}`} type="text" placeholder="Введите ваш логин" name="username" onChange={hanldeInputChangeLogin} required />
+          </div>
+          <div className="textbox">
             <label  className='text-form' htmlFor="password">Пароль</label>
-              <input type="password" placeholder="Введите ваш пароль" name="password" onChange={hanldeInputChangePassword} required />
-            </div>
-          </form>
-        </div>
-        <div className="external-buttons">
-            <button className="btn_login" onClick={handleLogin}>Войти</button>
-          <Link to="/forgetPass" className='forgotPassword'>Забыли пароль?</Link>
-        </div>
-        <button onClick={logOutAuth}>выйти</button>
-        <div>{error && <p className="error-message">{error}</p>}</div>
+            <input className={` ${error ? 'error-input': 'input_form'}`} type="password" placeholder="Введите ваш пароль" name="password" onChange={hanldeInputChangePassword} required />
+          </div>
+        </form>
       </div>
-    );
+      <div className="external-buttons">
+        <button className="btn_login" onClick={handleLogin}>Войти</button>
+        <Link to="/forgetPass" className='forgotPassword'>Забыли пароль?</Link>
+      </div>
+      <button onClick={logOutAuth}>выйти</button>
+      <div>{error && <p className="error-message">{error}</p>}</div>
+    </div>
+  );
 }
 
 export default Login;
+
 

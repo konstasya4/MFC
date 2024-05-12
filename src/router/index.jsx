@@ -19,6 +19,7 @@ import { AuthContext, RoleContext } from "../context"
 import TeacherAccount from '../pages/admin/TeacherAccount'
 import NotDoneService from "../pages/admin/NotDoneService"
 import CreateAService from "../pages/admin/CreateAService"
+import ArhiveServices from "../pages/admin/ArhiveServices"
 
 
 // const MainComponent = () => {
@@ -49,7 +50,7 @@ export const publicRoutes=[
     {path:"/question", element: <Quest/>, exact: true},
     {path:"/forgetPass", element: <ForgetPassword/>, exact: true},
     {path:"/code", element:<ConfirmationCode/>, exact: true},
-    {path:"/services/:id", element:<Services/>, exact: true},
+    {path:"/services/:name", element:<Services/>, exact: true},
     // {path:"*", element: <MainComponent/>, exact: true},
 ]
 
@@ -57,7 +58,7 @@ export const privateRoutesUser=[
     {path:"/mainUser", element: <Main/>, exact: true},
     {path:"/account", element: <PersonalAccount/>, exact: true},
     {path:"/questionUser", element: <Quest/>, exact: true},
-    {path:"/services/:id", element: <Services/>, exact: true},
+    {path:"/services/:name", element: <Services/>, exact: true},
     {path:"/status", element: <ExecutionStatus/>, exact: true},
     {path:"/doneServices", element: <DoneServices/>, exact: true},
     // {path:"*", element: <MainComponent/>, exact: true},
@@ -73,6 +74,7 @@ export const privateRoutesAdmin=[
     {path:"/listOfTeachers", element: <ListOfTeachers/>, exact: true},
     {path:"/statements", element: <Statements/>, exact: true},
     {path:"/createService", element:<CreateAService/>, exact: true},
+    {path:"/arhiveServices", element: <ArhiveServices/>, exact:true},
     // {path:"/students", element: <StudentsAccount/>, exact: true},
     // {path:"/teacher", element: <TeacherAccount/>, exact: true},
     {path:"/notDoneService", element: <NotDoneService/>, exact: true},

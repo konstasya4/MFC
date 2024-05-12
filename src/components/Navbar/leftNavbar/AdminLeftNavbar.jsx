@@ -84,7 +84,7 @@ const AdminLeftNavbar = () => {
         <li className="li-left">
           <div>
             <img className="img-nav" src={Arhive} />
-            <Link to="">Архив</Link>
+            <Link to="/arhiveServices">Архив</Link>
           </div>
         </li>
         <li className="li-left">
