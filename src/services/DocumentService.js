@@ -2,10 +2,12 @@ import $api from "../http/index";
 
 export default class UserService {
     static fetchFile(renamedFile, type) {
-        return $api.post(`/file?type=${type}`, renamedFile
-            // headers: {
-            //     'Content-Type': 'multipart/form-data'
-            // }
+        return $api.post(`/file?type=${type}`, renamedFile,{
+            headers: {
+                'Content-Type': 'multipart/form-data'
+            }
+        }
+           
         )
     }
     static fetchService(serviceName, serviceDescription, selectedOption) {

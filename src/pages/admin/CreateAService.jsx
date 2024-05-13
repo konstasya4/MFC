@@ -54,7 +54,8 @@ const CreateAService = () => {
   const addFile = () => {
     const formData = new FormData();
     formData.append("file", renamedFile);
-    DocumentService.fetchFile(formData, selectedOption.key-1);
+    const responceFile=DocumentService.fetchFile(formData, selectedOption.key);
+    console.warn(responceFile)
   };
 
   const handleSave = async () => {
@@ -64,7 +65,7 @@ const CreateAService = () => {
       console.log("Option 1 or 2 selected");
       if (renamedFile && serviceName && serviceDescription) {
         console.log("All required fields are filled");
-        await addFile();
+        addFile();
         await DocumentService.fetchService(
           serviceName,
           serviceDescription,

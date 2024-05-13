@@ -36,11 +36,7 @@ const [services, setServices] = useState([]);
       try {
           const response = await ServiceService.fetchServiceList();
           console.log(response); // Log the response to see its structure
-          if (Array.isArray(response.data)) {
-              setServices([...response.data]);
-          } else {
-              console.error('Response is not an array:', response);
-          }
+              setServices(response.data.services);
       } catch (error) {
           console.error('Error fetching posts:', error);
       }

@@ -49,15 +49,18 @@ color: white;
 .status-indicator p{
     margin: 0;
 }
-.status-indicator-done{
+.status-indicator-2{
     background-color:#4AC341;
 }
-.status-indicator-in-progress{
+.status-indicator-1{
     background-color:#408CFF;
 }
-.status-indicator-rejected{
+.status-indicator-3{
     background-color:#FF8F8F;
 }
-.status-indicator-received{
+.status-indicator-0{
+    background-color: #a7c9f9;
+}
+.status-indicator-4{
     background-color: #ADADAD;
 }

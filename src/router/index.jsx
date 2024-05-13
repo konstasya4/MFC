@@ -66,7 +66,7 @@ export const privateRoutesUser=[
 export const privateRoutesAdmin=[
     {path:"/mainAdmin", element: <Main/>, exact: true},
     {path:"/admin", element: <Admin/>, exact: true},
-    {path:"/services/:id", element: <Services/>, exact: true},
+    {path:"/services/:name", element: <Services/>, exact: true},
     {path:"/students/:serviceNumber", element: <StudentsAccount/>, exact: true},
     {path:"/employee/:post", element: <TeacherAccount/>, exact: true},
     {path:"/accountAdmin", element: <PersonalAccount/>, exact: true},

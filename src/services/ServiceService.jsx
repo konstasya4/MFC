@@ -10,5 +10,7 @@ export default class ServiceService {
     static fetchOnPublic(name) {
         return $api.put(`/services/switch_state/${name}`)
     }
-    
+    static fetchExecutionServicesUser(){
+        return $api.get('/task/from_current_user')
+    }
 }

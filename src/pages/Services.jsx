@@ -63,13 +63,14 @@ import ServiceService from "../services/ServiceService"
 import ModalAuth from '../components/modalWindow/ModalAuth'; // Импортируем компонент модального окна
 import { useSelector } from "react-redux";
 import ModalOrderingService from '../components/modalWindow/ModalOrderingService'
+import GettingAService from "../services/GettingAService";
 
 const Services = () => {
     const { name } = useParams();
     const { isAuth } = useSelector(state => state.auth);
     const { isRole } = useSelector(state => state.auth);
     // const history = useHistory();
-    const [service, setService] = useState({}); // Устанавливаем начальное значение в пустой объект
+    const [service, setService] = useState(); // Устанавливаем начальное значение в пустой объект
     const [loading, setLoading] = useState(true); // Состояние для отслеживания загрузки данных
     const [modalOpen, setModalOpen] = useState(false); // Состояние модального окна
 
@@ -77,17 +78,26 @@ const Services = () => {
         const fetchService = async () => {
             try {
                 const response = await ServiceService.fetchServiceItem(name);
-                setService(response.data);
+                setService(response.data.service);
                 setLoading(false); // Устанавливаем состояние загрузки в false после получения данных
+                console.log(response)
             } catch (error) {
                 console.error('Error fetching service:', error);
             }
         };
         fetchService();
     }, [name]);
-
+const OrderingAService =()=>{
+ 
+}
     // Функция для обработки нажатия кнопки "Получить услугу"
     const handleGetService = () => {
+      console.log(isAuth, isRole!=="admin")
+      if (isAuth && isRole!=="admin"){
+        const responce=GettingAService.fetchAddedService(service.name)
+console.log("отправка", responce)
+      }
+      
         // Проверяем, авторизован ли пользователь
         // console.log("isAuth", isAuth)
         // const isAuthenticated = isAuth/* Ваш код проверки авторизации пользователя */;
@@ -111,6 +121,7 @@ const Services = () => {
     if (loading) {
         return <div>Loading...</div>;
     }
+    console.log("isRole modalwindow", isRole)
 
     return (
       <div className="service-page">
@@ -130,9 +141,9 @@ const Services = () => {
             <img src={Download} alt=""></img>
           </button>)}
         </div>
-        {!isRole?
-        <ModalAuth isOpen={modalOpen} onClose={handleCloseModal}/>:
-        <ModalOrderingService isOpen={modalOpen} onClose={handleCloseModal}/>
+        {!isAuth?(<ModalAuth isOpen={modalOpen} onClose={handleCloseModal}/> )
+        :( <ModalOrderingService isOpen={modalOpen} onClose={handleCloseModal}/>)
+       
         }
       </div>
     );
