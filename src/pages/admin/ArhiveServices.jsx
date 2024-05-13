@@ -16,7 +16,7 @@ const ArhiveServices=()=>{
     const fetchStatusData = async () => {
       try {
         const response = await ServiceService.fetchServiceList();
-        setListArhiveServices(response.data); // Set status array directly
+        setListArhiveServices(response.data.services); // Set status array directly
       } catch (error) {
         console.error("Error fetching service:", error);
       }
