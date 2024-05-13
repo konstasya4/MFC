@@ -1,0 +1,15 @@
+import $api from "../http/index";
+
+export default class GettingAService {
+    static fetchAddedService(name) {
+        return $api.post(`/task/${name}`)
+    }
+    static fetchListServicesAdmin() {
+        return $api.get(`/task`)
+    }
+    static fetchNewStatus(state, taskId) {
+        return $api.put(`/task/${taskId}`, {
+            "newState":state
+        })
+    }
+}
