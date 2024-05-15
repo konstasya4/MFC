@@ -15,30 +15,28 @@ const ExecutionStatus = () => {
     { key: 3, option: "Отклонено" },
     { key: 4, option: "Получено" },
   ];
+
   useEffect(() => {
     const fetchStatusData = async () => {
       try {
         const response = await ServiceService.fetchExecutionServicesUser();
-          setStatus(response.data.tasks); // Set status array directly
-          console.log(status)
+        setStatus(response.data.tasks); // Устанавливаем массив статусов напрямую
+        console.log(response);
       } catch (error) {
-        console.error("Error fetching service:", error);
+        console.error("Ошибка при получении данных о статусе:", error);
       }
     };
     fetchStatusData();
   }, []);
 
-  useEffect(() => {
-  }, [status]);
-
   // Обработчик для фильтрации статусов по выбранному статусу
   const handleFilter = (filterStatus) => {
-        setFilter(filter === filterStatus ? "" : filterStatus);
-      };
+    setFilter(filter === filterStatus ? "" : filterStatus);
+  };
 
   // Фильтрация статусов на основе выбранного статуса
   const filteredStatus = status.filter(stat =>
-    !filter || stat.status === filter
+    (!filter && filter!==0) || stat.state === filter
   );
 
   return (
@@ -46,30 +44,26 @@ const ExecutionStatus = () => {
       <div className="head-container">
         <div className="head-personal-data">Заказанные услуги</div>
         <div className="filter-button">
-        {/* <button className={`status-btn ${filter===statusService.key(3)? "rejected-btn-active":"status-btn-pass"}`} onClick={() => handleFilter(statusService.key(3))}>Создано</button>
-          <button className={`status-btn ${filter===statusService.key(2)? "done-btn-active":"status-btn-pass"}`} onClick={() => handleFilter("Готово к выдаче")}>Готовы</button>
-          <button className={`status-btn ${filter===statusService.key(1)? "in-progress-btn-active":"status-btn-pass"}`} onClick={() => handleFilter("В работе")}>В работе</button>
-          <button className={`status-btn ${filter===statusService.key(3)? "rejected-btn-active":"status-btn-pass"}`} onClick={() => handleFilter("Отклонено")}>Отклонены</button> */}
-        <div className="filter-button">
-          {statusService.map((statusItem, index) => (
-            <button
-              key={index}
-              className={`status-btn ${filter === statusItem.key ? `btn-active-${index}` : "status-btn-pass"}`}
-              onClick={() => handleFilter(statusItem.key)}
-            >
-              {statusItem.option}
-            </button>
-          ))}
-        </div>
+          <div className="filter-button">
+            {statusService.map((statusItem, index) => (
+              <button
+                key={index}
+                className={`status-btn ${filter === statusItem.key ? `btn-active-${index}` : "status-btn-pass"}`}
+                onClick={() => handleFilter(statusItem.key)}
+              >
+                {statusItem.option}
+              </button>
+            ))}
+          </div>
         </div>
       </div>
 
       <div className="ordered-cervices-container">
-        <NavbarLeft /><div className="services-status-container">
+        <NavbarLeft />
+        <div className="services-status-container">
           <InputComponent className="status-input" placeholder="Справка по месту работы"/>
-        <StatusList status={filteredStatus} />
+          <StatusList status={filteredStatus} />
         </div>
-
       </div>
     </div>
   );
