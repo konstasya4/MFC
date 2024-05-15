@@ -22,7 +22,7 @@ const CreateAService = () => {
     { key: 3, option: "Перевод и восстановление" },
   ];
   const renamedFile = file
-    ? new File([file], `${serviceName}`, { type: file.type })
+    ? new File([file], `${serviceName}.doc`, { type: file.type })
     : null;
 
     const handleSelect = (option_item) => {

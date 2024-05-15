@@ -17,7 +17,7 @@ const ArhiveServiceItem = (props) => {
     const [onPublic, setOnPublic] = useState(props.arhiveService.onPublic);
 
     const handleClick = () => {
-        navigate(`/services/${props.arhiveService.name}`);
+        navigate(`/createService/${props.arhiveService.name}`);
     };
 
     const typeOption = options.find(option => option.key === props.arhiveService.type)?.option;
