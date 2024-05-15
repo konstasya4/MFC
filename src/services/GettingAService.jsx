@@ -8,8 +8,9 @@ export default class GettingAService {
         return $api.get(`/task`)
     }
     static fetchNewStatus(state, taskId) {
-        return $api.put(`/task/${taskId}`, {
-            "newState":state
-        })
+        return $api.put(`/task/${taskId}?newState=${state}`)
+    }
+    static fetchDownloadTheApplication(type, nameFile) {
+        return $api.get(`/autodoc/${type}/${nameFile}`)
     }
 }

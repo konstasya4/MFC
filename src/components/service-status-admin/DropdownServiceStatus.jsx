@@ -6,7 +6,7 @@ const DropdownServiceStatus = ({ statusServices, onSelect, selectedOption, class
         <select 
             className={className}
             onChange={(e) => onSelect(e.target.value)}
-            value={selectedOption !== null ? selectedOption : ""}
+            value={selectedOption}
         >
             {statusServices.map((statusService) => (
                 <option key={statusService.key} value={statusService.key}>
