@@ -9,7 +9,7 @@ import '../../styles/StudentListStyle.css';
 import UserService from "../../services/UserService";
 
 const ListOfTeachers=()=>{
-  const [listTeacher, setListTeacher] = useState([]);
+  const [listTeacher, setListTeacher] = useState({});
   // const [filter, setFilter] = useState(""); // Состояние для отслеживания текущего выбранного статуса
 
   useEffect(() => {
@@ -17,6 +17,7 @@ const ListOfTeachers=()=>{
       try {
         const response = await UserService.fetchEmployees();
           setListTeacher(response.data); // Set status array directly
+          console.log(response)
       } catch (error) {
         console.error("Error fetching service:", error);
       }

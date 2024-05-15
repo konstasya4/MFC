@@ -23,6 +23,7 @@ const PersonalAccount = () => {
       try {
         const response = await UserService.fetchCurrentUser(); // Получаем информацию о текущем пользователе
         setUserData(response.data); // Обновляем состояние с данными пользователя
+        console.log(userData)
       } catch (error) {
         console.error("Error fetching user data:", error);
       }
@@ -128,7 +129,7 @@ setEditing(!editing)
                 </div>
                 <div className="gender column-account">
                   <div className="title-account">Пол</div>
-                  <div className="text-account">{userData.Gender}</div>
+                  <div className="text-account">{userData.gender}</div>
                 </div>
                 <div className="citizenship column-account">
                   <div className="title-account">Гражданство</div>
@@ -202,15 +203,15 @@ setEditing(!editing)
                 <div className="passportData column-account">
                   <div className="title-account">Табельный номер</div>
                   <div className="btn-show">
-                    <div className="text-account">{userData.ServiceNumber}</div>
-                    <button onClick={() => copyToClipboard(userData.ServiceNumber)}>
+                    <div className="text-account">{userData.servicenumber}</div>
+                    <button onClick={() => copyToClipboard(userData.servicenumber)}>
                       <img src={IconCopy} alt="Copy" />
                     </button>
                   </div>
                 </div>
                 <div className="gender column-account">
                   <div className="title-account">Группа</div>
-                  <div className="text-account">{userData.Group}</div>
+                  <div className="text-account">{userData.group}</div>
                 </div>
                 <div className="citizenship column-account">
                   <div className="title-account">Пароль</div>
@@ -248,7 +249,7 @@ setEditing(!editing)
                   <div className="title-account">ИНН</div>
                   <div className="btn-show">
                     <div className="text-account">
-                      {visibleField === "inn" ? userData.INN : hideData(userData.INN)}
+                      {visibleField === "inn" ? userData.inn : hideData(userData.inn)}
                     </div>
                     <button img={Show} onClick={() => toggleVisibility("inn")}>
                       {visibleField === "inn" ? (
@@ -257,14 +258,14 @@ setEditing(!editing)
                         <img src={Hide}></img>
                       )}
                     </button>
-                    <button onClick={() => copyToClipboard(userData.INN)}>
+                    <button onClick={() => copyToClipboard(userData.inn)}>
                       <img src={IconCopy} alt="Copy" />
                     </button>
                   </div>
                 </div>
                 <div className="dateOfBirth column-account">
                   <div className="title-account">Направление обучения</div>
-                  <div className="text-account">{userData.DirectionOfStudy}</div>
+                  <div className="text-account">{userData.directionofstudy}</div>
                 </div>
               </div>
               <div className="column-line">
@@ -273,8 +274,8 @@ setEditing(!editing)
                   <div className="btn-show">
                     <div className="text-account">
                       {visibleField === "snils"
-                        ? userData.SNILS
-                        : hideData(userData.SNILS)}
+                        ? userData.snils
+                        : hideData(userData.snils)}
                     </div>
                     <button
                       img={Show}
@@ -286,7 +287,7 @@ setEditing(!editing)
                         <img src={Hide}></img>
                       )}
                     </button>
-                    <button onClick={() => copyToClipboard(userData.SNILS)}>
+                    <button onClick={() => copyToClipboard(userData.snils)}>
                       <img src={IconCopy} alt="Copy" />
                     </button>
                   </div>
@@ -294,7 +295,7 @@ setEditing(!editing)
                 <div className="citizenship column-account">
                   <div className="title-account">Электронная почта</div>
                   {editing ? (
-                    <div className="text-account">{userData.Email}</div>
+                    <div className="text-account">{userData.email}</div>
                   ) : (
                     <div>
                       <InputComponent
