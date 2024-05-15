@@ -3,8 +3,13 @@ import "../../styles/componentsStyles/ModalAuthStyle.css"; // Стили мод�
 import SentServiceIcon from "../../images/SentServiceIcon.png";
 import { useNavigate } from "react-router-dom";
 import ButtonComponent from "../ButtonComponent";
+import { useSelector } from "react-redux";
+import Download from '../../images/Download.png'
+import '../../styles/ServiceStyle.css'
 
-const ModalOrderingService = ({ isOpen, onClose }) => {
+const ModalOrderingService = ({ isOpen, onClose, service, downloadURL }) => {
+  const { isAuth } = useSelector(state => state.auth);
+    const { isRole } = useSelector(state => state.auth);
   const navigate = useNavigate();
   const modalRef = useRef(null); // Создаем ссылку на элемент модального окна
 
@@ -22,7 +27,15 @@ const ModalOrderingService = ({ isOpen, onClose }) => {
       onClose(); // Закрываем модальное окно при клике за его пределами
     }
   };
-
+  const handleDownloadClick = () => {
+    const filename = `${service.name}.doc`;
+    const a = document.createElement('a');
+    a.setAttribute('href', downloadURL);
+    a.setAttribute('download', filename);
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+  };
   // Добавляем обработчик клика на весь документ
   // Когда модальное окно открыто (isOpen === true)
   // И удаляем его при размонтировании компонента
@@ -55,6 +68,14 @@ const ModalOrderingService = ({ isOpen, onClose }) => {
                 <p className="modal-text">
                   Заявка принята, следите за ее статусом в личном кабинете
                 </p>
+                {(service.type === 1 || service.type === 2) &&
+                    <button className="download-text-modal" onClick={handleDownloadClick}>
+                        <div>Скачать заполненный файл</div>
+                        {/* <img src={Download} alt="Download" /> */}
+                    </button>
+                    // <button onClick={handleDownload}>Download File</button>
+                    
+                }
                 <ButtonComponent
                   className="modal-open-btn"
                   onClick={handlePersonalAccount}

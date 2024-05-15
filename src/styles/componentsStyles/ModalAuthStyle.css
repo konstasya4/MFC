@@ -66,3 +66,12 @@
     cursor: pointer;
 
   }
+  
+  .download-text-modal{
+    margin-bottom: 1vw;
+    font: 500 1.25em "Roboto";
+    background: none;
+    border: none;
+    align-items: center;
+    cursor: pointer;
+  }

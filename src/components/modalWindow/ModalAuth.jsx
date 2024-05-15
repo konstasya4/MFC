@@ -12,7 +12,7 @@ const ModalAuth = ({ isOpen, onClose }) => {
   const handleLogin = () => {
     navigate("/login");
   };
-
+console.log("Я почему-то не открываюсь", isOpen)
   // Обработчик клика на внешнюю область модального окна
   const handleClickOutside = (event) => {
     if (modalRef.current && !modalRef.current.contains(event.target)) {
