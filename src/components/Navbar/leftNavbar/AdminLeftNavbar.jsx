@@ -37,12 +37,12 @@ const AdminLeftNavbar = () => {
             <Link to="/createService">Создать услугу</Link>
           </div>
         </li>
-        <li className="li-left">
+        {/* <li className="li-left">
           <div>
             <img className="img-nav" src={CreateHelpTemplate} />
             <Link to="">Создать шаблон справки</Link>
           </div>
-        </li>
+        </li> */}
         <li className="li-left">
           <div>
             <img className="img-nav" src={Employees} />
@@ -55,12 +55,12 @@ const AdminLeftNavbar = () => {
             <Link to="/listOfStudents">Студенты</Link>
           </div>
         </li>
-        <li className="li-left">
+        {/* <li className="li-left">
           <div>
             <img className="img-nav" src={Done} />
             <Link to="">Готово</Link>
           </div>
-        </li>
+        </li> */}
         {/* <li className="li-left">
           <div className="div-left">
             <div className="img-div">
@@ -77,7 +77,7 @@ const AdminLeftNavbar = () => {
             <img className="img-nav" src={NotCompleted} />
             </div>
             <div className="link-div">
-            <Link to="/notDoneService">Не готово</Link>
+            <Link to="/notDoneService">Заказанные услуги</Link>
           </div>
           </div>
         </li>
