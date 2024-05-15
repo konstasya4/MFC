@@ -2,9 +2,12 @@ import React, { useState, useMemo } from "react";
 import "../../styles/ServiceStatusListStyle.css";
 import DropdownServiceStatus from "./DropdownServiceStatus";
 import GettingAService from "../../services/GettingAService";
+import ModalDownload from '../../components/modalWindow/ModalDownload'
 
 const ServiceStatusItem = (props) => {
   const [downloadURL, setDownloadURL] = useState(null);
+  const [modalOpen, setModalOpen] = useState(false); 
+  const [documentDownload, setDocumentDownload]=useState()
   const statusServices = useMemo(
     () => [
       { key: 0, status: "Создано" },
@@ -42,23 +45,24 @@ const ServiceStatusItem = (props) => {
   const downloadTheDocument = async () => {
     try {
       console.warn("jj")
-      const response = await GettingAService.fetchDownloadTheApplication(
-        props.status.type,
-        props.status.serviceName
+      const response = await GettingAService.fetchDownloadTheApplicationForAdmin(
+        props.status.id,
       );
+      setDocumentDownload(props.status)
       // const blob = new Blob([response.request.responseURL], { type: 'multipart/form-data' }); // Указываем тип контента
       const objectURL = response.request.responseURL;
       console.log("objectURL", objectURL);
       setDownloadURL(objectURL);
-      setTimeout(() => {
-        const filename = `${props.status.name}.doc`;
-        const a = document.createElement("a");
-        a.setAttribute("href", downloadURL);
-        a.setAttribute("download", filename);
-        document.body.appendChild(a);
-        a.click();
-        document.body.removeChild(a);
-      }, 4000);
+      setModalOpen(true)
+      // setTimeout(() => {
+      //   const filename = `${props.status.serviceName}.doc`;
+      //   const a = document.createElement("a");
+      //   a.setAttribute("href", downloadURL);
+      //   a.setAttribute("download", filename);
+      //   document.body.appendChild(a);
+      //   a.click();
+      //   document.body.removeChild(a);
+      // }, 10000);
       // console.log("Я почему-то не открываюсь", modalOpen)
       // handleDownloadClick();
     } catch (error) {
@@ -67,6 +71,10 @@ const ServiceStatusItem = (props) => {
 
     // Handle the case when user is not authorized or is an admin
   };
+  const handleCloseModal = () => {
+    setModalOpen(false);
+};
+
   // setModalOpen(true);
 
   return (
@@ -85,9 +93,9 @@ const ServiceStatusItem = (props) => {
       </div>
 
       <div className="change-status">
-        <button className="print-it-out-button" onClick={downloadTheDocument}>
+       {props.status.serviceType===0 && <button className="print-it-out-button" onClick={downloadTheDocument}>
           Распечатать
-        </button>
+        </button>} 
         <div className="change-status-btn">
           <DropdownServiceStatus
             className={`dropdown-servise-status status-indicator-${selectedStatusKey}`}
@@ -100,6 +108,7 @@ const ServiceStatusItem = (props) => {
           <button onClick={changeStatus}>сохранить</button>
         </div>
       </div>
+      <ModalDownload isOpen={modalOpen} onClose={handleCloseModal} documentDownload={documentDownload} downloadURL={downloadURL}/>
     </div>
   );
 };
