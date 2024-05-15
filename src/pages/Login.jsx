@@ -126,7 +126,6 @@ function Login () {
         <button className="btn_login" onClick={handleLogin}>Войти</button>
         <Link to="/forgetPass" className='forgotPassword'>Забыли пароль?</Link>
       </div>
-      <button onClick={logOutAuth}>выйти</button>
       <div>{error && <p className="error-message">{error}</p>}</div>
     </div>
   );
