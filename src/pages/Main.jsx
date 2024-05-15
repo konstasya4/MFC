@@ -111,11 +111,11 @@ const [services, setServices] = useState([]);
           </div>
         </div>
         <div id='formsForEmployees' className="issuanceOfCertificates">
-        Бланки документов для работников
+        Бланки документов для обучающихся
         </div>
         <div className='cert-main'><CertificateList className="ps" services={services.filter(service => service.type === 1)}/></div>
         <div id='formsForStudents' className="issuanceOfCertificates">
-        Бланки документов для обучающихся
+        Бланки документов для работников
         </div>
         <div className='cert-main'><CertificateList className="ps" services={services.filter(service => service.type === 2)}/></div>
         <div id='translationAndRestoration' className="issuanceOfCertificates">
