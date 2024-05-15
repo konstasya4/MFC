@@ -20,6 +20,7 @@ import TeacherAccount from '../pages/admin/TeacherAccount'
 import NotDoneService from "../pages/admin/NotDoneService"
 import CreateAService from "../pages/admin/CreateAService"
 import ArhiveServices from "../pages/admin/ArhiveServices"
+import ChangeAService from "../pages/admin/ChangeAService"
 
 
 // const MainComponent = () => {
@@ -66,6 +67,7 @@ export const privateRoutesUser=[
 export const privateRoutesAdmin=[
     {path:"/mainAdmin", element: <Main/>, exact: true},
     {path:"/admin", element: <Admin/>, exact: true},
+    {path:"/editService/:name", element: <ChangeAService/>, exact: true},
     {path:"/services/:name", element: <Services/>, exact: true},
     {path:"/students/:serviceNumber", element: <StudentsAccount/>, exact: true},
     {path:"/employee/:post", element: <TeacherAccount/>, exact: true},
