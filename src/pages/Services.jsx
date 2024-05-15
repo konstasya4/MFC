@@ -1,57 +1,3 @@
-// import React, { useEffect, useState } from "react";
-// import { useParams } from "react-router-dom";
-// import StatementList from "../API/StatementList";
-// import NavbarLeft from "../components/Navbar/leftNavbar/NavbarLeft";
-// import '../styles/ServiceStyle.css'
-// import MainButton from "../components/ButtonComponent";
-// import Download from "../images/Download.png"
-// import ServiceService from "../services/ServiceService"
-
-// const Services = () => {
-//     const { name } = useParams();
-//     const [service, setService] = useState({}); // Устанавливаем начальное значение в пустой объект
-//     const [loading, setLoading] = useState(true); // Состояние для отслеживания загрузки данных
-
-//     useEffect(() => {
-//         const fetchService = async () => {
-//             try {
-//                 const response = await ServiceService.fetchServiceItem(name);
-//                 setService(response.data);
-//                 setLoading(false); // Устанавливаем состояние загрузки в false после получения данных
-//             } catch (error) {
-//                 console.error('Error fetching service:', error);
-//             }
-//         };
-//         fetchService();
-//     }, [name]);
-
-//     if (loading) {
-//         return <div>Loading...</div>;
-//     }
-
-//     return (
-//       <div className="service-page">
-//         <NavbarLeft />
-//         <div className="service-text">
-//           <div className="title-service">{service.name}</div>
-//           <div className="about-service">Об услуге</div>
-//           <div className="description-service">{service.description}</div>
-//         </div>
-//         <div className="serv-down">
-//           <div className="btn-serv">
-//             <MainButton className="btn-style" name="Получить услугу" />
-//           </div>
-//           {(service.type===1 || service.type===2) &&
-//           (<button className="download-text">
-//             <div>Скачать ПДФ</div>
-//             <img src={Download} alt=""></img>
-//           </button>)}
-//         </div>
-//       </div>
-//     );
-// };
-
-// export default Services;
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import StatementList from "../API/StatementList";
@@ -60,92 +6,97 @@ import '../styles/ServiceStyle.css'
 import MainButton from "../components/ButtonComponent";
 import Download from "../images/Download.png"
 import ServiceService from "../services/ServiceService"
-import ModalAuth from '../components/modalWindow/ModalAuth'; // Импортируем компонент модального окна
+import ModalAuth from '../components/modalWindow/ModalAuth';
 import { useSelector } from "react-redux";
 import ModalOrderingService from '../components/modalWindow/ModalOrderingService'
 import GettingAService from "../services/GettingAService";
+import { saveAs } from "file-saver";
 
 const Services = () => {
     const { name } = useParams();
     const { isAuth } = useSelector(state => state.auth);
     const { isRole } = useSelector(state => state.auth);
-    // const history = useHistory();
-    const [service, setService] = useState(); // Устанавливаем начальное значение в пустой объект
-    const [loading, setLoading] = useState(true); // Состояние для отслеживания загрузки данных
-    const [modalOpen, setModalOpen] = useState(false); // Состояние модального окна
-
+    const [service, setService] = useState(); 
+    const [loading, setLoading] = useState(true); 
+    const [modalOpen, setModalOpen] = useState(false); 
+    const [downloadURL, setDownloadURL] = useState(null);
     useEffect(() => {
         const fetchService = async () => {
             try {
                 const response = await ServiceService.fetchServiceItem(name);
                 setService(response.data.service);
-                setLoading(false); // Устанавливаем состояние загрузки в false после получения данных
-                console.log(response)
+                setLoading(false); 
             } catch (error) {
                 console.error('Error fetching service:', error);
             }
         };
         fetchService();
     }, [name]);
-const OrderingAService =()=>{
- 
-}
-    // Функция для обработки нажатия кнопки "Получить услугу"
-    const handleGetService = () => {
-      console.log(isAuth, isRole!=="admin")
-      if (isAuth && isRole!=="admin"){
-        const responce=GettingAService.fetchAddedService(service.name)
-console.log("отправка", responce)
+
+    const handleDownload = async () => {
+      try {
+        const response = await GettingAService.fetchDownloadTheApplication(service.type, service.name);
+const blob = new Blob([response.data]);
+        const objectURL = response.request.responseURL;
+        console.log("objectURL", objectURL)
+        setDownloadURL(objectURL);
+      } catch (error) {
+        console.error('Error downloading file:', error);
       }
+    };
+  
+    const handleDownloadClick = () => {
+      const a = document.createElement('a');
       
-        // Проверяем, авторизован ли пользователь
-        // console.log("isAuth", isAuth)
-        // const isAuthenticated = isAuth/* Ваш код проверки авторизации пользователя */;
-        // console.log("isAuthenticated", isAuthenticated)
-        // if (!isAuthenticated) {
-            // Если пользователь не авторизован, открываем модальное окно
-            setModalOpen(true);
-        // } else {
-        //     // Если пользователь авторизован, выполните действия, необходимые для получения услуги
-        //     /* Ваш код для получения услуги */;
-        // }
+      a.setAttribute('href', downloadURL);
+      a.setAttribute('download', `${service.name}.doc`);
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
     };
 
-    // Функция для закрытия модального окна
+    const handleGetService = () => {
+        if (isAuth && isRole !== "admin") {
+            GettingAService.fetchAddedService(service.name);
+        } else {
+            setModalOpen(true);
+        }
+    };
+
     const handleCloseModal = () => {
         setModalOpen(false);
-        // Перенаправляем пользователя на страницу авторизации
-        // history.push('/login');
     };
 
     if (loading) {
         return <div>Loading...</div>;
     }
-    console.log("isRole modalwindow", isRole)
 
     return (
-      <div className="service-page">
-        <NavbarLeft />
-        <div className="service-text">
-          <div className="title-service">{service.name}</div>
-          <div className="about-service">Об услуге</div>
-          <div className="description-service">{service.description}</div>
+        <div className="service-page">
+            <NavbarLeft />
+            <div className="service-text">
+                <div className="title-service">{service.name}</div>
+                <div className="about-service">Об услуге</div>
+                <div className="description-service">{service.description}</div>
+            </div>
+            <div className="serv-down">
+                <div className="btn-serv">
+                    <MainButton className="btn-style" name="Получить услугу" onClick={handleGetService} />
+                </div>
+                {(service.type === 1 || service.type === 2) &&
+                    // <button className="download-text" onClick={downloadFilledFile}>
+                    //     <div>Скачать заполненный файл</div>
+                    //     <img src={Download} alt="Download" />
+                    // </button>
+                    <button onClick={handleDownload}>Download File</button>
+                    
+                }
+                {downloadURL && <button onClick={handleDownloadClick}>Click to Download</button>}
+            </div>
+            {!isAuth ? (<ModalAuth isOpen={modalOpen} onClose={handleCloseModal} />) :
+                (<ModalOrderingService isOpen={modalOpen} onClose={handleCloseModal} />)
+            }
         </div>
-        <div className="serv-down">
-          <div className="btn-serv">
-            <MainButton className="btn-style" name="Получить услугу" onClick={handleGetService} />
-          </div>
-          {(service.type===1 || service.type===2) &&
-          (<button className="download-text">
-            <div>Скачать ПДФ</div>
-            <img src={Download} alt=""></img>
-          </button>)}
-        </div>
-        {!isAuth?(<ModalAuth isOpen={modalOpen} onClose={handleCloseModal}/> )
-        :( <ModalOrderingService isOpen={modalOpen} onClose={handleCloseModal}/>)
-       
-        }
-      </div>
     );
 };
 
