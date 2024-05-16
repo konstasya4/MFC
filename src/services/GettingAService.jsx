@@ -13,4 +13,7 @@ export default class GettingAService {
     static fetchDownloadTheApplication(type, nameFile) {
         return $api.get(`/autodoc/${type}/${nameFile}`)
     }
+    static fetchDownloadTheApplicationForAdmin(id) {
+        return $api.get(`/autodoc/${id}`)
+    }
 }
