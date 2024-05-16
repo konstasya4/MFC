@@ -6,9 +6,11 @@ import GettingAService from '../../services/GettingAService';
 import InputComponent from "../../components/InputComponent";
 import ServiceStatusList from "../../components/service-status-admin/ServiceStatusList";
 
+
 const NotDoneService = () => {
   const [status, setStatus] = useState([]);
   const [filter, setFilter] = useState(""); // Состояние для отслеживания текущего выбранного статуса
+  
   const statusService = [
     { key: 0, option: "Создано" },
     { key: 1, option: "В работе" },
@@ -39,6 +41,8 @@ const NotDoneService = () => {
   const filteredStatus = status.filter(stat =>
     (!filter && filter!==0) || stat.state === filter // Здесь используется stat.state для сравнения с фильтром
   );
+ 
+
 
   return (
     <div>
@@ -64,6 +68,7 @@ const NotDoneService = () => {
           <ServiceStatusList status={filteredStatus} />
         </div>
       </div>
+      
     </div>
   );
 }
