@@ -45,11 +45,6 @@ const Services = () => {
         console.error('Error downloading file:', error);
       }
     };
-    
-    
-    
-
-
     const handleGetService = async () => {
       if (isAuth && isRole !== "admin") {
           try {
@@ -93,11 +88,11 @@ const Services = () => {
                 </div>
                 {(service.type === 1 || service.type === 2) &&
                 <div>
-                   {/* <button className="download-text" onClick={downloadFilledFile}> */}
+                   <button className="download-text" >
                         <div>Скачать образец заявления</div>
                         <img src={Download} alt="Download" />
-                    {/* </button> */}
-                    // <button onClick={handleDownload}>Download File</button>
+                    </button>
+                    {/* // <button onClick={handleDownload}>Download File</button> */}
                 </div>
                 }
                 
