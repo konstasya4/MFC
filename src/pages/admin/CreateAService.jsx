@@ -55,13 +55,13 @@ const CreateAService = () => {
     const formData = new FormData();
     formData.append("file", renamedFile);
     const responceFile=DocumentService.fetchFile(formData, selectedOption.key);
-    console.warn(responceFile)
+    console.warn("file",responceFile)
   };
 
   const handleSave = async () => {
     console.log("Selected option:", selectedOption);
     // Add a null check for selectedOption
-    if (selectedOption===0 || selectedOption.key ===1  || selectedOption.key === 2) {
+    if (selectedOption.key===0 || selectedOption.key ===1  || selectedOption.key === 2) {
       console.log("Option 1 or 2 selected");
       if (renamedFile && serviceName && serviceDescription) {
         console.log("All required fields are filled");
