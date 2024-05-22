@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import StatementList from "../API/StatementList";
 import NavbarLeft from "../components/Navbar/leftNavbar/NavbarLeft";
 import '../styles/ServiceStyle.css'
 import MainButton from "../components/ButtonComponent";
@@ -10,7 +9,6 @@ import ModalAuth from '../components/modalWindow/ModalAuth';
 import { useSelector } from "react-redux";
 import ModalOrderingService from '../components/modalWindow/ModalOrderingService'
 import GettingAService from "../services/GettingAService";
-import { saveAs } from "file-saver";
 
 const Services = () => {
     const { name } = useParams();
@@ -37,9 +35,7 @@ const Services = () => {
     const handleDownload = async () => {
       try {
         const response = await GettingAService.fetchDownloadTheApplication(service.type, service.name);
-        // const blob = new Blob([response.request.responseURL], { type: 'multipart/form-data' }); // Указываем тип контента
         const objectURL = response.request.responseURL;
-        console.log("objectURL", objectURL)
         setDownloadURL(objectURL);
       } catch (error) {
         console.error('Error downloading file:', error);
@@ -59,9 +55,7 @@ const Services = () => {
           } catch (error) {
               console.error('Error getting service:', error);
           }
-      } else {
-          // Handle the case when user is not authorized or is an admin
-      }
+      } 
       setModalOpen(true);
   };
   

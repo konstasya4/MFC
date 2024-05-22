@@ -5,8 +5,6 @@
   import React, { useState, useEffect } from "react";
 import NavbarLeft from "../../components/Navbar/leftNavbar/NavbarLeft";
 import '../../styles/ExecutionStatusStyle.css';
-import StudentList from '../../API/StudentList';
-import StatusList from "../../components/service-status/StatusList";
 import InputComponent from "../../components/InputComponent";
 import StudentsList from "../../components/students-components/StudentsList";
 import '../../styles/StudentListStyle.css';

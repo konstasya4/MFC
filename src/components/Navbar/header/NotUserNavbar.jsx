@@ -1,16 +1,7 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import '../../../styles/NavbarStyle.css';
-import { AuthContext, RoleContext } from "../../../context";
 function NotUserNavbar() {
-const {isAuth, setIsAuth} = useContext(AuthContext);
-const {isRole, setIsRole} = useContext(RoleContext);
-const logout= ()=>{
-    setIsAuth(false)
-    setIsRole('')
-    localStorage.removeItem('auth')
-    localStorage.removeItem('role')
-} 
 return (
   <div className="page_header page-header-no-auth">
     <nav className="nav">
@@ -32,7 +23,6 @@ return (
           </li>
         </div>
       </ul>
-      {/* <button onClick={logout}>Выйти</button> */}
     </nav>
   </div>
 );}

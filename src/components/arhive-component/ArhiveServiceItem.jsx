@@ -28,7 +28,6 @@ const ArhiveServiceItem = (props) => {
         ServiceService.fetchOnPublic(props.arhiveService.name, newValue)
             .then(response => {
                 if (response.data.succeeded) {
-                    // Update the state of onPublic based on the response
                     setOnPublic(response.data.current_state);
                     console.log("snajdbas")
                     
@@ -36,13 +35,11 @@ const ArhiveServiceItem = (props) => {
                 else console.warn(response.data.error_message)
             })
             .catch(error => {
-                // Handle error
                 console.error("Error updating service state:", error);
             });
             
     };
 
-    // Update the state of onPublic when props.arhiveService.onPublic changes
     useEffect(() => {
         setOnPublic(props.arhiveService.onPublic);
     }, [props.arhiveService.onPublic]);

@@ -1,18 +1,15 @@
-import React, { useContext, useState, useEffect } from "react";
+import React, {useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import '../../../styles/NavbarStyle.css';
 import PersonalDataActive from "../../../images/PersonalDataActive.png";
-import { AuthContext, RoleContext } from "../../../context";
 function ServicesUserNavbar() {
-  const { isAuth, setIsAuth } = useContext(AuthContext);
-  const { isRole, setIsRole } = useContext(RoleContext);
   const [isOpen, setIsOpen] = useState(false);
+  const currentDate = new Date();
+  const currentDay = currentDate.getDay();
+  const currentHour = currentDate.getHours();
+  console.log(currentDate, currentDay, currentHour)
   useEffect(() => {
     const checkShopStatus = () => {
-      const currentDate = new Date();
-      const currentDay = currentDate.getDay();
-      const currentHour = currentDate.getHours();
-      console.log(currentDate, currentDay, currentHour);
       if (
         currentDay >= 1 &&
         currentDay <= 5 &&
@@ -28,12 +25,6 @@ function ServicesUserNavbar() {
 
     return () => clearInterval(interval);
   }, []);
-  const logout = () => {
-    setIsAuth(false);
-    setIsRole("");
-    localStorage.removeItem("auth");
-    localStorage.removeItem("role");
-  };
   return (
     <div className="page_header">
       <nav className="nav">

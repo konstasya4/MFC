@@ -1,38 +1,38 @@
-import React, { useState, useEffect } from 'react';
-import StatementList from "../../API/StatementList";
-import StateList from "../../components/StateList";
-import NavbarLeft from '../../components/Navbar/leftNavbar/NavbarLeft';
+// import React, { useState, useEffect } from 'react';
 
-function Statements() {
-    const [posts, setPosts] = useState([]);
+// import StateList from "../../components/StateList";
+// import NavbarLeft from '../../components/Navbar/leftNavbar/NavbarLeft';
 
-    useEffect(() => {
-        fetchPosts();
-    }, []);
+// function Statements() {
+//     const [posts, setPosts] = useState([]);
 
-    const fetchPosts = async () => {
-        try {
-            const responce = await StatementList.getAll();
-            // Предполагается, что response.data - это массив постов
-            // setPosts(response.data);
-            setPosts([...responce])
-        } catch (error) {
-            console.error('Error fetching posts:', error);
-        }
-    };
+//     useEffect(() => {
+//         fetchPosts();
+//     }, []);
 
-    const removePost = (post) => {
-        setPosts(posts.filter(p => p.id !== post.id));
-    };
+//     const fetchPosts = async () => {
+//         try {
+//             const responce = await StatementList.getAll();
+//             // Предполагается, что response.data - это массив постов
+//             // setPosts(response.data);
+//             setPosts([...responce])
+//         } catch (error) {
+//             console.error('Error fetching posts:', error);
+//         }
+//     };
+
+//     const removePost = (post) => {
+//         setPosts(posts.filter(p => p.id !== post.id));
+//     };
    
 
-    return (
-        <div className="App">
-            <NavbarLeft/>
-            {/* Передаем posts в StateList */}
-            <StateList remove={removePost} posts={posts} />
-        </div>
-    );
-}
+//     return (
+//         <div className="App">
+//             <NavbarLeft/>
+//             {/* Передаем posts в StateList */}
+//             <StateList remove={removePost} posts={posts} />
+//         </div>
+//     );
+// }
 
-export default Statements;
+// export default Statements;

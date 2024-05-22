@@ -1,7 +1,7 @@
 import '../styles/MainStyle.css';
 import '../styles/componentsStyles/InputComponentStyle.css';
 import InputComponent from "../components/InputComponent";
-import CertificatePostponement from '../images/Services/CertificatePostponement.png'
+import CertificatePostponement from "../images/Services/CertificatePostponement.png"
 import SwitchingFromPaidToFree from '../images/Services/SwitchingFromPaidToFree.png'
 import CertificatePlaceOfStudy from '../images/Services/CertificatePlaceOfStudy.png'
 import CertificatePlaceOfWork from '../images/Services/CertificatePlaceOfWork.png'
@@ -9,13 +9,10 @@ import CertificateAmountScholarship from '../images/Services/CertificateAmountSc
 import Certificate2NDFL from '../images/Services/Certificate2NDFL.png'
 import TransferAndRestoration from '../images/Services/TransferAndRestoration.png'
 import  { useState, useEffect } from 'react';
-import StatementList from "../API/StatementList";
 import CertificateList from "../components/main-services/CertificateList";
 import OurWebsite from "../images/Services/OurWebsite.png"
 import NavbarLeft from '../components/Navbar/leftNavbar/NavbarLeft'
 import ServiceService from "../services/ServiceService"
-
-
 
 const Main = () => {
 const [services, setServices] = useState([]);
@@ -27,19 +24,23 @@ const [services, setServices] = useState([]);
     const fetchPosts = async () => {
       try {
           const response = await ServiceService.fetchServiceList();
+          console.log(response); // Log the response to see its structure
               setServices(response.data.services);
       } catch (error) {
           console.error('Error fetching posts:', error);
       }
   };
-   
+    console.log(services)
+  console.log(window.location.pathname);
   return (
     <div className="main-navbar">
       <div>
       <NavbarLeft/>
       </div>
       <div className="main-services">
+        {/* <div className="input-main"> */}
           <InputComponent className="input" placeholder="Поиск услуг" />
+        {/* </div> */}
         <div className="popular-services">Популярные услуги</div>
         <ul className="services">
           <div className="first-line">

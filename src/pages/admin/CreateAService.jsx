@@ -1,10 +1,8 @@
 import "../../styles/CreateAServiceStyle.css";
 import { useState } from "react";
-import axios from "axios"; // импорт библиотеки Axios
 import NavbarLeft from "../../components/Navbar/leftNavbar/NavbarLeft";
 import Dropdown from "../../components/Dropdown";
 import ButtonComponent from "../../components/ButtonComponent";
-import DocxUploader from "../../components/DocxUploader";
 import DocumentService from "../../services/DocumentService";
 
 const CreateAService = () => {

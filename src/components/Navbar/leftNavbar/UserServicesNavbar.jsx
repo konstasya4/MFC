@@ -1,22 +1,15 @@
 import React from "react";
-import { useDispatch, useSelector  } from 'react-redux';
-import AuthService from '../../../services/AuthService';
-import { loginUser, logoutUser } from '../../../actions/actions';
+import { useDispatch} from 'react-redux';
 import OutButton from '../../../images/OutButton.png'
 import "../../../styles/LeftNavbarStyle.css";
 import { Link } from "react-router-dom";
 import Certificate from '../../../images/Certificate.png';
+import logoutUser from "../../../utils/logoutUser";
 const UserServicesNavbar=()=>{
   const dispatch = useDispatch();
-  const { isAuth, isRole } = useSelector(state => state.auth);
-const logout = async () => {
-  // await AuthService.logout();
-  dispatch(logoutUser());
-  localStorage.removeItem('token');
-  console.log("Выход", isAuth, isRole)
-  localStorage.setItem("auth", "false"); // Преобразуем в строку
-  localStorage.setItem("role", " ");
-};
+  const handleLogout = () => {
+    dispatch(logoutUser());
+  };
         return (
           <div className="nav-left">
             <ul className="ul-left">
@@ -37,7 +30,7 @@ const logout = async () => {
                 <a href="#translationAndRestoration">Перевод и восстановление</a>
               </li>
               <li className="li-btn-left">
-              <Link to="/main"><button onClick={logout} className="btn-left"><img src={OutButton}/>Выйти из аккаунта</button></Link>
+              <Link to="/main"><button onClick={handleLogout} className="btn-left"><img src={OutButton}/>Выйти из аккаунта</button></Link>
               </li>
             </ul>
           </div>

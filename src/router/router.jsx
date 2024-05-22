@@ -1,8 +1,5 @@
 import { Route, Routes } from "react-router-dom";
 import { privateRoutesAdmin, privateRoutesUser, publicRoutes } from ".";
-import { useContext } from "react";
-import { AuthContext, RoleContext } from "../context";
-import Services from "../pages/Services";
 import { useDispatch, useSelector  } from 'react-redux';
 
 export const useRoutes = () => {

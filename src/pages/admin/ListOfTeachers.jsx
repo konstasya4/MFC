@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from "react";
 import NavbarLeft from "../../components/Navbar/leftNavbar/NavbarLeft";
 import '../../styles/ExecutionStatusStyle.css';
-import StudentList from '../../API/StudentList';
-import StatusList from "../../components/service-status/StatusList";
 import InputComponent from "../../components/InputComponent";
 import TeacherList from "../../components/teacher-components/TeacherList";
 import '../../styles/StudentListStyle.css';
@@ -10,13 +8,12 @@ import UserService from "../../services/UserService";
 
 const ListOfTeachers=()=>{
   const [listTeacher, setListTeacher] = useState({});
-  // const [filter, setFilter] = useState(""); // Состояние для отслеживания текущего выбранного статуса
 
   useEffect(() => {
     const fetchStatusData = async () => {
       try {
         const response = await UserService.fetchEmployees();
-          setListTeacher(response.data); // Set status array directly
+          setListTeacher(response.data); 
           console.log(response)
       } catch (error) {
         console.error("Error fetching service:", error);

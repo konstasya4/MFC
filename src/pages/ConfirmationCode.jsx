@@ -1,11 +1,8 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { AuthContext, RoleContext } from "../context";
 import { useContext } from "react";
 
 const ConfirmationCode = () => {
-  const { isAuth, setIsAuth } = useContext(AuthContext);
-  const { isRole, setIsRole } = useContext(RoleContext);
   const [newPassword, setNewPassword] = useState(true);
   const statePass = () => {
     setNewPassword(false);
@@ -13,16 +10,12 @@ const ConfirmationCode = () => {
 
   const user = (event) => {
     // event.preventDefault();
-    setIsAuth(true);
     localStorage.setItem("auth", "true");
-    setIsRole("user");
     localStorage.setItem("role", "user");
   };
   const admin = (event) => {
     // event.preventDefault();
-    setIsAuth(true);
     localStorage.setItem("auth", "true");
-    setIsRole("admin");
     localStorage.setItem("role", "admin");
   };
   return newPassword ? (

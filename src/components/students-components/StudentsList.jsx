@@ -4,7 +4,7 @@ const StudentsList =({listStudent})=>{
     if(!listStudent || !listStudent.length){
         return (
             <h1 style={{textAlign: 'center'}}>
-                Посты не найдены!
+                Студенты не найдены!
             </h1>
         )
     }

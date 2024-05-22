@@ -11,11 +11,9 @@ import ListOfTeachers from "../pages/admin/ListOfTeachers"
 import Statements from "../pages/admin/Statements"
 import ConfirmationCode from "../pages/ConfirmationCode"
 import { useNavigate } from "react-router-dom"
-import { useContext, useEffect } from "react"
 import Services from "../pages/Services"
 import DoneServices from "../pages/user/DoneServices"
 import StudentsAccount from "../pages/admin/StudentsAccount"
-import { AuthContext, RoleContext } from "../context"
 import TeacherAccount from '../pages/admin/TeacherAccount'
 import NotDoneService from "../pages/admin/NotDoneService"
 import CreateAService from "../pages/admin/CreateAService"
@@ -52,7 +50,6 @@ export const publicRoutes=[
     {path:"/forgetPass", element: <ForgetPassword/>, exact: true},
     {path:"/code", element:<ConfirmationCode/>, exact: true},
     {path:"/services/:name", element:<Services/>, exact: true},
-    // {path:"*", element: <MainComponent/>, exact: true},
 ]
 
 export const privateRoutesUser=[
@@ -62,7 +59,6 @@ export const privateRoutesUser=[
     {path:"/services/:name", element: <Services/>, exact: true},
     {path:"/status", element: <ExecutionStatus/>, exact: true},
     {path:"/doneServices", element: <DoneServices/>, exact: true},
-    // {path:"*", element: <MainComponent/>, exact: true},
 ]
 export const privateRoutesAdmin=[
     {path:"/mainAdmin", element: <Main/>, exact: true},
@@ -77,10 +73,7 @@ export const privateRoutesAdmin=[
     {path:"/statements", element: <Statements/>, exact: true},
     {path:"/createService", element:<CreateAService/>, exact: true},
     {path:"/arhiveServices", element: <ArhiveServices/>, exact:true},
-    // {path:"/students", element: <StudentsAccount/>, exact: true},
-    // {path:"/teacher", element: <TeacherAccount/>, exact: true},
     {path:"/notDoneService", element: <NotDoneService/>, exact: true},
-    // {path:"*", element: <MainComponent/>, exact: true},
 ]
 
 

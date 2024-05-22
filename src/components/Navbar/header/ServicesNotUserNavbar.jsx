@@ -1,10 +1,7 @@
-import React, { useContext, useState, useEffect } from "react";
+import React, {useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import '../../../styles/NavbarStyle.css';
-import { AuthContext, RoleContext } from "../../../context";
 function ServicesNotUserNavbar() {
-  const { isAuth, setIsAuth } = useContext(AuthContext);
-  const { isRole, setIsRole } = useContext(RoleContext);
   const [isOpen, setIsOpen] = useState();
   useEffect(() => {
     const checkShopStatus = () => {

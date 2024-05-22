@@ -1,4 +1,3 @@
-import React, { useContext} from "react";
 import { useLocation } from "react-router-dom";
 import "../../../styles/LeftNavbarStyle.css";
 import { useSelector } from 'react-redux';

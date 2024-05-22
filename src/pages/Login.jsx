@@ -41,24 +41,17 @@
 //     );
 // }
 // export default Login
-import React, { useState, useEffect } from 'react';
+import React, { useState} from 'react';
 import '../styles/LoginStyle.css'
 import { Link } from 'react-router-dom';
-import { AuthContext, RoleContext } from '../context';
-import { useContext } from 'react';
-import axios from 'axios';
-import LoginAuth from '../API/LoginAuth';
 import { useNavigate } from 'react-router-dom';
-import { useDispatch, useSelector  } from 'react-redux';
-import { loginUser, logoutUser } from '../actions/actions';
-import AuthService from '../services/AuthService';
+import { useDispatch} from 'react-redux';
+import loginUser from '../utils/loginUser'
 
 
 function Login () {
 
   const dispatch = useDispatch();
-  const { isAuth } = useSelector(state => state.auth); // Access isAuth state from Redux store
-  const { isRole } = useSelector(state => state.auth);
   const navigate = useNavigate()
   const [login, setLogin]=useState("");
   const [password, setPassword]=useState("");
@@ -72,41 +65,42 @@ function Login () {
     setPassword(event.target.value)
   }
   
-  useEffect(() => {
-    const auth = localStorage.getItem('auth');
-    const role = localStorage.getItem('role');
-    if (auth && role) {
-      dispatch(loginUser({ succeeded: JSON.parse(auth), role: role }));
-    }
-  }, []);
+  // useEffect(() => {
+  //   const auth = localStorage.getItem('auth');
+  //   const role = localStorage.getItem('role');
+  //   if (auth && role) {
+  //     dispatch(loginUser({ succeeded: JSON.parse(auth), role: role }));
+  //   }
+  // }, []);
   
   const handleLogin = async () => {
-      const response = await AuthService.login(login, password);
-      localStorage.setItem("auth", response.data.succeeded); // Convert to string
-      localStorage.setItem("role", response.data.role);
-      dispatch(loginUser(response.data));
-      if (response.data.role === 'admin' && response.data.succeeded) {
-        navigate('/mainAdmin');
-      } else if (response.data.succeeded){
-        navigate('/mainUser');
-      }
-      else setError("Неверно введен пароль");
+    dispatch(loginUser(login, password, navigate))
+      // const response = await AuthService.login(login, password);
+      // localStorage.setItem("auth", response.data.succeeded); // Convert to string
+      // localStorage.setItem("role", response.data.role);
+      // dispatch(loginUser(response.data));
+      // if (response.data.role === 'admin' && response.data.succeeded) {
+      //   navigate('/mainAdmin');
+      // } else if (response.data.succeeded){
+      //   navigate('/mainUser');
+      // }
+      // else setError("Неверно введен пароль");
 
   };
   
-  const logOutAuth = async () => {
-    try {
-      await AuthService.logout();
-      dispatch(logoutUser());
-      localStorage.removeItem('token');
-    } catch (error) {
-      if (error.response && error.response.status) {
-        console.error('Error logging out:', error.response.status);
-      } else {
-        console.error('Error logging out:', error);
-      }
-    }
-  };
+  // const logOutAuth = async () => {
+  //   try {
+  //     await AuthService.logout();
+  //     dispatch(logoutUser());
+  //     localStorage.removeItem('token');
+  //   } catch (error) {
+  //     if (error.response && error.response.status) {
+  //       console.error('Error logging out:', error.response.status);
+  //     } else {
+  //       console.error('Error logging out:', error);
+  //     }
+  //   }
+  // };
   
   return (
     <div className="login-container">

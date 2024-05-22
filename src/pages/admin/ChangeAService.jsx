@@ -1,17 +1,14 @@
     import "../../styles/CreateAServiceStyle.css";
     import { useState } from "react";
-    import axios from "axios"; // импорт библиотеки Axios
     import NavbarLeft from "../../components/Navbar/leftNavbar/NavbarLeft";
     import Dropdown from "../../components/Dropdown";
     import ButtonComponent from "../../components/ButtonComponent";
-    import DocxUploader from "../../components/DocxUploader";
     import DocumentService from "../../services/DocumentService";
 import { useParams } from "react-router-dom";
     
     const ChangeAService =()=>{
-        const {тame}= useParams;
+        const {name}= useParams;
       const [selectedOption, setSelectedOption] = useState(null);
-      // const [selectedOption, setSelectedOption] = useState(null);
       const [editing, setEditing] = useState(true);
       const [file, setFile] = useState(null);
       const [serviceName, setServiceName] = useState("");
@@ -32,8 +29,7 @@ import { useParams } from "react-router-dom";
             setSelectedOption(option_item ? options.find((optionT) => optionT.option === option_item): null);
         
         };
-        
-        // Inside handleSave or any other function where you need to use selectedOption
+
         console.log("Selected option:", selectedOption);
         
     
@@ -62,7 +58,6 @@ import { useParams } from "react-router-dom";
     
       const handleSave = async () => {
         console.log("Selected option:", selectedOption);
-        // Add a null check for selectedOption
         if (selectedOption===0 || selectedOption.key ===1  || selectedOption.key === 2) {
           console.log("Option 1 or 2 selected");
           if (renamedFile && serviceName && serviceDescription) {
@@ -76,7 +71,7 @@ import { useParams } from "react-router-dom";
             console.log("Service saved successfully");
             setTimeout(() => {
               dataReset();
-            }, 1000); // 1000 миллисекунд = 1 секунда
+            }, 1000);
           } else {
             console.log("Error: Missing required fields");
             setError(true);

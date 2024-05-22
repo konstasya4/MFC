@@ -4,7 +4,7 @@ const TeacherList =({listTeacher})=>{
     if(!listTeacher|| !listTeacher.length){
         return (
             <h1 style={{textAlign: 'center'}}>
-                Посты не найдены!
+                Сотрудники не найдены!
             </h1>
         )
     }

@@ -16,7 +16,6 @@ const ServiceStatusItem = (props) => {
       { key: 3, status: "Отклонено" },
       { key: 4, status: "Получено" },
     ],
-    []
   );
 
   const [selectedStatusKey, setSelectedStatusKey] = useState(

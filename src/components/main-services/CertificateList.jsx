@@ -5,9 +5,9 @@ const CertificateList = ({services}) => {
     const publicServices = services.filter(service => service.onPublic);
     if (!publicServices || !publicServices.length) {
         return (
-            <h1 style={{textAlign: 'center'}}>
-                Посты не найдены!
-            </h1>
+            <h3 >
+                Услуги не найдены!
+            </h3>
         )
     }
 

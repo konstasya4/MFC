@@ -1,8 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
-import TeacherList from "../../API/TeacherList";
 import NavbarLeft from "../../components/Navbar/leftNavbar/NavbarLeft";
-import PersonalData from "../../API/PersonalData";
 import PersonalDataActive from "../../images/PersonalDataActive.png";
 import "../../styles/PersonalAccountStyle.css";
 import Show from "../../images/Show.png";

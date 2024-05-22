@@ -1,6 +1,6 @@
 import axios from 'axios';
 // import {AuthResponse} from "../models/response/AuthResponse";
-import {store} from "../store/stores";
+import {store} from "../redux/stores";
 // import {IUser} from "../models/IUser";
 
 export const API_URL = `http://localhost:8080/api`
