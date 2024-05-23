@@ -1,5 +1,5 @@
 import React from 'react';
-import '../../styles/ServiceStatusListStyle.css';
+import './ServiceStatusListStyle.css';
 
 const DropdownServiceStatus = ({ statusServices, onSelect, selectedOption, className }) => {
     return (

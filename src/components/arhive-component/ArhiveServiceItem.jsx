@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
-import '../../styles/mainServicesStyle.css'
-import '../../styles/ArhiveServicesStyle.css'
+// import '../../styles/mainServicesStyle.css'
+import './ArhiveServicesStyle.css'
 import { useNavigate } from "react-router-dom";
-import ButtonComponent from "../ButtonComponent";
+import ButtonComponent from "../button-component/ButtonComponent";
 import ServiceService from "../../services/ServiceService";
 
 const ArhiveServiceItem = (props) => {

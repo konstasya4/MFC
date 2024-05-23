@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
-import '../../../styles/NavbarStyle.css';
+import './NavbarStyle.css';
 function NotUserNavbar() {
 return (
   <div className="page_header page-header-no-auth">

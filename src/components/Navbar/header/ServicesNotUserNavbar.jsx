@@ -1,6 +1,6 @@
 import React, {useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import '../../../styles/NavbarStyle.css';
+import './NavbarStyle.css';
 function ServicesNotUserNavbar() {
   const [isOpen, setIsOpen] = useState();
   useEffect(() => {

@@ -1,6 +1,6 @@
 import React, { useContext} from "react";
 import { useLocation } from "react-router-dom";
-import '../../../styles/NavbarStyle.css';
+import './NavbarStyle.css';
 import { useSelector } from 'react-redux';
 import AdminNavbar from "./AdminNavbar";
 import UserNavbar from "./UserNavbar";

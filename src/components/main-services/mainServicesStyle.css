@@ -1,0 +1,18 @@
+.certificateItem {
+    margin: 0;
+    font: 400 0.9em "Roboto";
+    text-decoration: solid;
+    padding: 0;
+    color: #408CFF; 
+     white-space: nowrap;
+    overflow: hidden; 
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    margin-bottom: 0.3vw;
+  }
+  .certificate-list-container{
+    margin: 0.6vw 0;
+  }
+ 

@@ -1,5 +1,5 @@
 import { useLocation } from "react-router-dom";
-import "../../../styles/LeftNavbarStyle.css";
+import "./LeftNavbarStyle.css";
 import { useSelector } from 'react-redux';
 import AdminLeftNavbar from "./AdminLeftNavbar";
 import UserServicesNavbar from "./UserServicesNavbar";

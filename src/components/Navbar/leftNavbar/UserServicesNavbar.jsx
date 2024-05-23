@@ -1,9 +1,9 @@
 import React from "react";
 import { useDispatch} from 'react-redux';
-import OutButton from '../../../images/OutButton.png'
-import "../../../styles/LeftNavbarStyle.css";
+import OutButton from '../images/OutButton.png'
+import "./LeftNavbarStyle.css";
 import { Link } from "react-router-dom";
-import Certificate from '../../../images/Certificate.png';
+import Certificate from '../images/Certificate.png'
 import logoutUser from "../../../utils/logoutUser";
 const UserServicesNavbar=()=>{
   const dispatch = useDispatch();

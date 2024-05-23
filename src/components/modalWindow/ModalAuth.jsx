@@ -1,46 +1,16 @@
-import React, { useRef, useEffect} from "react";
-import "../../styles/componentsStyles/ModalAuthStyle.css"; // Стили модального окна
-import WarningIcon from "../../images/WarningIcon.png";
+import React, { useRef} from "react";
+import "./ModalAuthStyle.css"; 
+import WarningIcon from "./images/WarningIcon.png";
 import { useNavigate } from "react-router-dom";
-import ButtonComponent from "../ButtonComponent";
+import ButtonComponent from "../button-component/ButtonComponent";
 
 const ModalAuth = ({ isOpen, onClose }) => {
   const navigate = useNavigate();
-  const modalRef = useRef(null); // Создаем ссылку на элемент модального окна
+  const modalRef = useRef(null); 
 
-  // Обработчик закрытия модального окна
   const handleLogin = () => {
     navigate("/login");
   };
-console.log("Я почему-то не открываюсь", isOpen)
-  // Обработчик клика на внешнюю область модального окна
-  const handleClickOutside = (event) => {
-    if (modalRef.current && !modalRef.current.contains(event.target)) {
-      onClose(); // Закрываем модальное окно при клике за его пределами
-    }
-  };
-
-  // Добавляем обработчик клика на весь документ
-  // Когда модальное окно открыто (isOpen === true)
-  // И удаляем его при размонтировании компонента
-//   useEffect(() => {
-    // const handleClickOutsideEvent = (event) => {
-    //   if (isOpen && modalRef.current && !modalRef.current.contains(event.target)) {
-    //     onClose();
-    //   }
-    // };
-
-    // if (isOpen) {
-    //   document.addEventListener("click", handleClickOutsideEvent);
-    // } else {
-    //   document.removeEventListener("click", handleClickOutsideEvent);
-    // }
-
-    // return () => {
-    //   document.removeEventListener("click", handleClickOutsideEvent);
-    // };
-//   }, [isOpen, onClose]);
-
   return (
     <div>
       {isOpen && (

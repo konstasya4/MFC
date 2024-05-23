@@ -9,6 +9,10 @@ export default class UserService {
     }
     static fetchCurrentUser() {
         return $api.get('/account/currentuser')
+        //  .then (result=>{
+        //     console.log(result)
+        //     return result
+        //  })
     }
     static fetchStudent(serviceNumber) {
         return $api.get(`students/${serviceNumber}`)

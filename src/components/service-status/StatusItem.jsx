@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useMemo } from "react";
-import "../../styles/componentsStyles/OrderedServices.css";
+import "./OrderedServiceStyle.css";
 
 const StatusItem = (props) => {
   const statusServices = useMemo(() => [

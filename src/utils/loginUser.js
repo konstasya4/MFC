@@ -1,4 +1,3 @@
-// loginActions.js
 import AuthService from "../services/AuthService";
 import { loginUser } from '../redux/authReducer';
 
@@ -13,14 +12,15 @@ const loginUserAsync = (login, password, navigate) => async (dispatch) => {
 
         if (response.data.role === 'admin' && response.data.succeeded) {
             navigate('/mainAdmin');
+            return (true)
         } else if (response.data.succeeded){
             navigate('/mainUser');
+            return (true)
         } else {
-            // Handle invalid login credentials
+            return ('Неверно введены данные')
         }
     } catch (error) {
         console.error('Ошибка при входе:', error);
-        // Handle login error
     }
 };
 

@@ -1,47 +1,20 @@
-import Main from "../pages/Main"
-import Login from "../pages/Login"
+import Main from "../pages/main-page/Main"
+import Login from "../pages/login/Login"
 import Quest from "../pages/Quentions"
-import ForgetPassword from "../pages/ForgetPassword"
-import Error from "../pages/Error"
-import PersonalAccount from "../pages/user/PersonalAccount"
-import ExecutionStatus from "../pages/user/ExecutionStatus"
-import Admin from "../pages/admin/AdminAccount"
-import ListOfStudents from "../pages/admin/ListOfStudents"
-import ListOfTeachers from "../pages/admin/ListOfTeachers"
+import ForgetPassword from "../pages/login/ForgetPassword"
+import PersonalAccount from "../pages/user/personalAccount/PersonalAccount"
+import ExecutionStatus from "../pages/user/execution-status/ExecutionStatus"
+import ListOfStudents from "../pages/admin/list-users/ListOfStudents"
+import ListOfTeachers from "../pages/admin/list-users/ListOfTeachers"
 import Statements from "../pages/admin/Statements"
-import ConfirmationCode from "../pages/ConfirmationCode"
-import { useNavigate } from "react-router-dom"
-import Services from "../pages/Services"
-import DoneServices from "../pages/user/DoneServices"
-import StudentsAccount from "../pages/admin/StudentsAccount"
-import TeacherAccount from '../pages/admin/TeacherAccount'
-import NotDoneService from "../pages/admin/NotDoneService"
-import CreateAService from "../pages/admin/CreateAService"
-import ArhiveServices from "../pages/admin/ArhiveServices"
-import ChangeAService from "../pages/admin/ChangeAService"
-
-
-// const MainComponent = () => {
-//     const navigate = useNavigate();
-//     const {isAuth, setIsAuth} = useContext(AuthContext);
-//     const {isRole, setIsRole} = useContext(RoleContext)
-    
-//     // Перенаправляем пользователя на '/main' при монтировании компонента
-//     useEffect(() => {
-
-//         if (isAuth){
-//             if (isRole==="admin"){
-//                 navigate('/mainAdmin');
-//             }
-//             else navigate('/mainUser');
-//         }
-//         else navigate('/main');
-//     }, [navigate]);
-
-  
-//     // Возвращаем компонент <Main/>
-//     return <Main/>;
-//   };
+import ConfirmationCode from "../pages/login/ConfirmationCode"
+import Services from "../pages/services-page/Services"
+import StudentsAccount from "../pages/admin/list-users/StudentsAccount"
+import TeacherAccount from '../pages/admin/list-users/TeacherAccount'
+import NotDoneService from "../pages/admin/not-done-service/NotDoneService"
+import CreateAService from "../pages/admin/create-service-page/CreateAService"
+import ArhiveServices from "../pages/admin/arhive-page/ArhiveServices"
+import ChangeAService from "../pages/admin/create-service-page/ChangeAService"
 
 export const publicRoutes=[
     {path:"/main", element: <Main/>, exact: true},
@@ -58,11 +31,9 @@ export const privateRoutesUser=[
     {path:"/questionUser", element: <Quest/>, exact: true},
     {path:"/services/:name", element: <Services/>, exact: true},
     {path:"/status", element: <ExecutionStatus/>, exact: true},
-    {path:"/doneServices", element: <DoneServices/>, exact: true},
 ]
 export const privateRoutesAdmin=[
     {path:"/mainAdmin", element: <Main/>, exact: true},
-    {path:"/admin", element: <Admin/>, exact: true},
     {path:"/editService/:name", element: <ChangeAService/>, exact: true},
     {path:"/services/:name", element: <Services/>, exact: true},
     {path:"/students/:serviceNumber", element: <StudentsAccount/>, exact: true},

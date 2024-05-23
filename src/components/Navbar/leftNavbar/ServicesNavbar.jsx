@@ -1,5 +1,5 @@
-import Certificate from '../../../images/Certificate.png';
-import "../../../styles/LeftNavbarStyle.css";
+import Certificate from '../images/Certificate.png';
+import "./LeftNavbarStyle.css";
 const ServicesNavbar=()=>{
   return (
     <div className="nav-left">

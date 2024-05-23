@@ -1,11 +1,11 @@
 import React from "react";
 import { useDispatch} from 'react-redux';
-import OutButton from '../../../images/OutButton.png'
-import "../../../styles/LeftNavbarStyle.css";
+import OutButton from '../images/OutButton.png'
+import "./LeftNavbarStyle.css";
 import { Link } from "react-router-dom";
-import StudentOrderedServices from '../../../images/Student/StudentOrderedServices.png';
-import PersonalData from '../../../images/PersonalData.png';
-import Done from '../../../images/Done.png';
+import StudentOrderedServices from '../images/StudentOrderedServices.png';
+import PersonalData from '../images/PersonalData.png';
+import Done from '../images/Done.png';
 import logoutUser from "../../../utils/logoutUser";
 
 const UserLeftNavbar=()=>{

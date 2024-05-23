@@ -1,5 +1,6 @@
 import React from 'react';
 import CertificateItem from "./CertificateItem";
+import './mainServicesStyle.css'
 
 const CertificateList = ({services}) => {
     const publicServices = services.filter(service => service.onPublic);

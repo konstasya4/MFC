@@ -1,7 +1,7 @@
 import React, {useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import '../../../styles/NavbarStyle.css';
-import PersonalDataActive from "../../../images/PersonalDataActive.png";
+import './NavbarStyle.css';
+import PersonalDataActive from "../images/PersonalDataActive.png";
 function ServicesUserNavbar() {
   const [isOpen, setIsOpen] = useState(false);
   const currentDate = new Date();

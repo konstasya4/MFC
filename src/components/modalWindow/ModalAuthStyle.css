@@ -1,0 +1,74 @@
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .modal {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+  }
+  
+  .modal-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .modal-content img{
+    width: 6.5vw;
+    height: 6vw;
+  }
+  .modal-text{
+    font: 600 1.5em "Inter Tight";
+    color: #408CFF;
+    display: flex;
+    align-items: center;
+  }
+  .modal-close {
+    margin-top: 10px;
+  }
+  .modal-open-btn{
+    font: 600 1.5em "Roboto";
+  }
+  .modal-sent-service-content{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+  }
+  .modal-sent-service{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 30vw;
+  }
+  .modal-sent-service-content img{
+    padding-top: 2vw;
+    width: 5vw;
+    height: 6.5vw;
+    margin-right: 3vw;
+  }
+  .modal-sent-service-text-back{
+    color: #868686;
+    text-decoration: underline;
+    cursor: pointer;
+
+  }
+  
+  .download-text-modal{
+    margin-bottom: 1vw;
+    font: 500 1.25em "Roboto";
+    background: none;
+    border: none;
+    align-items: center;
+    cursor: pointer;
+  }

@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import '../../../styles/NavbarStyle.css';
+import './NavbarStyle.css';
 import { useDispatch} from 'react-redux';
 import logoutUser from "../../../utils/logoutUser";
 function AdminNavbar() {
