@@ -1,25 +1,29 @@
-import React, { useContext } from "react";
-import { Link } from "react-router-dom";
+import React from "react";
+import { useNavigate } from "react-router-dom";
 import './NavbarStyle.css';
 function NotUserNavbar() {
+  const navigate=useNavigate()
+  const handleNavigate = (path) => {
+    navigate(path);
+  };
 return (
   <div className="page_header page-header-no-auth">
     <nav className="nav">
       <ul className="header-ul">
         <div className="left-text">
-          <li className="text">
+          <li className="text" onClick={() => handleNavigate("/main")}>
             МФЦ РУТ(МИИТ)
           </li>
         </div>
         <div className="right-text right-text-no-auth">
           <li className="text">
-            <Link to="/main">Услуги</Link>
+            <div onClick={() => handleNavigate("/main")}>Услуги</div>
           </li>
           <li className="text">
-            <Link to="/question">Q&A</Link>
+            <div onClick={() => handleNavigate("/question")}>Q&A</div>
           </li>
           <li >
-            <Link to="/login"><button className="btn-navbar">Войти</button></Link>
+            <div onClick={() => handleNavigate("/login")}><button className="btn-navbar">Войти</button></div>
           </li>
         </div>
       </ul>

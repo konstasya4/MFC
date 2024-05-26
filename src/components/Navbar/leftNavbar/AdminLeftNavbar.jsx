@@ -1,69 +1,78 @@
 import React from "react";
 import OutButton from "../images/OutButton.png";
 import "./LeftNavbarStyle.css";
-import { Link } from "react-router-dom";
 import CreateService from "../images/CreateService.png";
 import Employees from "../images/Employees.png";
-// import Students from ".../images/Students.png";
-import Students from '../images/Students.png'
+import Students from "../images/Students.png";
 import NotCompleted from "../images/NotСompleted.png";
 import Arhive from "../images/TheArchive.png";
-import { useDispatch} from 'react-redux';
+import { useDispatch } from "react-redux";
 import logoutUser from "../../../utils/logoutUser";
+import { useNavigate } from "react-router-dom";
 
 const AdminLeftNavbar = () => {
   const dispatch = useDispatch();
-
+  const navigate=useNavigate()
   const handleLogout = () => {
     dispatch(logoutUser());
+  };
+  const handleNavigate = (path) => {
+    navigate(path);
   };
   return (
     <div className="nav-left">
       <ul className="ul-left">
         <li className="li-left">
           <div>
-            <img className="img-nav" src={CreateService} />
-            <Link to="/createService">Создать услугу</Link>
+            <img className="img-nav" src={CreateService} alt=""/>
+            <div onClick={() => handleNavigate("/createService")}>
+              Создать услугу
+            </div>
           </div>
         </li>
         <li className="li-left">
           <div>
-            <img className="img-nav" src={Employees} />
-            <Link to="/listOfTeachers">Работники</Link>
+            <img className="img-nav" src={Employees} alt=""/>
+            <div onClick={() => handleNavigate("/listOfTeachers")}>
+              Работники
+            </div>
           </div>
         </li>
         <li className="li-left">
           <div>
-            <img className="img-nav" src={Students} />
-            <Link to="/listOfStudents">Студенты</Link>
+            <img className="img-nav" src={Students} alt=""/>
+            <div onClick={() => handleNavigate("/listOfStudents")}>
+              Студенты
+            </div>
           </div>
         </li>
         <li className="li-left">
-        <div className="div-left">
+          <div className="div-left">
             <div className="img-div">
-            <img className="img-nav" src={NotCompleted} />
+              <img className="img-nav" src={NotCompleted} alt="" />
             </div>
-            <div className="link-div">
-            <Link to="/notDoneService">Заказанные услуги</Link>
-          </div>
+            <div className="div-div">
+              <div onClick={() => handleNavigate("/notDoneService")}>
+                Заказанные услуги
+              </div>
+            </div>
           </div>
         </li>
         <li className="li-left">
           <div>
-            <img className="img-nav" src={Arhive} />
-            <Link to="/arhiveServices">Архив</Link>
+            <img className="img-nav" src={Arhive} alt=""/>
+            <div onClick={() => handleNavigate("/arhiveServices")}>Архив</div>
           </div>
         </li>
         <li className="li-left">
-            <div className="btn-div-left">
-            <Link to="/main">
-            <button onClick={handleLogout} className="btn-left">
-              <img src={OutButton} />
-              Выйти из аккаунта
-            </button>
-          </Link>
+          <div className="btn-div-left">
+            <div onClick={() => handleNavigate("/main")}>
+              <button onClick={handleLogout} className="btn-left">
+                <img src={OutButton} alt=""/>
+                Выйти из аккаунта
+              </button>
             </div>
-          
+          </div>
         </li>
       </ul>
     </div>

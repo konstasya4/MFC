@@ -78,6 +78,8 @@
   }
   .error-input{
     border: 0.2vw solid red;
+    animation: shake 0.5s;
+  animation-timing-function: ease-in-out;
   }
   .input_form{
     border: 0.2vw solid #89B1E0;
@@ -88,3 +90,12 @@
   font-size: 14px;
   margin-top: 5px;
 }
+@keyframes shake {
+  0% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  50% { transform: translateX(5px); }
+  75% { transform: translateX(-5px); }
+  100% { transform: translateX(0); }
+}
+
+

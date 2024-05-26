@@ -7,7 +7,7 @@
     flex-direction: column; 
     margin-left: 3.75vw;
 }
-.service-created-list .input{
+.input{
     border:2px solid #B1B1B1;
     border-radius: 1vw;
     width: 60vw;
@@ -55,3 +55,16 @@ height: 4vw;
     font-size: 1.4em;
     color: #333;
 }
+@keyframes shake {
+    0% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    50% { transform: translateX(5px); }
+    75% { transform: translateX(-5px); }
+    100% { transform: translateX(0); }
+  }
+  
+  .shake {
+    animation: shake 0.5s;
+    animation-timing-function: ease-in-out;
+    /* border-color: red; */
+  }

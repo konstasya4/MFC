@@ -39,7 +39,6 @@ const ServiceStatusItem = (props) => {
   };
   const downloadTheDocument = async () => {
     try {
-      console.warn("jj");
       const response =
         await GettingAService.fetchDownloadTheApplicationForAdmin(
           props.status.id

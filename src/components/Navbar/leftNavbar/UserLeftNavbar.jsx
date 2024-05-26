@@ -2,34 +2,33 @@ import React from "react";
 import { useDispatch} from 'react-redux';
 import OutButton from '../images/OutButton.png'
 import "./LeftNavbarStyle.css";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import StudentOrderedServices from '../images/StudentOrderedServices.png';
 import PersonalData from '../images/PersonalData.png';
-import Done from '../images/Done.png';
 import logoutUser from "../../../utils/logoutUser";
 
 const UserLeftNavbar=()=>{
+  const navigate=useNavigate()
   const dispatch = useDispatch();
   const handleLogout = () => {
     dispatch(logoutUser());
+  };
+  const handleNavigate = (path) => {
+    navigate(path);
   };
         return (
           <div className="nav-left">
             <ul className="ul-left">
               <li className="li-left">
               <img className="img-nav" src={StudentOrderedServices} />
-                <Link to="/status">Заказанные услуги</Link>
+                <div onClick={() => handleNavigate("/status")}>Заказанные услуги</div>
               </li>
               <li className="li-left">
               <img className="img-nav" src={PersonalData} />
-              <Link to="/account">Личные данные</Link>
-              </li>
-              <li className="li-left">
-              <img className="img-nav" src={Done} />
-                <Link to="/doneServices">Готовые услуги</Link>
+              <div onClick={() => handleNavigate("/account")}>Личные данные</div>
               </li>
               <li className="li-btn-left">
-              <Link to="/main"><button onClick={handleLogout} className="btn-left"><img src={OutButton}/>Выйти из аккаунта</button></Link>
+              <div onClick={() => handleNavigate("/main")}><button onClick={handleLogout} className="btn-left"><img src={OutButton}/>Выйти из аккаунта</button></div>
               </li>
             </ul>
           </div>

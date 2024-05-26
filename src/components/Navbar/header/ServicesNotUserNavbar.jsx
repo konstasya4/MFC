@@ -1,8 +1,9 @@
 import React, {useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import {useNavigate } from "react-router-dom";
 import './NavbarStyle.css';
 function ServicesNotUserNavbar() {
   const [isOpen, setIsOpen] = useState();
+  const navigate=useNavigate()
   useEffect(() => {
     const checkShopStatus = () => {
       const currentDate = new Date();
@@ -24,19 +25,22 @@ function ServicesNotUserNavbar() {
 
     return () => clearInterval(interval);
   }, []);
+  const handleNavigate = (path) => {
+    navigate(path);
+  };
 
   return (
     <div className="page_header">
       <nav className="nav">
         <ul className="header-ul">
           <div className="left-text left-text-no-auth">
-            <li className="text">
+            <li className="text" onClick={() => handleNavigate("/main")}>
               МФЦ РУТ(МИИТ)
             </li>
           </div>
           <div className="center-text">
             <li className="operating-mode text">Работаем в Пн-Пт с 08:00-20:00</li>
-            <div className="time-indicator">
+            <div className="time-indicator" >
               {isOpen ? (
                 <div className="open-indicator"> </div>
               ) : (
@@ -49,20 +53,20 @@ function ServicesNotUserNavbar() {
               )}
             </div>
             <li className="quest">
-              <Link to="/question">Где получить услуги</Link>
+              <div onClick={() => handleNavigate("/question")} >Где получить услуги</div>
             </li>
           </div>
           <div className="right-text right-text-no-auth">
             <li className="text">
-              <Link to="/main">Услуги</Link>
+              <div onClick={() => handleNavigate("/main")} >Услуги</div>
             </li>
             <li className="text">
-              <Link to="/question">Q&A</Link>
+              <div onClick={() => handleNavigate("/question")} >Q&A</div>
             </li>
             <li>
-              <Link to="/login">
+              <div onClick={() => handleNavigate("/login")}>
                 <button className="btn-navbar">Войти</button>
-              </Link>
+              </div>
             </li>
           </div>
         </ul>

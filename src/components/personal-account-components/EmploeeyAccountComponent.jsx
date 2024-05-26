@@ -232,7 +232,7 @@ setEditing(!editing)
         </div>
       </div>
       <div className="students-data-container">
-        <div className="title-container">Данные о работнике</div>
+        <div className="title-container">Данные о сотруднике </div>
         <div className="table-pass">
           <div className="first-columns">
             <div className="dateOfIssue column-account">

@@ -12,7 +12,12 @@ const CreateAService = () => {
   const [file, setFile] = useState(null);
   const [serviceName, setServiceName] = useState("");
   const [serviceDescription, setServiceDescription] = useState("");
-  const [error, setError] = useState(false);
+  const [errors, setErrors] = useState({
+    serviceName: false,
+    serviceDescription: false,
+    selectedOption: false,
+    file: false,
+  });
   const options = [
     { key: 0, option: "Справка" },
     { key: 1, option: "Заявление для студентов" },
@@ -28,8 +33,6 @@ const CreateAService = () => {
         setSelectedOption(option_item ? options.find((optionT) => optionT.option === option_item): null);
     
     };
-    
-    // Inside handleSave or any other function where you need to use selectedOption
     console.log("Selected option:", selectedOption);
     
 
@@ -44,7 +47,7 @@ const CreateAService = () => {
     console.log("Resetting data...");
     setServiceName("");
     setServiceDescription("");
-    setSelectedOption(null); // Reset selectedOption to null here
+    setSelectedOption(null);
     setFile(null);
   };
   
@@ -57,41 +60,26 @@ const CreateAService = () => {
   };
 
   const handleSave = async () => {
-    console.log("Selected option:", selectedOption);
-    // Add a null check for selectedOption
-    if (selectedOption.key===0 || selectedOption.key ===1  || selectedOption.key === 2) {
-      console.log("Option 1 or 2 selected");
-      if (renamedFile && serviceName && serviceDescription) {
-        console.log("All required fields are filled");
+    const newErrors = {
+      serviceName: serviceName === "",
+      serviceDescription: serviceDescription === "",
+      selectedOption: selectedOption === null,
+      file: (selectedOption && (selectedOption.key === 0 || selectedOption.key === 1 || selectedOption.key === 2)) && !file,
+    };
+
+    setErrors(newErrors);
+
+    const hasErrors = Object.values(newErrors).some((error) => error);
+    if (!hasErrors) {
+      if (selectedOption && (selectedOption.key === 0 || selectedOption.key === 1 || selectedOption.key === 2)) {
         addFile();
-        await DocumentService.fetchService(
-          serviceName,
-          serviceDescription,
-          selectedOption.key
-        );
-        console.log("Service saved successfully");
-        setTimeout(() => {
-          dataReset();
-        }, 1000); // 1000 миллисекунд = 1 секунда
-      } else {
-        console.log("Error: Missing required fields");
-        setError(true);
       }
-    } else if (selectedOption ) {
-      console.log("Option 3 or 4 selected");
-      if (serviceName && serviceDescription) {
-        console.log("All required fields are filled");
-        await DocumentService.fetchService(
-          serviceName,
-          serviceDescription,
-          selectedOption.key
-        );
-        console.log("Service saved successfully");
-        dataReset();
-      } else {
-        console.log("Error: Missing required fields");
-        setError(true);
-      }
+      await DocumentService.fetchService(
+        serviceName,
+        serviceDescription,
+        selectedOption.key
+      );
+      dataReset();
     }
   };
   
@@ -106,13 +94,13 @@ const CreateAService = () => {
         <NavbarLeft />
         <div className="service-created-list">
           <input
-            className="first-input input"
+            className={`first-input input ${errors.serviceName ? 'shake' : ''}`}
             placeholder="Введите название"
             value={serviceName}
             onChange={(e) => setServiceName(e.target.value)}
           />
           <textarea
-            className="second-input input"
+            className={`second-input input ${errors.serviceDescription ? 'shake' : ''}`}
             placeholder="Введите описание услуги"
             value={serviceDescription}
             onChange={(e) => setServiceDescription(e.target.value)}
@@ -120,24 +108,22 @@ const CreateAService = () => {
           <div className="btn-component-dropdown">
             <div className="dropdown-container">
               <Dropdown
-                className="dropdown-create-service"
+                className={`dropdown-create-service ${errors.selectedOption ? 'shake' : ''}`}
                 options={options}
                 onSelect={handleSelect}
                 selectedOption={selectedOption}
               />
             </div>
-              <div className="upload-container">
-              {selectedOption && (selectedOption.key === 0 ||selectedOption.key === 1 || selectedOption.key === 2) && (
+            <div className="upload-container">
+              {selectedOption && (selectedOption.key === 0 || selectedOption.key === 1 || selectedOption.key === 2) && (
                 <input
                   id="file-upload"
-                  className="file-input"
+                  className={`file-input ${errors.file ? 'shake' : ''}`}
                   type="file"
                   onChange={handleFileChange}
                 />
               )}
             </div>
-
-
             <div>
               <ButtonComponent
                 className="btn-account"
