@@ -19,12 +19,21 @@
   padding: 0;
 }
 
+.li-left div {
+  color: #000000;
+  text-decoration: none;
+  font-family: "Roboto";
+  font-weight: 500;
+  font-size: 1em;
+  display: inline;
+}
 .li-left a {
   color: #000000;
   text-decoration: none;
   font-family: "Roboto";
   font-weight: 500;
-  font-size: 0.9em;
+  font-size: 1em;
+  display: inline;
 }
 
 .li-left {
@@ -76,7 +85,7 @@
 }
 
 .btn-left img {
-  /* margin-right: 1vw; */
+  margin-right: 1vw;
   max-width: 0.9vw;
   max-height: 0.8vw;
 }
@@ -95,29 +104,3 @@
 .img-div {
   max-width: 2vw;
 }
-
-/* .btn-left {
-  display: flex; /* Включаем flexbox */
-/* align-items: center; Выравниваем элементы по вертикали */
-/* justify-content: space-between; Распределяем элементы по ширине кнопки
-  background-color: #FFD2D2;
-  color: #FF2C2C;
-  width: 90%;
-  border: 0.2vw solid;
-  border-radius: 1.2vw; */
-/* padding: 0.5vw; Добавляем немного отступов для красоты */
-/* } */
-
-/* .btn-left img { */
-/* width: 1.5em; Устанавливаем ширину изображения по вашему желанию */
-/* height: auto; Сохраняем пропорции */
-/* margin-right: 0.5vw; Добавляем немного отступа между изображением и текстом */
-/* } */
-
-/* li a{
-  color: #000000;
-  text-decoration: none;
-  font-family: "Roboto";
-  font-weight:500;
-  font-size: ;
-} */

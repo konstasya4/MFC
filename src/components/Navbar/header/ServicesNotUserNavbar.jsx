@@ -9,12 +9,7 @@ function ServicesNotUserNavbar() {
       const currentDate = new Date();
       const currentDay = currentDate.getDay();
       const currentHour = currentDate.getHours();
-      if (
-        currentDay >= 1 &&
-        currentDay <= 5 &&
-        currentHour >= 8 &&
-        currentHour < 20
-      ) {
+      if (currentDay >= 1 && currentDay <= 5 && currentHour >= 8 && currentHour < 20) {
         setIsOpen(true);
       } else {
         setIsOpen(false);

@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from "react";
 import NavbarLeft from "../../../components/Navbar/leftNavbar/NavbarLeft";
-// import './ExecutionStatusStyle.css';
-// import './ServiceStatusListStyle.css'
 import './NotDoneServiceStyle.css'
 import GettingAService from '../../../services/GettingAService';
 import InputComponent from "../../../components/input-component/InputComponent";
@@ -10,7 +8,7 @@ import ServiceStatusList from "../../../components/service-status-admin/ServiceS
 
 const NotDoneService = () => {
   const [status, setStatus] = useState([]);
-  const [filter, setFilter] = useState(""); // Состояние для отслеживания текущего выбранного статуса
+  const [filter, setFilter] = useState("");
   
   const statusService = [
     { key: 0, option: "Создано" },
@@ -24,7 +22,7 @@ const NotDoneService = () => {
     const fetchStatusData = async () => {
       try {
         const response = await GettingAService.fetchListServicesAdmin();
-        setStatus(response.data); // Устанавливаем массив статусов напрямую
+        setStatus(response.data);
         console.log(response);
       } catch (error) {
         console.error("Ошибка при получении данных о статусе:", error);
@@ -33,14 +31,12 @@ const NotDoneService = () => {
     fetchStatusData();
   }, []);
 
-  // Обработчик для фильтрации статусов по выбранному статусу
   const handleFilter = (filterStatus) => {
     setFilter(filter === filterStatus ? "" : filterStatus);
   };
 
-  // Фильтрация статусов на основе выбранного статуса
   const filteredStatus = status.filter(stat =>
-    (!filter && filter!==0) || stat.state === filter // Здесь используется stat.state для сравнения с фильтром
+    (!filter && filter!==0) || stat.state === filter
   );
  
 

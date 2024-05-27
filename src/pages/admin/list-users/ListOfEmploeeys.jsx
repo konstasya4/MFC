@@ -1,35 +1,37 @@
-  import React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import NavbarLeft from "../../../components/Navbar/leftNavbar/NavbarLeft";
 import InputComponent from "../../../components/input-component/InputComponent";
-import StudentsList from "../../../components/students-components/StudentsList";
+import EmploeeyList from "../../../components/emploeey-components/EmploeeyList";
 import './StudentListStyle.css';
 import UserService from "../../../services/UserService";
 
-const ListOfStudents=()=>{
-  const [listStudent, setListStudent] = useState([]);
+const ListOfEmploeeys=()=>{
+  const [listEmploeey, setListEmploeey] = useState({});
+
   useEffect(() => {
-    const fetchStudentsList = async () => {
+    const fetchStatusData = async () => {
       try {
-        const response = await UserService.fetchStudents();
-          setListStudent(response.data);
+        const response = await UserService.fetchEmployees();
+          setListEmploeey(response.data); 
+          console.log(response)
       } catch (error) {
-        console.error("Error fetching user data:", error);
+        console.error("Error fetching service:", error);
       }
     };
-    fetchStudentsList();
+    fetchStatusData();
   }, []);
 
-console.log(listStudent)
+console.log(listEmploeey)
   return (
     <div>
       <div className="head-container">
-        <div className="head-personal-data">Список студентов</div>
+        <div className="head-personal-data">Список работников</div>
       </div>
 
       <div className="ordered-cervices-container">
         <NavbarLeft /><div className="services-status-container">
           <InputComponent className="status-input" placeholder="Иванов Иван Иванович"/>
-        <StudentsList listStudent={listStudent} />
+        <EmploeeyList listEmploeey={listEmploeey} />
         </div>
 
       </div>
@@ -37,4 +39,5 @@ console.log(listStudent)
   );
 }
 
-export default ListOfStudents;
+export default ListOfEmploeeys;
+

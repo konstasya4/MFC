@@ -5,11 +5,11 @@ import ForgetPassword from "../pages/login/ForgetPassword"
 import PersonalAccount from "../pages/user/personalAccount/PersonalAccount"
 import ExecutionStatus from "../pages/user/execution-status/ExecutionStatus"
 import ListOfStudents from "../pages/admin/list-users/ListOfStudents"
-import ListOfTeachers from "../pages/admin/list-users/ListOfTeachers"
+import ListOfEmploeeys from "../pages/admin/list-users/ListOfEmploeeys"
 import ConfirmationCode from "../pages/login/ConfirmationCode"
 import Services from "../pages/services-page/Services"
 import StudentsAccount from "../pages/admin/list-users/StudentsAccount"
-import TeacherAccount from '../pages/admin/list-users/TeacherAccount'
+import EmploeeyAccount from '../pages/admin/list-users/EmploeeyAccount'
 import NotDoneService from "../pages/admin/not-done-service/NotDoneService"
 import CreateAService from "../pages/admin/create-service-page/CreateAService"
 import ArhiveServices from "../pages/admin/arhive-page/ArhiveServices"
@@ -36,8 +36,8 @@ export const privateRoutesAdmin=[
     {path:"/services/:name", element: <Services/>, exact: true},
     {path:"/question", element: <Quest/>, exact: true},
     {path:"/createService", element:<CreateAService/>, exact: true},
-    {path:"/listOfTeachers", element: <ListOfTeachers/>, exact: true},
-    {path:"/employee/:post", element: <TeacherAccount/>, exact: true},
+    {path:"/listOfEmploeeys", element: <ListOfEmploeeys/>, exact: true},
+    {path:"/employee/:post", element: <EmploeeyAccount/>, exact: true},
     {path:"/listOfStudents", element: <ListOfStudents/>, exact: true},
     {path:"/students/:serviceNumber", element: <StudentsAccount/>, exact: true},
     {path:"/notDoneService", element: <NotDoneService/>, exact: true},

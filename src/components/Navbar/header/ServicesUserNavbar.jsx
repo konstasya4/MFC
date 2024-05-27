@@ -11,12 +11,7 @@ function ServicesUserNavbar() {
   console.log(currentDate, currentDay, currentHour)
   useEffect(() => {
     const checkShopStatus = () => {
-      if (
-        currentDay >= 1 &&
-        currentDay <= 5 &&
-        currentHour >= 8 &&
-        currentHour < 20
-      ) {
+      if (currentDay >= 1 && currentDay <= 5 && currentHour >= 8 && currentHour < 20) {
         setIsOpen(true);
       } else {
         setIsOpen(false);

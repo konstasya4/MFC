@@ -132,6 +132,7 @@
   overflow: hidden;
   border: 1px solid #408CFF;
   margin-top: 0.2vh;
+  cursor: pointer;
 }
 
 .avatar img {

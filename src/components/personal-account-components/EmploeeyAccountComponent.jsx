@@ -11,15 +11,14 @@ const EmploeeyAccountComponent = () => {
   const [visibleField, setVisibleField] = useState();
   const [showPassword, setShowPassword] = useState(false);
   const [editMail, setEditMail] = useState();
-  const [editPassword, setEditPassword] = useState()
   const [editing, setEditing]=useState(true)
   const [employee, setEmployee] = useState();
 
   useEffect(() => {
     const fetchUserData = async () => {
       try {
-        const response = await UserService.fetchCurrentUser(); // Получаем информацию о текущем пользователе
-        setEmployee(response.data); // Обновляем состояние с данными пользователя
+        const response = await UserService.fetchCurrentUser();
+        setEmployee(response.data);
         console.log(employee)
       } catch (error) {
         console.error("Error fetching user data:", error);
@@ -32,7 +31,6 @@ const EmploeeyAccountComponent = () => {
     setVisibleField(visibleField === field ? null : field);
   };
   console.log(employee);
-  // console.log(employee.Passport.dateOfBirth);
   const hideData = (employee) => {
     if (!employee) return "";
     const firstChar = employee.substring(0, 1);
@@ -47,18 +45,8 @@ const EmploeeyAccountComponent = () => {
   };
   const copyToClipboard = (text) => {
     navigator.clipboard.writeText(text);
-    //dsaas
   };
-  // const handleEditMail = async () => {
-  //   try {
-  //     const updatedData = { ...data, mail: editMail };
-  //     const response = await PersonalData.update(updatedData);
-  //     setData(response);
-  //     console.log("Mail updated successfully:", response.mail);
-  //   } catch (error) {
-  //     console.error("Error updating mail:", error);
-  //   }
-  // };
+  
   const handleInputChange = (event) => {
     setEditMail(event.target.value);
     setEditMail(employee.Email);
@@ -261,37 +249,6 @@ setEditing(!editing)
                 <div className="text-account">{employee.institute}</div>
               </div>
             </div>
-
-            {/* <div className="citizenship column-account">
-      <div className="title-account">Пароль</div>
-      {editing ? (
-        <div className="btn-show">
-          <div className="text-account">
-            {visibleField === "password"
-              ? teacher.password
-              : hidePassword(teacher.password)}
-          </div>
-          <button
-            img={Show}
-            onClick={() => toggleVisibility("password")}
-          >
-            {visibleField === "password" ? (
-              <img src={Show}></img>
-            ) : (
-              <img src={Hide}></img>
-            )}
-          </button>
-        </div>
-      ) : (
-        <div>
-          <InputComponent
-            className=" pass-eding"
-            type="password"
-            onChange={togglePasswordVisibility}
-          />
-        </div>
-      )}
-    </div> */}
           </div>
           <div className="column-line">
             <div className="unitCode column-account">
@@ -327,9 +284,6 @@ setEditing(!editing)
           </div>
         </div>
       </div>
-      {/* <input type="text"
-  value={editMail}
-  onChange={(e) => setEditMail(e.target.value)}></input> */}
       {editing ? (
         <ButtonComponent
           className="btn-account"
@@ -345,7 +299,6 @@ setEditing(!editing)
             name="Отмена"
           />
         </div>
-        
       )}
     </div>
     </div>)}
