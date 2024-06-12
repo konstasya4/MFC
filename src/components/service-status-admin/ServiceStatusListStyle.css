@@ -1,0 +1,71 @@
+.dropdown-servise-status {
+    border-radius: 10px;
+    padding: 0.5vw 1.3vw;
+    text-align: start;
+    font: 500 1.1em "Roboto";
+    color: white;
+    border: none;
+}
+
+.print-it-out-button {
+    border: none;
+    background: none;
+    font: 400 1em "Roboto";
+    cursor: pointer;
+}
+
+.change-status {
+    margin-left: auto;
+    margin-right: 0;
+    display: flex;
+    flex-direction: row;
+}
+
+.change-status-btn {
+    display: flex;
+    flex-direction: column;
+}
+
+.change-status-btn button {
+    border: none;
+    background: none;
+    font: 400 1em "Roboto";
+    cursor: pointer;
+}
+
+.dropdown-servise-status:focus,
+.dropdown-servise-status:active {
+    outline: none;
+    box-shadow: none;
+}
+
+.status-service-list {
+    flex: 1;
+    margin-top: 1vw;
+}
+
+.dropdown-servise select {
+    margin-left: auto;
+
+}
+
+.status-indicator-2 {
+    background-color: #4AC341;
+    border: #4AC341;
+}
+
+.status-indicator-1 {
+    background-color: #408CFF;
+}
+
+.status-indicator-3 {
+    background-color: #FF8F8F;
+}
+
+.status-indicator-0 {
+    background-color: #a7c9f9;
+}
+
+.status-indicator-4 {
+    background-color: #ADADAD;
+}

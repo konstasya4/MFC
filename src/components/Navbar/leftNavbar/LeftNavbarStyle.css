@@ -1,0 +1,95 @@
+.nav-left {
+  display: flex;
+  flex-direction: column;
+  border: 0.2vw solid #B1B1B1;
+  border-radius: 1.7vw;
+  width: max-content;
+  margin-left: 4vw;
+  min-height: 20vw;
+  width: 14vw;
+}
+
+.ul-left {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+  padding: 0;
+}
+
+.li-left div {
+  color: #000000;
+  text-decoration: none;
+  font-family: "Roboto";
+  font-weight: 500;
+  font-size: 1em;
+  display: inline;
+  cursor: pointer;
+}
+
+.li-left a {
+  color: #000000;
+  text-decoration: none;
+  font-family: "Roboto";
+  font-weight: 500;
+  font-size: 1em;
+  display: inline;
+}
+
+.li-left {
+  margin: 0.5vw 1vw;
+  padding: 0 1vw;
+  display: flex;
+  align-items: center;
+  margin-top: 1vw;
+}
+
+.li-btn-left {
+  width: 100%;
+  margin: auto 0 0 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+}
+
+.li-btn-left a {
+  text-decoration: none;
+}
+
+.btn-left {
+  display: flex;
+  justify-content: center;
+  background-color: #FFD2D2;
+  color: #FF2C2C;
+  border: 0.2vw;
+  border-radius: 1.2vw;
+  align-items: center;
+  padding: 0.6vw;
+  font-family: "Roboto";
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: auto;
+  margin-bottom: 0;
+}
+
+.btn-left img {
+  margin-right: 1vw;
+  max-width: 0.9vw;
+  max-height: 0.8vw;
+}
+
+.img-nav {
+  margin-right: 5px;
+  max-width: 0.8vw;
+  max-height: 0.8vw;
+}
+
+.div-left {
+  display: flex;
+
+}
+
+.img-div {
+  max-width: 2vw;
+}

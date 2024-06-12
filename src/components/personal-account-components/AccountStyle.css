@@ -1,0 +1,104 @@
+.horiz-line{
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start; 
+  width: 100%;
+  flex: 1;
+}
+.account-container{
+  margin-right: 5.2vw;
+}
+.passportData .column-account {
+  max-width: 20vw;
+}
+.column-account{
+  margin-top: 1vw;
+}
+.input-container-account{
+  display: flex;
+  flex-direction: row;
+}
+.input-container-account button{
+  margin-left: 1vw;
+}
+.head-container{
+  border-bottom: 1px solid #ed8e79;
+  margin: 2vw 0 2vw 0;
+  padding: 0 0 1vw 4vw;
+  display: flex;
+  align-items: center;
+  flex: 1;
+}
+
+.head-personal-data{
+    font: 600 1.688em  "Roboto";
+}
+.person-data-conteiner{
+    margin-left: 3vw ;
+}
+.name-person{
+    display: flex;
+    align-items: center;
+}
+.name-line{
+    margin-left: 2vw;
+}
+.fio{
+  font: 500 2.6em  "Roboto";   
+}
+.midleName{
+    margin-left: 1vw;
+}
+.avatarAccount {
+    width: 7vw; 
+    height: 7vw; 
+    border-radius: 50%; 
+    overflow: hidden;
+    align-items: center;
+    border: 1px solid #408CFF;
+  }
+  
+  .avatarAccount img {
+    width: 100%;
+    height: auto;
+  }
+  .passport-data-container{
+    margin-top: 1.5vw;
+  }
+  .title-container{
+    font: 500 2em  "Roboto";   
+    color: #AAAAAA;
+  }
+  .students-data-container{
+    margin-top: 2.6vw;
+  }
+    .title-account{
+    font: 500 1.5em  "Roboto";   
+  }
+  .table-pass{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  .column-line{
+    margin-left:5vw;
+    
+  }
+  .text-account{
+    font: 400 1.25em  "Roboto";   
+    color:#6D6D6D;
+  }
+
+  .btn-show{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+  .btn-show button{
+    background:none;
+    border: none;
+    cursor: pointer;
+  }
+  .btn-show button img{
+    width: 1.3vw;
+  }

@@ -1,0 +1,82 @@
+.search-input {
+    border: 0.2vw solid #408CFF;
+    display: flex;
+    align-items: center;
+    border-radius: 0.4vw;
+}
+
+.status-input input {
+    width: 65vw;
+}
+
+.status-input {
+    width: 65vw;
+    margin-bottom: 1vw;
+}
+
+.input input {
+    width: 60vw;
+}
+
+.search-input input {
+    border: none;
+    outline: none;
+    padding-left: 1vw;
+}
+
+.search-input button {
+    border: none;
+    background: none;
+    cursor: pointer;
+}
+
+.search-input img {
+    width: 1.5vw;
+}
+
+.eding-input {
+    border: 0.2vw solid #AAAAAA;
+    border-radius: 0.4vw;
+    padding: 0.2w;
+}
+
+.eding-input input {
+    border: none;
+    outline: none;
+    font-family: "Roboto";
+    font-size: 1.25em;
+    color: #6D6D6D;
+    width: 20vw;
+}
+
+.input-password {
+    display: flex;
+    align-items: center;
+    border: 0.2vw solid #AAAAAA;
+    border-radius: 0.4vw;
+
+}
+
+.input-password input {
+    border: none;
+    outline: none;
+    font-family: "Roboto";
+    font-size: 1.25em;
+    color: #6D6D6D;
+}
+
+.show-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+
+}
+
+.show-btn img {
+    width: 1.5vw;
+}
+
+input[type=password]::-ms-reveal,
+input[type=password]::-ms-clear {
+    display: none;
+}

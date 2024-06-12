@@ -1,0 +1,77 @@
+.service-page {
+    display: flex;
+    flex-direction: row;
+    margin-top: 3vw;
+    flex: 1;
+}
+
+.service-text {
+    margin: 0 1vw;
+    max-width: 50vw;
+}
+
+.title-service {
+    margin-bottom: 1.2vw;
+    font-weight: 600;
+    font-size: 1.7em;
+    font-family: "Roboto";
+}
+
+.about-service {
+    margin-bottom: 0.5vw;
+    font-weight: 500;
+    font-size: 1.4em;
+    font-family: "Roboto";
+}
+
+.description-service {
+    font-weight: 400;
+    font-size: 1.25em;
+    font-family: "Roboto";
+}
+
+.btn-serv {
+    margin: 0 7vw 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn-style {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #408CFF;
+    color: white;
+    height: 3vw;
+    font: bold 2em "Roboto";
+    line-height: 1;
+    border: 0 solid #408CFF;
+    border-radius: 0.8vw;
+    cursor: pointer;
+    text-align: center;
+    padding: 1em;
+}
+
+.download-text {
+    display: flex;
+    flex-direction: row;
+    margin-top: 1vw;
+    font: 500 1.25em "Roboto";
+    background: none;
+    border: none;
+    align-items: center;
+}
+
+.download-text {
+    text-decoration: none;
+}
+
+.download-text img {
+    width: 2vw;
+    height: 2vw;
+}
+
+.serv-down {
+    margin-left: auto;
+}

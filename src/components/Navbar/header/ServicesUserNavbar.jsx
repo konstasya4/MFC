@@ -1,18 +1,16 @@
-import React, { useContext, useState, useEffect } from "react";
-import { Link } from "react-router-dom";
-import '../../../styles/NavbarStyle.css';
-import PersonalDataActive from "../../../images/PersonalDataActive.png";
-import { AuthContext, RoleContext } from "../../../context";
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import "./NavbarStyle.css";
+import PersonalDataActive from "../images/PersonalDataActive.png";
 function ServicesUserNavbar() {
-  const { isAuth, setIsAuth } = useContext(AuthContext);
-  const { isRole, setIsRole } = useContext(RoleContext);
+  const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(false);
+  const currentDate = new Date();
+  const currentDay = currentDate.getDay();
+  const currentHour = currentDate.getHours();
+  console.log(currentDate, currentDay, currentHour);
   useEffect(() => {
     const checkShopStatus = () => {
-      const currentDate = new Date();
-      const currentDay = currentDate.getDay();
-      const currentHour = currentDate.getHours();
-      console.log(currentDate, currentDay, currentHour);
       if (
         currentDay >= 1 &&
         currentDay <= 5 &&
@@ -28,18 +26,17 @@ function ServicesUserNavbar() {
 
     return () => clearInterval(interval);
   }, []);
-  const logout = () => {
-    setIsAuth(false);
-    setIsRole("");
-    localStorage.removeItem("auth");
-    localStorage.removeItem("role");
+  const handleNavigate = (path) => {
+    navigate(path);
   };
   return (
     <div className="page_header">
       <nav className="nav">
         <ul className="header-ul">
           <div className="left-text left-text-auth">
-            <li className="text">МФЦ РУТ(МИИТ)</li>
+            <li className="text" onClick={() => handleNavigate("/mainUser")}>
+              МФЦ РУТ(МИИТ)
+            </li>
           </div>
           <div className="center-text">
             <li className="operating-mode text">
@@ -58,22 +55,24 @@ function ServicesUserNavbar() {
               )}
             </div>
             <li className="quest">
-              <Link to="/questionUser">Где получить услуги</Link>
+              <div onClick={() => handleNavigate("/questionUser")}>
+                Где получить услуги
+              </div>
             </li>
           </div>
           <div className="right-text right-text-auth">
             <li className="text">
-              <Link to="/mainUser">Услуги</Link>
+              <div onClick={() => handleNavigate("/mainUser")}>Услуги</div>
             </li>
             <li className="text">
-              <Link to="/questionUser">Q&A</Link>
+              <div onClick={() => handleNavigate("/questionUser")}>Q&A</div>
             </li>
             <li>
-              <Link to="/account">
+              <div onClick={() => handleNavigate("/account")}>
                 <div class="avatar">
                   <img src={PersonalDataActive} alt="Your Name" />
                 </div>
-              </Link>
+              </div>
             </li>
           </div>
         </ul>

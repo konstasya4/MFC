@@ -1,0 +1,45 @@
+.editing-arhive-service-container{
+    display: flex;
+    flex-direction: column;
+    margin-left: auto;
+}
+.editing-arhive-service-chekbox{
+    display: flex;
+    flex-direction: row;
+}
+.service-arhive-container{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    flex: 1;
+    padding: 1vw 0;
+    border-bottom:2px solid #E4E4E4;
+}
+
+.service-arhive-item-name{
+    font: 500 1.5em "Roboto";
+
+}
+.service-arhive-item-type{
+    font: 400 1em "Roboto";
+    color: #6D6D6D;
+    margin-top: 3px;
+}
+.arhive-list-container{
+    flex: 1;
+    margin-top: 1vw;
+}
+.editing-arhive-service-btn{
+    font: 600 1.3em "Roboto";
+}
+.editing-arhive-service-chekbox{
+    font: 500 1.15em "Roboto";
+}
+.delete-btn{
+    background: none;
+    border:none;
+    cursor: pointer;
+}
+.delete-btn img{
+    width: 1.5vw;
+}

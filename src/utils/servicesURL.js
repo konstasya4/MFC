@@ -1,0 +1,7 @@
+export const CertificatePlaceOfWorkURL = "/services/%D0%A1%D0%BF%D1%80%D0%B0%D0%B2%D0%BA%D0%B0%20%D1%81%20%D0%BC%D0%B5%D1%81%D1%82%D0%B0%20%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D1%8B"
+export const CertificatePostponementURL = "/services/Справка%20для%20оформления%20отсрочки%20от%20призыва%20в%20ВС%20РФ"
+export const CertificatePlaceOfStudyURL = "/services/Справка%20с%20места%20учебы"
+export const CertificateAmountScholarshipURL = "/services/Справка%20о%20размере%20стипендии"
+export const Certificate2NDFLURL = "/services/Справка%202НДФЛ"
+export const TransferAndRestorationURL = "/services/Перевод%20и%20восстановление%20для%20граждан%20РФ"
+export const SwitchingFromPaidToFreeURL = "/services/Переход%20с%20платного%20обучения%20на%20бесплатное"

@@ -1,23 +1,38 @@
-import React, { useEffect } from "react";
-import '../../styles/componentsStyles/OrderedServices.css'
+import React, { useState, useEffect, useMemo } from "react";
+import "./OrderedServiceStyle.css";
 
 const StatusItem = (props) => {
-    return (
-      <div className="status-container">
-        <div className="status-item">
-          <div className="status-item-title">{props.status.title}</div>
-          <div className="status-item-date">Дата заказа: {props.status.date}</div>
-        </div>
-        {props.status.status==="Готово к выдаче" ?(
-          <p className="status-indicator status-indicator-done">{props.status.status}</p>
-        ):
-        props.status.status==="В работе" ? <p className="status-indicator status-indicator-in-progress">{props.status.status}</p>:
-        props.status.status==="Отклонено" ?
-        (<p className="status-indicator status-indicator-rejected">{props.status.status}</p>):
-        (<p className="status-indicator status-indicator-received">{props.status.status}</p>)
-        }
-        
-      </div>
+  const statusServices = useMemo(() => [
+    { key: 0, status: "Создано" },
+    { key: 1, status: "В работе" },
+    { key: 2, status: "Готово" },
+    { key: 3, status: "Отклонено" },
+    { key: 4, status: "Получено" },
+  ], []);
+  const [statusServiceItem, setStatusServiceItem] = useState(null);
+
+  useEffect(() => {
+    const statusItem = statusServices.find(
+      (item) => item.key === props.status.state
     );
+    setStatusServiceItem(statusItem);
+  }, [props.status.state, statusServices]);
+
+  return (
+    <div className="status-container">
+      <div className="status-item">
+        <div className="status-item-title">{props.status.service.name}</div>
+        <div className="status-item-date">Дата заказа: {props.status.dateTime}</div>
+      </div>
+      {statusServiceItem && (
+        <p
+          className={`status-indicator status-indicator-${statusServiceItem.key}`}
+        >
+          {statusServiceItem.status}
+        </p>
+      )}
+    </div>
+  );
 };
+
 export default StatusItem;

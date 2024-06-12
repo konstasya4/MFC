@@ -1,0 +1,26 @@
+.btn {
+  background-color: #408CFF;
+  color: white;
+  padding: 3px 8px;
+  font-family: "Roboto";
+  border-radius: 0.8vw;
+  border: none;
+  cursor: pointer;
+  text-align: center;
+}
+
+.cancel-btn {
+  background-color: #ADADAD;
+  margin-left: 1vw;
+}
+
+.btn-account {
+  font-size: 1.2em;
+  font-weight: 700;
+  margin-top: 1vw;
+}
+
+.bnt-admin-account {
+  padding: 0.5vw 1.3vw;
+  font: 500 1.25em "Roboto";
+}
