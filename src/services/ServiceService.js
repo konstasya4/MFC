@@ -5,9 +5,7 @@ export default class ServiceService {
         return $api.get('/services')
     }
     static fetchServiceItem(name) {
-        const a= $api.get(`/services/${name}`)
-        console.log(a)
-        return a
+        return  $api.get(`/services/${name}`)
     }
     static fetchOnPublic(name) {
         return $api.put(`/services/switch_state/${name}`)

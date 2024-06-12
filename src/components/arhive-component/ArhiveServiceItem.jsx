@@ -76,7 +76,7 @@ const ArhiveServiceItem = (props) => {
         </label>
       </div>
       <button className="delete-btn" onClick={deleteService}>
-        <img src={DeleteButton}></img>
+        <img src={DeleteButton} alt=""></img>
       </button>
     </div>
   );

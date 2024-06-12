@@ -1,15 +1,20 @@
-import React, {useState, useEffect } from "react";
-import {useNavigate } from "react-router-dom";
-import './NavbarStyle.css';
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import "./NavbarStyle.css";
 function ServicesNotUserNavbar() {
   const [isOpen, setIsOpen] = useState();
-  const navigate=useNavigate()
+  const navigate = useNavigate();
   useEffect(() => {
     const checkShopStatus = () => {
       const currentDate = new Date();
       const currentDay = currentDate.getDay();
       const currentHour = currentDate.getHours();
-      if (currentDay >= 1 && currentDay <= 5 && currentHour >= 8 && currentHour < 20) {
+      if (
+        currentDay >= 1 &&
+        currentDay <= 5 &&
+        currentHour >= 8 &&
+        currentHour < 20
+      ) {
         setIsOpen(true);
       } else {
         setIsOpen(false);
@@ -34,8 +39,10 @@ function ServicesNotUserNavbar() {
             </li>
           </div>
           <div className="center-text">
-            <li className="operating-mode text">Работаем в Пн-Пт с 08:00-20:00</li>
-            <div className="time-indicator" >
+            <li className="operating-mode text">
+              Работаем в Пн-Пт с 08:00-20:00
+            </li>
+            <div className="time-indicator">
               {isOpen ? (
                 <div className="open-indicator"> </div>
               ) : (
@@ -48,15 +55,17 @@ function ServicesNotUserNavbar() {
               )}
             </div>
             <li className="quest">
-              <div onClick={() => handleNavigate("/question")} >Где получить услуги</div>
+              <div onClick={() => handleNavigate("/question")}>
+                Где получить услуги
+              </div>
             </li>
           </div>
           <div className="right-text right-text-no-auth">
             <li className="text">
-              <div onClick={() => handleNavigate("/main")} >Услуги</div>
+              <div onClick={() => handleNavigate("/main")}>Услуги</div>
             </li>
             <li className="text">
-              <div onClick={() => handleNavigate("/question")} >Q&A</div>
+              <div onClick={() => handleNavigate("/question")}>Q&A</div>
             </li>
             <li>
               <div onClick={() => handleNavigate("/login")}>

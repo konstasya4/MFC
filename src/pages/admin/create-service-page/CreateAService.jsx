@@ -7,7 +7,6 @@ import DocumentService from "../../../services/DocumentService";
 
 const CreateAService = () => {
   const [selectedOption, setSelectedOption] = useState(null);
-  // const [selectedOption, setSelectedOption] = useState(null);
   const [editing, setEditing] = useState(true);
   const [file, setFile] = useState(null);
   const [serviceName, setServiceName] = useState("");
@@ -18,23 +17,21 @@ const CreateAService = () => {
     selectedOption: false,
     file: false,
   });
+
   const options = [
     { key: 0, option: "Справка" },
     { key: 1, option: "Заявление для студентов" },
     { key: 2, option: "Заявление для работников" },
     { key: 3, option: "Перевод и восстановление" },
   ];
-  const renamedFile = file
-    ? new File([file], `${serviceName}.doc`, { type: file.type })
-    : null;
 
-    const handleSelect = (option_item) => {
-      
-        setSelectedOption(option_item ? options.find((optionT) => optionT.option === option_item): null);
-    
-    };
-    console.log("Selected option:", selectedOption);
-    
+  const handleSelect = (option_item) => {
+    setSelectedOption(
+      option_item
+        ? options.find((optionT) => optionT.option === option_item)
+        : null
+    );
+  };
 
   const handleFileChange = (event) => {
     setFile(event.target.files[0]);
@@ -43,20 +40,38 @@ const CreateAService = () => {
   const changingEditing = () => {
     setEditing(!editing);
   };
+
   const dataReset = () => {
-    console.log("Resetting data...");
     setServiceName("");
     setServiceDescription("");
     setSelectedOption(null);
     setFile(null);
   };
-  
-  
-  const addFile = () => {
+
+  const addService = async () => {
+    const renamedFile = file
+      ? new File([file], `${serviceName}.doc`, { type: file.type })
+      : null;
     const formData = new FormData();
-    formData.append("file", renamedFile);
-    const responceFile=DocumentService.fetchFile(formData, selectedOption.key);
-    console.warn("file",responceFile)
+
+    if (renamedFile) {
+      formData.append("File", renamedFile);
+    }
+    formData.append("Name", serviceName);
+    formData.append("Description", serviceDescription);
+    formData.append("Type", selectedOption.key);
+
+    try {
+      if (selectedOption.key === 3) {
+        const response = await DocumentService.fetchService(formData);
+        console.warn("Service created:", response);
+      } else {
+        const response = await DocumentService.fetchServiceWithFile(formData);
+        console.warn("Service created:", response);
+      }
+    } catch (error) {
+      console.error("Error adding service:", error);
+    }
   };
 
   const handleSave = async () => {
@@ -64,26 +79,17 @@ const CreateAService = () => {
       serviceName: serviceName === "",
       serviceDescription: serviceDescription === "",
       selectedOption: selectedOption === null,
-      file: (selectedOption && (selectedOption.key === 0 || selectedOption.key === 1 || selectedOption.key === 2)) && !file,
+      file: selectedOption && [0, 1, 2].includes(selectedOption.key) && !file,
     };
 
     setErrors(newErrors);
 
     const hasErrors = Object.values(newErrors).some((error) => error);
     if (!hasErrors) {
-      if (selectedOption && (selectedOption.key === 0 || selectedOption.key === 1 || selectedOption.key === 2)) {
-        addFile();
-      }
-      await DocumentService.fetchService(
-        serviceName,
-        serviceDescription,
-        selectedOption.key
-      );
+      await addService();
       dataReset();
     }
   };
-  
-  
 
   return (
     <div>
@@ -94,13 +100,15 @@ const CreateAService = () => {
         <NavbarLeft />
         <div className="service-created-list">
           <input
-            className={`first-input input ${errors.serviceName ? 'shake' : ''}`}
+            className={`first-input input ${errors.serviceName ? "shake" : ""}`}
             placeholder="Введите название"
             value={serviceName}
             onChange={(e) => setServiceName(e.target.value)}
           />
           <textarea
-            className={`second-input input ${errors.serviceDescription ? 'shake' : ''}`}
+            className={`second-input input ${
+              errors.serviceDescription ? "shake" : ""
+            }`}
             placeholder="Введите описание услуги"
             value={serviceDescription}
             onChange={(e) => setServiceDescription(e.target.value)}
@@ -108,17 +116,19 @@ const CreateAService = () => {
           <div className="btn-component-dropdown">
             <div className="dropdown-container">
               <Dropdown
-                className={`dropdown-create-service ${errors.selectedOption ? 'shake' : ''}`}
+                className={`dropdown-create-service ${
+                  errors.selectedOption ? "shake" : ""
+                }`}
                 options={options}
                 onSelect={handleSelect}
                 selectedOption={selectedOption}
               />
             </div>
             <div className="upload-container">
-              {selectedOption && (selectedOption.key === 0 || selectedOption.key === 1 || selectedOption.key === 2) && (
+              {selectedOption && [0, 1, 2].includes(selectedOption.key) && (
                 <input
                   id="file-upload"
-                  className={`file-input ${errors.file ? 'shake' : ''}`}
+                  className={`file-input ${errors.file ? "shake" : ""}`}
                   type="file"
                   onChange={handleFileChange}
                 />

@@ -23,18 +23,15 @@ const ServiceStatusItem = (props) => {
   const handleStatusChange = (selectedStatusKey) => {
     setSelectedStatusKey(parseInt(selectedStatusKey));
   };
-  console.log(props);
+
   const changeStatus = async () => {
-    if (selectedStatusKey !== null && selectedStatusKey !== undefined) {
       try {
-        const responseState = await GettingAService.fetchNewStatus(
+        await GettingAService.fetchNewStatus(
           selectedStatusKey,
           props.status.id
         );
-        console.warn(responseState);
       } catch (error) {
         console.error("Ошибка при изменении статуса:", error);
-      }
     }
   };
   const downloadTheDocument = async () => {
@@ -44,8 +41,7 @@ const ServiceStatusItem = (props) => {
           props.status.id
         );
       setDocumentDownload(props.status);
-      const objectURL = response.request.responseURL;
-      console.log("objectURL", objectURL);
+      const objectURL = response.data.url;
       setDownloadURL(objectURL);
       setModalOpen(true);
     } catch (error) {
@@ -60,11 +56,10 @@ const ServiceStatusItem = (props) => {
   return (
     <div className="service-status-container">
       <div className="status-item">
-        <div className="status-item-title">{props.status.serviceName}</div>
+        <div className="status-item-title">{props.status.service.name}</div>
         <div>
           <div className="status-item-date">
-            {props.status.name.second}, {props.status.name.first},{" "}
-            {props.status.name.middle}
+            {props.status.userFullName}
           </div>
           <div className="status-item-date">
             Дата заказа: {props.status.dateTime}
@@ -73,7 +68,7 @@ const ServiceStatusItem = (props) => {
       </div>
 
       <div className="change-status">
-        {props.status.serviceType === 0 && (
+        {props.status.service.type === 0 && (
           <button className="print-it-out-button" onClick={downloadTheDocument}>
             Распечатать
           </button>

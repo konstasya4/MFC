@@ -29,7 +29,10 @@ const ArhiveServices = () => {
       <div className="ordered-cervices-container">
         <NavbarLeft />
         <div className="services-status-container">
-          <ArhiveServiceList listArhiveServices={listArhiveServices} refreshList={fetchStatusData} />
+          <ArhiveServiceList
+            listArhiveServices={listArhiveServices}
+            refreshList={fetchStatusData}
+          />
         </div>
       </div>
     </div>

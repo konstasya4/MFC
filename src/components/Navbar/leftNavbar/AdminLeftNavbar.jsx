@@ -7,12 +7,12 @@ import Students from "../images/Students.png";
 import NotCompleted from "../images/NotСompleted.png";
 import Arhive from "../images/TheArchive.png";
 import { useDispatch } from "react-redux";
-import logoutUser from "../../../utils/logoutUser";
+import logoutUser from "../../../utils/logoutUserAsync";
 import { useNavigate } from "react-router-dom";
 
 const AdminLeftNavbar = () => {
   const dispatch = useDispatch();
-  const navigate=useNavigate()
+  const navigate = useNavigate();
   const handleLogout = () => {
     dispatch(logoutUser());
   };
@@ -24,7 +24,7 @@ const AdminLeftNavbar = () => {
       <ul className="ul-left">
         <li className="li-left">
           <div>
-            <img className="img-nav" src={CreateService} alt=""/>
+            <img className="img-nav" src={CreateService} alt="" />
             <div onClick={() => handleNavigate("/createService")}>
               Создать услугу
             </div>
@@ -32,15 +32,15 @@ const AdminLeftNavbar = () => {
         </li>
         <li className="li-left">
           <div>
-            <img className="img-nav" src={Employees} alt=""/>
-            <div onClick={() => handleNavigate("/listOfTeachers")}>
+            <img className="img-nav" src={Employees} alt="" />
+            <div onClick={() => handleNavigate("/listOfEmploeeys")}>
               Работники
             </div>
           </div>
         </li>
         <li className="li-left">
           <div>
-            <img className="img-nav" src={Students} alt=""/>
+            <img className="img-nav" src={Students} alt="" />
             <div onClick={() => handleNavigate("/listOfStudents")}>
               Студенты
             </div>
@@ -60,7 +60,7 @@ const AdminLeftNavbar = () => {
         </li>
         <li className="li-left">
           <div>
-            <img className="img-nav" src={Arhive} alt=""/>
+            <img className="img-nav" src={Arhive} alt="" />
             <div onClick={() => handleNavigate("/arhiveServices")}>Архив</div>
           </div>
         </li>
@@ -68,7 +68,7 @@ const AdminLeftNavbar = () => {
           <div className="btn-div-left">
             <div onClick={() => handleNavigate("/main")}>
               <button onClick={handleLogout} className="btn-left">
-                <img src={OutButton} alt=""/>
+                <img src={OutButton} alt="" />
                 Выйти из аккаунта
               </button>
             </div>

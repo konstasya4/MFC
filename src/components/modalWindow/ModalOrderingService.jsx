@@ -3,12 +3,8 @@ import "./ModalAuthStyle.css";
 import SentServiceIcon from "./images/SentServiceIcon.png";
 import { useNavigate } from "react-router-dom";
 import ButtonComponent from "../button-component/ButtonComponent";
-import { useSelector } from "react-redux";
-// import Download from './images/Download.png'
 
-const ModalOrderingService = ({ isOpen, onClose, service, downloadURL }) => {
-  const { isAuth } = useSelector(state => state.auth);
-    const { isRole } = useSelector(state => state.auth);
+const ModalOrderingService = ({ isOpen, service, downloadURL }) => {
   const navigate = useNavigate();
   const modalRef = useRef(null); 
 
@@ -18,15 +14,7 @@ const ModalOrderingService = ({ isOpen, onClose, service, downloadURL }) => {
   const handleMainPage = () => {
     navigate("/mainUser");
   };
-  const handleDownloadClick = () => {
-    const filename = `${service.name}.doc`;
-    const a = document.createElement('a');
-    a.setAttribute('href', downloadURL);
-    a.setAttribute('download', filename);
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-  };
+
   return (
     <div>
       {isOpen && (
@@ -39,8 +27,8 @@ const ModalOrderingService = ({ isOpen, onClose, service, downloadURL }) => {
                   Заявка принята, следите за ее статусом в личном кабинете
                 </p>
                 {(service.type === 1 || service.type === 2) &&
-                    <button className="download-text-modal" onClick={handleDownloadClick}>
-                        <div>Скачать заполненный файл</div>
+                    <button className="download-text-modal" >
+                        <a href={downloadURL}>Скачать заполненный файл</a>
                     </button>
                 }
                 <ButtonComponent

@@ -1,51 +1,59 @@
-.filter-button{
+.filter-button {
     margin-left: auto;
     margin-right: 5.2vw;
 }
-.ordered-cervices-container{
+
+.ordered-cervices-container {
     display: flex;
     align-items: flex-start;
     width: 100%;
 }
-.btn-active-2{
+
+.btn-active-2 {
     background-color: #4AC341;
     border: 3px solid #4AC341;
     color: #FFFFFF;
 }
-.btn-active-1{
+
+.btn-active-1 {
     background-color: #408CFF;
     border: 3px solid #408CFF;
     color: #FFFFFF;
 }
-.btn-active-3{
+
+.btn-active-3 {
     background-color: #FF8F8F;
     border: 3px solid #FF8F8F;
     color: #FFFFFF;
 }
-.btn-active-0{
+
+.btn-active-0 {
     background-color: #a7c9f9;
     border: 3px solid #a7c9f9;
     color: #FFFFFF;
 }
-.btn-active-4{
-   
-    background-color:  #B1B1B1;
-    border: 3px solid  #B1B1B1;
+
+.btn-active-4 {
+
+    background-color: #B1B1B1;
+    border: 3px solid #B1B1B1;
     color: #FFFFFF;
 }
 
-.status-btn-pass{
+.status-btn-pass {
     border: 3px solid #B1B1B1;
     background-color: white;
     color: #B1B1B1;
 }
-.status-btn{
+
+.status-btn {
     border-radius: 8px;
     font: 700 1em "Inter Tight";
     padding: 0.3vw 1.4vw;
     margin-left: 0.3vw;
 }
-.services-status-container{
+
+.services-status-container {
     display: flex;
     flex-direction: column;
     flex: 1;

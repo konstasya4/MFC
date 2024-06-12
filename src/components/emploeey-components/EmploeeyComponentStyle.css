@@ -1,31 +1,17 @@
-
 .status-container {
     display: flex;
     flex-direction: row;
     align-items: center;
     flex: 1;
     padding: 1vw 0;
-    border-bottom:2px solid #E4E4E4;
+    border-bottom: 2px solid #E4E4E4;
     cursor: pointer;
 }
-.status-list{
-    /* display: flex;
-    flex-direction: column; */
+
+.status-list {
     flex: 1;
     margin-top: 1vw;
 }
-/* .btn-container{
-    display: flex;
-    flex-direction: column;
-    /* align-items: center; */
-    /* flex: 1;
-    width: 100%;
-    background: none;
-    border: none;
-    border-bottom:2px solid #E4E4E4; */
-
-/* }  */
-.status-item {}
 
 .status-item-title {
     font: 500 1.5em "Roboto";
@@ -36,31 +22,4 @@
     color: #6D6D6D;
     margin-top: 3px;
 
-}
-
-.status-indicator {
-        margin-left: auto;
-        border-radius: 10px;
-        padding: 0.5vw 1.3vw;
-        text-align:start;
-        font: 500 1.1em "Roboto";
-color: white;
-    }
-.status-indicator p{
-    margin: 0;
-}
-.status-indicator-2{
-    background-color:#4AC341;
-}
-.status-indicator-1{
-    background-color:#408CFF;
-}
-.status-indicator-3{
-    background-color:#FF8F8F;
-}
-.status-indicator-0{
-    background-color: #a7c9f9;
-}
-.status-indicator-4{
-    background-color: #ADADAD;
 }

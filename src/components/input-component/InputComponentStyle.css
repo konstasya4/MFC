@@ -1,62 +1,46 @@
-/* .input{
-    border: 0.2vw  solid #408CFF;
-border-radius: 0.7vw;
-width: 50vw;
-height: 2vw;
-/* padding-left: 2.5vw;  */
-/* background-image: url('../../images/Search.png'); 
-background-size: 1.5vw; 
-background-repeat: no-repeat; 
-background-position:right center;  */
-/* padding-right: 2vw; */
-/* } */ 
-.search-input{
-    border: 0.2vw  solid #408CFF;
+.search-input {
+    border: 0.2vw solid #408CFF;
     display: flex;
     align-items: center;
-    /* border: 0.2vw  solid #AAAAAA; */
     border-radius: 0.4vw;
 }
-.status-input input{
+
+.status-input input {
     width: 65vw;
 }
-.status-input{
+
+.status-input {
     width: 65vw;
     margin-bottom: 1vw;
 }
-.input input{
+
+.input input {
     width: 60vw;
 }
-.search-input input{
+
+.search-input input {
     border: none;
     outline: none;
     padding-left: 1vw;
 }
-.search-input button{
+
+.search-input button {
     border: none;
     background: none;
     cursor: pointer;
 }
-.search-input img{
+
+.search-input img {
     width: 1.5vw;
 }
 
-/* .input input{
-    border: none;
-    outline: none;
+.eding-input {
+    border: 0.2vw solid #AAAAAA;
+    border-radius: 0.4vw;
+    padding: 0.2w;
 }
-.input::placeholder{
-    padding-left: 1vw;
-}
-.input-wrapper {
-    position: relative;
-  } */
-  .eding-input{
-    border: 0.2vw  solid #AAAAAA;
-border-radius: 0.4vw;
-padding: 0.2w;
-}
-.eding-input input{
+
+.eding-input input {
     border: none;
     outline: none;
     font-family: "Roboto";
@@ -64,31 +48,35 @@ padding: 0.2w;
     color: #6D6D6D;
     width: 20vw;
 }
-.input-password{
+
+.input-password {
     display: flex;
     align-items: center;
-    border: 0.2vw  solid #AAAAAA;
+    border: 0.2vw solid #AAAAAA;
     border-radius: 0.4vw;
 
 }
-.input-password input{
+
+.input-password input {
     border: none;
     outline: none;
     font-family: "Roboto";
     font-size: 1.25em;
     color: #6D6D6D;
 }
-.show-btn{
+
+.show-btn {
     background: none;
     border: none;
     cursor: pointer;
 
 }
-.show-btn img{
+
+.show-btn img {
     width: 1.5vw;
 }
+
 input[type=password]::-ms-reveal,
-input[type=password]::-ms-clear
-{
+input[type=password]::-ms-clear {
     display: none;
 }

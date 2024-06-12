@@ -3,7 +3,7 @@ import "./LoginStyle.css";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import loginUser from "../../utils/loginUser";
+import loginUser from "../../utils/loginUserAsync";
 
 function Login() {
   const dispatch = useDispatch();
@@ -21,6 +21,7 @@ function Login() {
     setPassword(event.target.value);
     setError(null);
   };
+
   const dataReset = () => {
     setLogin("");
     setPassword("");

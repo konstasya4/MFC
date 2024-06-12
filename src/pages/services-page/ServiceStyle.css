@@ -3,14 +3,11 @@
     flex-direction: row;
     margin-top: 3vw;
     flex: 1;
-    /* justify-content: space-between;
-    align-items: flex-start; */
 }
 
 .service-text {
     margin: 0 1vw;
     max-width: 50vw;
-
 }
 
 .title-service {
@@ -35,41 +32,28 @@
 
 .btn-serv {
     margin: 0 7vw 0 auto;
-    display: flex; /* Устанавливаем flex-контейнер */
-    justify-content: center; /* Центрируем содержимое по горизонтали */
-    align-items: center; /* Центрируем содержимое по вертикали */
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
-/* .btn-style{
-    background-color: #408CFF;
-    color: white ;
-    max-height: 4vw;
-    font-weight: 700;
-    font-family: "Roboto";
-    font-size:   2em ;
-    font-weight: bold;
-    line-height: 2vw;
-    border-radius: 0.8vw;
-      border: 3px solid #408CFF;
-      cursor: pointer;
-      text-align: center;
-    
-} */
+
 .btn-style {
-    display: flex; /* Устанавливаем flex-контейнер */
-    justify-content: center; /* Центрируем содержимое по горизонтали */
-    align-items: center; /* Центрируем содержимое по вертикали */
+    display: flex;
+    justify-content: center;
+    align-items: center;
     background-color: #408CFF;
     color: white;
-    height: 3vw; /* Максимальная высота кнопки */
+    height: 3vw;
     font: bold 2em "Roboto";
-    line-height: 1; /* Отключаем межстрочный интервал */
+    line-height: 1;
     border: 0 solid #408CFF;
-    border-radius: 0.8vw; /* Радиус скругления углов */
+    border-radius: 0.8vw;
     cursor: pointer;
     text-align: center;
-    padding: 1em; /* Отступы по бокам текста */
+    padding: 1em;
 }
-.download-text{
+
+.download-text {
     display: flex;
     flex-direction: row;
     margin-top: 1vw;
@@ -78,25 +62,16 @@
     border: none;
     align-items: center;
 }
-.download-text img{
+
+.download-text {
+    text-decoration: none;
+}
+
+.download-text img {
     width: 2vw;
     height: 2vw;
 }
-.serv-down{
+
+.serv-down {
     margin-left: auto;
 }
-/* .btn-service MainButton{
-    background-color: #408CFF;
-    color: white ;
-    max-height: 3.5vw;
-    padding: 8.59px, 46.41px, 8.59px, 46.41px;
-    font-weight: 700;
-    font-family: "Roboto";
-    font-size:   2em ;
-    font-weight: bold;
-    line-height: 2vw;
-    border-radius: 0.8vw;
-      border: 3px solid #408CFF;
-      cursor: pointer;
-      text-align: center;
-} */

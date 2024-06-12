@@ -21,7 +21,6 @@ const ExecutionStatus = () => {
       try {
         const response = await ServiceService.fetchExecutionServicesUser();
         setStatus(response.data.tasks); 
-        console.log(response);
       } catch (error) {
         console.error("Ошибка при получении данных о статусе:", error);
       }

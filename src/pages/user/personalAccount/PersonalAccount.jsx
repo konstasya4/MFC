@@ -1,4 +1,3 @@
-import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import StudentAccountComponent from "../../../components/personal-account-components/StudentAccountComponent";
 import EmploeeyAccountComponent from "../../../components/personal-account-components/EmploeeyAccountComponent";

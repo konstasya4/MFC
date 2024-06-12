@@ -10,7 +10,6 @@ const StatusItem = (props) => {
     { key: 4, status: "Получено" },
   ], []);
   const [statusServiceItem, setStatusServiceItem] = useState(null);
-  console.log(props.status)
 
   useEffect(() => {
     const statusItem = statusServices.find(
@@ -22,8 +21,8 @@ const StatusItem = (props) => {
   return (
     <div className="status-container">
       <div className="status-item">
-        <div className="status-item-title">{props.status.serviceName}</div>
-        <div className="status-item-date">Дата заказа: {props.status.time}</div>
+        <div className="status-item-title">{props.status.service.name}</div>
+        <div className="status-item-date">Дата заказа: {props.status.dateTime}</div>
       </div>
       {statusServiceItem && (
         <p

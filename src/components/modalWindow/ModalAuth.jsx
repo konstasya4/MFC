@@ -4,7 +4,7 @@ import WarningIcon from "./images/WarningIcon.png";
 import { useNavigate } from "react-router-dom";
 import ButtonComponent from "../button-component/ButtonComponent";
 
-const ModalAuth = ({ isOpen, onClose }) => {
+const ModalAuth = ({ isOpen }) => {
   const navigate = useNavigate();
   const modalRef = useRef(null); 
 

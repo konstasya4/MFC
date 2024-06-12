@@ -1,22 +1,17 @@
 import { useState, useEffect } from "react";
 import UserService from "../../services/UserService";
-import PersonalDataActive from './images/PersonalDataActive.png';
-import Show from './images/Show.png';
-import Hide from './images/Hide.png';
-import IconCopy from './images/IconCopy.png';
-import InputComponent from "../input-component/InputComponent";
+import PersonalDataActive from "./images/PersonalDataActive.png";
+import Show from "./images/Show.png";
+import Hide from "./images/Hide.png";
+import IconCopy from "./images/IconCopy.png";
 import ButtonComponent from "../button-component/ButtonComponent";
-import { Link, useParams } from "react-router-dom";
-// import PersonalDataActive from "../../images/PersonalDataActive.png";
+import { useParams } from "react-router-dom";
 import "./AccountStyle.css";
-const EmploeeyAccountComponent = () => {
+const EmploeeyAccountAdmin = () => {
   const { post } = useParams();
-  const [employee, setEmployee] = useState({}); // Устанавливаем начальное значение в пустой объект
-  const [loading, setLoading] = useState(true); // Состояние для отслеживания загрузки данных
+  const [employee, setEmployee] = useState({});
   const [visibleField, setVisibleField] = useState(null);
-  const [showPassword, setShowPassword] = useState(false);
   const [editMail, setEditMail] = useState(null);
-  const [editPassword, setEditPassword] = useState(null);
   const [editing, setEditing] = useState(true);
 
   useEffect(() => {
@@ -33,14 +28,10 @@ const EmploeeyAccountComponent = () => {
     fetchPersonalData(post);
   }, [post]);
 
-  // if (loading) {
-  //     return <div>Loading...</div>;
-  // }
   const toggleVisibility = (field) => {
     setVisibleField(visibleField === field ? null : field);
   };
-  console.log(employee);
-  // console.log(employee.passport);
+
   const hideData = (data) => {
     if (!data) return "";
     const firstChar = data.substring(0, 1);
@@ -48,24 +39,11 @@ const EmploeeyAccountComponent = () => {
     const hiddenPart = "*".repeat(data.length - 2);
     return firstChar + hiddenPart + lastChar;
   };
-  const hidePassword = (data) => {
-    if (!data) return "";
-    const hiddenPart = "*".repeat(data.length);
-    return hiddenPart;
-  };
+
   const copyToClipboard = (text) => {
     navigator.clipboard.writeText(text);
   };
-  // const handleEditMail = async () => {
-  //   try {
-  //     const updatedData = { ...data, mail: editMail };
-  //     const response = await PersonalData.update(updatedData);
-  //     setData(response);
-  //     console.log("Mail updated successfully:", response.mail);
-  //   } catch (error) {
-  //     console.error("Error updating mail:", error);
-  //   }
-  // };
+
   const handleInputChange = (event) => {
     setEditMail(event.target.value);
     setEditMail(employee.mail);
@@ -73,9 +51,7 @@ const EmploeeyAccountComponent = () => {
   const changingEditing = () => {
     setEditing(!editing);
   };
-  const togglePasswordVisibility = () => {
-    setShowPassword(!showPassword);
-  };
+
   const passportData = () => {
     return employee
       ? `${employee.passport?.series} ${employee.passport?.number}`
@@ -266,37 +242,6 @@ const EmploeeyAccountComponent = () => {
                 <div className="text-account">{employee.institute}</div>
               </div>
             </div>
-
-            {/* <div className="citizenship column-account">
-      <div className="title-account">Пароль</div>
-      {editing ? (
-        <div className="btn-show">
-          <div className="text-account">
-            {visibleField === "password"
-              ? teacher.password
-              : hidePassword(teacher.password)}
-          </div>
-          <button
-            img={Show}
-            onClick={() => toggleVisibility("password")}
-          >
-            {visibleField === "password" ? (
-              <img src={Show}></img>
-            ) : (
-              <img src={Hide}></img>
-            )}
-          </button>
-        </div>
-      ) : (
-        <div>
-          <InputComponent
-            className=" pass-eding"
-            type="password"
-            onChange={togglePasswordVisibility}
-          />
-        </div>
-      )}
-    </div> */}
           </div>
           <div className="column-line">
             <div className="unitCode column-account">
@@ -332,9 +277,6 @@ const EmploeeyAccountComponent = () => {
           </div>
         </div>
       </div>
-      {/* <input type="text"
-  value={editMail}
-  onChange={(e) => setEditMail(e.target.value)}></input> */}
       {editing ? (
         <ButtonComponent
           className="btn-account"
@@ -354,4 +296,4 @@ const EmploeeyAccountComponent = () => {
     </div>
   );
 };
-export default EmploeeyAccountComponent;
+export default EmploeeyAccountAdmin;

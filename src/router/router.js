@@ -1,6 +1,6 @@
 import { Route, Routes } from "react-router-dom";
 import { privateRoutesAdmin, privateRoutesUser, publicRoutes } from ".";
-import { useDispatch, useSelector  } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 export const useRoutes = () => {
   const { isAuth } = useSelector(state => state.auth);
