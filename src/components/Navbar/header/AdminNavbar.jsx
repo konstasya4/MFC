@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import "./NavbarStyle.css";
 import { useDispatch } from "react-redux";
-import logoutUser from "../../../utils/logoutUser";
+import logoutUser from "../../../utils/logoutUserAsync";
 function AdminNavbar() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
