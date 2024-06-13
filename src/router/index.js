@@ -1,6 +1,6 @@
 import Main from "../pages/main-page/Main"
 import Login from "../pages/login/Login"
-import Quest from "../pages/Quentions"
+import Quest from "../pages/question/Questions"
 import ForgetPassword from "../pages/login/ForgetPassword"
 import PersonalAccount from "../pages/user/personalAccount/PersonalAccount"
 import ExecutionStatus from "../pages/user/execution-status/ExecutionStatus"
